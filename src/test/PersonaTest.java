@@ -10,7 +10,7 @@ import negocio.Persona.*;
 public class PersonaTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void calificacionMenorAUnoTest() {
-		new Persona("Raúl", Rol.ARQUITECTO, 0);
+		new Persona("Raúl", Rol.LIDERDEPROYECTO, 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -20,21 +20,18 @@ public class PersonaTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreNullTest() {
-		new Persona(null, Rol.ARQUITECTO, 0);
+		new Persona(null, Rol.PROGRAMADOR, 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreVacioTest() {
-		new Persona("", Rol.ARQUITECTO, 6);
+		new Persona("", Rol.TESTER, 6);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreMuyLargoTest() {
 		new Persona("a".repeat(31), Rol.ARQUITECTO, 6);
 	}
-	
-	
-	
 	
 	@Test
 	public void crearPersonaTest() {
@@ -44,17 +41,14 @@ public class PersonaTest {
 	}
 	
 	@Test
-	public void chequearRolesTest() {
-		Persona p1 = new Persona("Raúl", Rol.LIDERDEPROYECTO, 5);
-		Persona p2 = new Persona("Pedro", Rol.ARQUITECTO, 4);
-		Persona p3 = new Persona("Juan", Rol.PROGRAMADOR, 3);
-		Persona p4 = new Persona("José", Rol.TESTER, 2);	
+	public void chequearCalificacionTest() {
+		Persona p = new Persona("Raúl", Rol.ARQUITECTO, 5);
+		assertEquals(5, p.getCalificacion());
 	}
 	
-//	@Test
-//	public void calificacionTest() {
-//		for (int i = 1; )
-//		new Persona("Raúl", Rol.ARQUITECTO, 5);
-//	}
-
+	@Test
+	public void chequearRolTest() {
+		Persona p = new Persona("Raúl", Rol.TESTER, 5);
+		assertEquals(Rol.TESTER, p.getRol());
+	}
 }

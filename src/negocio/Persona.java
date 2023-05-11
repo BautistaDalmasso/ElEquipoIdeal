@@ -31,7 +31,6 @@ private int calificacionHistorica;
 		return calificacionHistorica;
 	}
 	
-	
 	public enum Rol { LIDERDEPROYECTO,
 					  ARQUITECTO,
 					  PROGRAMADOR,
