@@ -24,23 +24,23 @@ public class Empresa {
 	}
 
 	public void agregarEmpleado(Persona empleado) {
-		forzarEmpleadoValidoNoRepetido(empleado);
+		prevenirEmpleadoInvalidoORepetido(empleado);
 
 		this.empleados.add(empleado);
 		empleadosPorRol.get(empleado.getRol()).add(empleado);
 	}
 
-	private void forzarEmpleadoValidoNoRepetido(Persona empleado) {
-		forzarEmpleadoValido(empleado);
+	private void prevenirEmpleadoInvalidoORepetido(Persona empleado) {
+		prevenirEmpleadoNulo(empleado);
 
 		if (empleados.contains(empleado)) {
 			throw new IllegalArgumentException("El empleado: " + empleado + " ya se encuentra en la empresa.");
 		}
 	}
 
-	private void forzarEmpleadoValido(Persona empleado) {
+	static void prevenirEmpleadoNulo(Persona empleado) {
 		if (empleado == null) {
-			throw new IllegalArgumentException("El empleado agregado no puede ser null.");
+			throw new IllegalArgumentException("El empleado no puede ser null.");
 		}
 	}
 
