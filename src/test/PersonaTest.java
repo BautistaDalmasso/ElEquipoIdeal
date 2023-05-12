@@ -20,17 +20,17 @@ public class PersonaTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreNullTest() {
-		new Persona(null, Rol.PROGRAMADOR, 0);
+		new Persona(null, Rol.PROGRAMADOR, 1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreVacioTest() {
-		new Persona("", Rol.TESTER, 6);
+		new Persona("", Rol.TESTER, 1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreMuyLargoTest() {
-		new Persona("a".repeat(31), Rol.ARQUITECTO, 6);
+		new Persona("a".repeat(31), Rol.ARQUITECTO, 1);
 	}
 	
 	@Test
