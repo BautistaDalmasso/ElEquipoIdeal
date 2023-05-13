@@ -6,13 +6,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class Relaciones {
-	private Map<Persona, Set<Persona>> empleadosConIncompatibilidades;
+	private Map<Empleado, Set<Empleado>> empleadosConIncompatibilidades;
 	
 	public Relaciones() {
-		this.empleadosConIncompatibilidades = new HashMap<Persona, Set<Persona>>();
+		this.empleadosConIncompatibilidades = new HashMap<Empleado, Set<Empleado>>();
 	}
 	
-	public void agregarIncompatibilidad(Persona empleado1, Persona empleado2) {
+	public void agregarIncompatibilidad(Empleado empleado1, Empleado empleado2) {
 		Empresa.prevenirEmpleadoNulo(empleado1); Empresa.prevenirEmpleadoNulo(empleado2);
 		prevenirLoops(empleado1, empleado2);
 		
@@ -20,26 +20,26 @@ public class Relaciones {
 		incompatibilizar(empleado2, empleado1);
 	}
 	
-	private void prevenirLoops(Persona empleado1, Persona empleado2) {
+	private void prevenirLoops(Empleado empleado1, Empleado empleado2) {
 		if (empleado1.equals(empleado2)) {
 			throw new IllegalArgumentException("Una persona no puede ser incompatible con sigo misma: " + empleado1);
 		}
 	}
 
-	private void incompatibilizar(Persona empleado, Persona incompatible) {
+	private void incompatibilizar(Empleado empleado, Empleado incompatible) {
 		inicializar(empleado);
-		Set<Persona> empleadosIncompatibles = this.empleadosConIncompatibilidades.get(empleado);
+		Set<Empleado> empleadosIncompatibles = this.empleadosConIncompatibilidades.get(empleado);
 		
 		empleadosIncompatibles.add(incompatible);
 	}
 
-	private void inicializar(Persona empleado) {		
+	private void inicializar(Empleado empleado) {		
 		if (! this.empleadosConIncompatibilidades.containsKey(empleado)) {
-			this.empleadosConIncompatibilidades.put(empleado, new HashSet<Persona>());
+			this.empleadosConIncompatibilidades.put(empleado, new HashSet<Empleado>());
 		}
 	}
 	
-	public boolean sonIncompatibles(Persona empleado1, Persona empleado2) {
+	public boolean sonIncompatibles(Empleado empleado1, Empleado empleado2) {
 		Empresa.prevenirEmpleadoNulo(empleado1); Empresa.prevenirEmpleadoNulo(empleado2);
 		inicializar(empleado1); inicializar(empleado2);
 
