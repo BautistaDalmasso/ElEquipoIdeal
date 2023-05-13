@@ -71,8 +71,11 @@ public class Empresa {
 	
 	public List<Empleado> getEmpleadosDeRol(Empresa.Rol rol) {
 		List<Empleado> empleadosDelRol = empleadosPorRol.get(rol);
+		List<Empleado> ret = new ArrayList<Empleado>();
+		
+		ret.addAll(empleadosDelRol);
 
-		return new ArrayList<Empleado>(empleadosDelRol);
+		return ret;
 	}
 
 	public boolean esEmpleado(Empleado p) {

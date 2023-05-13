@@ -5,7 +5,7 @@ import negocio.Empresa.Rol;
 public class Requerimientos {
 	private int[][] empleadosPorRol;
 	private Empresa empresa;
-
+	
 	public Requerimientos(Empresa empresa) {
 		if (empresa == null) {
 			throw new IllegalArgumentException("Empresa no puede ser null.");
@@ -43,6 +43,15 @@ public class Requerimientos {
 			throw new IllegalArgumentException("Empleados Insuficientes. Se solicitaron: " + empleadosRequeridos
 					+ ", pero se dispone de: " + empleadosDisponibles);
 		}
+	}
+	
+	public boolean equipoCumpleConLosRequerimientos(Equipo e) {
+		for (Rol rol : Rol.values()) {
+			if (e.getEmpleadosPorRol(rol) != this.getRequerimientosParaRol(rol)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public int getRequerimientosParaRol(Rol rol) {

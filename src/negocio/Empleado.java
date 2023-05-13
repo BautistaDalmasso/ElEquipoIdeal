@@ -42,6 +42,11 @@ public class Empleado {
 	public int getCalificacion() {
 		return calificacionHistorica;
 	}
+	
+	@Override
+	public String toString() {
+		return "Empleado [nombre=" + nombre + ", rol=" + rol + ", calificacionHistorica=" + calificacionHistorica + "]";
+	}
 
 	@Override
 	public int hashCode() {
