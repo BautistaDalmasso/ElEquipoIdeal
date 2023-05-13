@@ -1,11 +1,18 @@
 package negocio;
 
+import java.util.Objects;
+
 public class Persona
 {
-
-private String nombre;
-private Rol rol;
-private int calificacionHistorica;
+	public enum Rol { LIDERDEPROYECTO,
+		  ARQUITECTO,
+		  PROGRAMADOR,
+		  TESTER
+	};
+		
+	private String nombre;
+	private Rol rol;
+	private int calificacionHistorica;
 
 	public Persona(String nombre, Rol rol, int calificacionHistorica)
 	{	
@@ -15,27 +22,6 @@ private int calificacionHistorica;
 		this.rol = rol;
 		this.calificacionHistorica = calificacionHistorica;
 	}
-	
-	public String getNombre()
-	{
-		return nombre;
-	}
-
-	public Rol getRol()
-	{
-		return rol;
-	}
-	
-	public int getCalificacion()
-	{
-		return calificacionHistorica;
-	}
-	
-	public enum Rol { LIDERDEPROYECTO,
-					  ARQUITECTO,
-					  PROGRAMADOR,
-					  TESTER
-					};
 					
 	private static void verificarCalificacion(int calificacionHistorica)
 	{
@@ -53,5 +39,36 @@ private int calificacionHistorica;
 			throw new IllegalArgumentException("El nombre de la persona no puede tener menos de 2 caracteres.");
 		if (nombre.length() > 30)
 			throw new IllegalArgumentException("El nombre de la persona no puede tener más de 30 caracteres.");
+	}
+	
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public Rol getRol()
+	{
+		return rol;
+	}
+	
+	public int getCalificacion()
+	{
+		return calificacionHistorica;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(calificacionHistorica, nombre, rol);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Persona))
+			return false;
+		Persona other = (Persona) obj;
+		return calificacionHistorica == other.calificacionHistorica && Objects.equals(nombre, other.nombre)
+				&& rol == other.rol;
 	}
 }
