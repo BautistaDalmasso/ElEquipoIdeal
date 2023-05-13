@@ -21,9 +21,6 @@ public class StressTestSolver {
 			long inicio = System.currentTimeMillis();
 			generarProblema(i);
 			
-			if (i == 51) {
-				System.out.println();
-			}
 			Solver solver = new Solver(empresaGenerada, requerimientosGenerados);
 			try {
 				solver.resolver();
