@@ -93,4 +93,4 @@ Casos bases considerados: 25168. Casos descartados: 6292. Incompatibilidades tot
 n = 52: 3310.784 seg. (55 minutos!!)
 Casos bases considerados: 1415700. Casos descartados: 2358. Incompatibilidades totales: 12
 
-version: ce3aef9773c84a02be1b191cb45f4689f0161410
+version: 40fe811bd4cc9a97dd42b607e57eacc1294e3694
