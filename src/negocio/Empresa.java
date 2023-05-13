@@ -13,7 +13,8 @@ public class Empresa {
 	private List<Empleado> empleados;
 	private Map<Empresa.Rol, List<Empleado>> empleadosPorRol;
 	private Relaciones relaciones;
-
+	private int incompatibilidades;
+	
 	public Empresa() {
 		this.empleados = new ArrayList<Empleado>();
 		this.relaciones = new Relaciones();
@@ -52,6 +53,7 @@ public class Empresa {
 	public void agregarIncompatibilidad(Empleado empleado1, Empleado empleado2) {
 		prevenirEmpleadoNuloONoAgregado(empleado1); prevenirEmpleadoNuloONoAgregado(empleado2);
 		
+		this.incompatibilidades++;
 		this.relaciones.agregarIncompatibilidad(empleado1, empleado2);
 	}
 	
@@ -80,5 +82,13 @@ public class Empresa {
 
 	public boolean esEmpleado(Empleado p) {
 		return this.empleados.contains(p);
+	}
+	
+	public List<Empleado> getEmpleados() {
+		return this.empleados;
+	}
+	
+	public int getIncompatibilidades() {
+		return incompatibilidades;
 	}
 }

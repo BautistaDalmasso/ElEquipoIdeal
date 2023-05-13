@@ -10,6 +10,9 @@ public class Solver {
 	private Equipo mejorEquipo;
 	private Equipo actual;
 	
+	private int casosBaseConsiderados;
+	private int casosIncompatiblesDescartados;
+	
 	public Solver(Empresa empresa, Requerimientos requerimientos) {
 		this.empresa = empresa;
 		this.requerimientos = requerimientos;
@@ -18,6 +21,9 @@ public class Solver {
 	public Equipo resolver() throws EquipoImposibleException {
 		this.actual = new Equipo(empresa);
 		this.mejorEquipo = this.actual.copiar();
+		
+		this.casosBaseConsiderados = 0;
+		this.casosIncompatiblesDescartados = 0;
 		
 		agregarEmpleadosPorRolDesde(Rol.values()[0], 0);
 		
@@ -33,6 +39,7 @@ public class Solver {
 			if (actual.getCalificacionTotal() > mejorEquipo.getCalificacionTotal()) {
 				mejorEquipo = actual.copiar();
 			}
+			this.casosBaseConsiderados++;
 			return;
 		}
 
@@ -44,8 +51,12 @@ public class Solver {
 		Empleado empleadoSiendoEvaluado = obtenerEmpleadoDelRol(rol, desde);
 		
 		if (actual.tieneIncompatibilidadesConElEquipo(empleadoSiendoEvaluado)) {
+			this.casosIncompatiblesDescartados++;
 			agregarEmpleadosPorRolDesde(rol, desde+1);
 			return;
+		}
+		if (actual.getEmpleadosPorRol(rol) == requerimientos.getRequerimientosParaRol(rol)) {
+			agregarEmpleadosPorRolDesde(obtenerSiguienteRol(rol), 0);
 		}
 		actual.agregarEmpleado(empleadoSiendoEvaluado);
 		if (actual.getEmpleadosPorRol(rol) == requerimientos.getRequerimientosParaRol(rol)) {
@@ -67,5 +78,10 @@ public class Solver {
 		int siguiente = rol.ordinal() + 1;
 		
 		return siguiente < roles.length ? roles[siguiente] : null;
+	}
+	
+	public String estadisticas() {
+		return "Casos bases considerados: " + casosBaseConsiderados + ". Casos descartados: " + casosIncompatiblesDescartados 
+				+ ". Incompatibilidades totales: " + this.empresa.getIncompatibilidades();
 	}
 }

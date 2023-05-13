@@ -69,6 +69,20 @@ public class SolverTest {
 		}
 	}
 	
+	@Test
+	public void mejorEquipoConRequerimientoEn0Test() {
+		setEmpresaCompleja();
+		requerimientosActuales.setRequerimientosParaRol(Rol.ARQUITECTO, 0);
+		Solver solver = new Solver(empresaActual, requerimientosActuales);
+		
+		try {
+			Equipo resultado = solver.resolver();
+			assertEquals(20, resultado.getCalificacionTotal());
+		} catch (EquipoImposibleException e) {
+			fail(e.getMessage());
+		}
+	}
+	
 	private void setEmpresaConIncompatibilidades() {
 		empresaActual = new Empresa();
 		empleadosEsperados = new HashSet<Empleado>();
