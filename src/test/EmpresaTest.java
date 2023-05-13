@@ -21,7 +21,7 @@ public class EmpresaTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void agregarObjetoPersonaDosVecesTest() {
 		Empresa e = new Empresa();
-		Empleado p = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
 
 		e.agregarEmpleado(p);
 		e.agregarEmpleado(p);
@@ -30,8 +30,8 @@ public class EmpresaTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void agregarPersonaDatosRepetidosTest() {
 		Empresa e = new Empresa();
-		Empleado p1 = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
-		Empleado p2 = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p1 = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
+		Empleado p2 = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
 
 		e.agregarEmpleado(p1);
 		e.agregarEmpleado(p2);
@@ -40,8 +40,8 @@ public class EmpresaTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void agregarIncompatibilidad_PrimerEmpleadoNoEsDeLaEmpresaTest() {
 		Empresa e = new Empresa();
-		Empleado p1 = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
-		Empleado p2 = new Empleado("Marcos", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p1 = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
+		Empleado p2 = new Empleado("Marcos", Empresa.Rol.ARQUITECTO, 5);
 		e.agregarEmpleado(p2);
 		
 		e.agregarIncompatibilidad(p1, p2);
@@ -50,8 +50,8 @@ public class EmpresaTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void agregarIncompatibilidad_SegundoEmpleadoNoEsDeLaEmpresaTest() {
 		Empresa e = new Empresa();
-		Empleado p1 = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
-		Empleado p2 = new Empleado("Marcos", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p1 = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
+		Empleado p2 = new Empleado("Marcos", Empresa.Rol.ARQUITECTO, 5);
 		e.agregarEmpleado(p1);
 		
 		e.agregarIncompatibilidad(p1, p2);
@@ -60,7 +60,7 @@ public class EmpresaTest {
 	@Test
 	public void isEmpleadoDaFalseParaEmpleadosNoAgregadosTest() {
 		Empresa e = new Empresa();
-		Empleado p = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
 
 		assertFalse(e.esEmpleado(p));
 	}
@@ -68,7 +68,7 @@ public class EmpresaTest {
 	@Test
 	public void isEmpleadoDaTrueLuegoDeAgregarEmpleadoTest() {
 		Empresa e = new Empresa();
-		Empleado p = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
 
 		e.agregarEmpleado(p);
 
@@ -78,8 +78,8 @@ public class EmpresaTest {
 	@Test
 	public void empleadosPorRolContieneSoloEmpleadosAgregadoTest() {
 		Empresa e = new Empresa();
-		Empleado p1 = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
-		Empleado p2 = new Empleado("Marcos", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p1 = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
+		Empleado p2 = new Empleado("Marcos", Empresa.Rol.ARQUITECTO, 5);
 
 		e.agregarEmpleado(p1);
 		e.agregarEmpleado(p2);
@@ -88,14 +88,14 @@ public class EmpresaTest {
 		expected.add(p1);
 		expected.add(p2);
 
-		assertEquals(expected, e.getEmpleadosDeRol(Empleado.Rol.ARQUITECTO));
+		assertEquals(expected, e.getEmpleadosDeRol(Empresa.Rol.ARQUITECTO));
 	}
 	
 	@Test
 	public void incompatibilidadSeAgregaSatisfactoriamenteTest() {
 		Empresa e = new Empresa();
-		Empleado p1 = new Empleado("Raul", Empleado.Rol.ARQUITECTO, 5);
-		Empleado p2 = new Empleado("Marcos", Empleado.Rol.ARQUITECTO, 5);
+		Empleado p1 = new Empleado("Raul", Empresa.Rol.ARQUITECTO, 5);
+		Empleado p2 = new Empleado("Marcos", Empresa.Rol.ARQUITECTO, 5);
 		e.agregarEmpleado(p1);
 		e.agregarEmpleado(p2);
 		

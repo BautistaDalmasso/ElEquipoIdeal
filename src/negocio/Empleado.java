@@ -3,15 +3,11 @@ package negocio;
 import java.util.Objects;
 
 public class Empleado {
-	public enum Rol {
-		LIDERDEPROYECTO, ARQUITECTO, PROGRAMADOR, TESTER
-	};
-
 	private String nombre;
-	private Rol rol;
+	private Empresa.Rol rol;
 	private int calificacionHistorica;
 
-	public Empleado(String nombre, Rol rol, int calificacionHistorica) {
+	public Empleado(String nombre, Empresa.Rol rol, int calificacionHistorica) {
 		verificarCalificacion(calificacionHistorica);
 		verificarNombre(nombre);
 		this.nombre = nombre;
@@ -39,7 +35,7 @@ public class Empleado {
 		return nombre;
 	}
 
-	public Rol getRol() {
+	public Empresa.Rol getRol() {
 		return rol;
 	}
 
