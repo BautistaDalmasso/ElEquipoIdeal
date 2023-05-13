@@ -43,6 +43,36 @@ public class EquipoTest {
 	}
 	
 	@Test
+	public void empleadosPorRolSeActualizaLuegoDeAgregarTest() {
+		Empresa empresa = new Empresa();
+		Empleado empleado1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
+		Empleado empleado2 = new Empleado("Roberto", Rol.ARQUITECTO, 4);
+		Equipo equipo = new Equipo(empresa);
+		empresa.agregarEmpleado(empleado1);
+		empresa.agregarEmpleado(empleado2);
+		equipo.agregarEmpleado(empleado1);
+		equipo.agregarEmpleado(empleado2);
+		
+		assertEquals(2, equipo.getEmpleadosPorRol(Rol.ARQUITECTO));
+	}
+	
+	@Test
+	public void empleadosPorRolSeActualizaLuegoDeEliminarTest() {
+		Empresa empresa = new Empresa();
+		Empleado empleado1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
+		Empleado empleado2 = new Empleado("Roberto", Rol.ARQUITECTO, 4);
+		Equipo equipo = new Equipo(empresa);
+		empresa.agregarEmpleado(empleado1);
+		empresa.agregarEmpleado(empleado2);
+		equipo.agregarEmpleado(empleado1);
+		equipo.agregarEmpleado(empleado2);
+		
+		equipo.removerEmpleado(empleado2);
+		
+		assertEquals(1, equipo.getEmpleadosPorRol(Rol.ARQUITECTO));
+	}
+	
+	@Test
 	public void noHayIncompatibilidadesTest() {
 		Empresa empresa = new Empresa();
 		Empleado empleado1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
@@ -76,6 +106,22 @@ public class EquipoTest {
 	}
 	
 	@Test
+	public void empleadosPorRolSeMantieneLuegoDeCopiarTest() {
+		Empresa empresa = new Empresa();
+		Empleado empleado1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
+		Empleado empleado2 = new Empleado("Roberto", Rol.ARQUITECTO, 4);
+		Equipo equipo = new Equipo(empresa);
+		empresa.agregarEmpleado(empleado1);
+		empresa.agregarEmpleado(empleado2);
+		equipo.agregarEmpleado(empleado1);
+		equipo.agregarEmpleado(empleado2);
+		
+		Equipo copia = equipo.copiar();
+		
+		assertEquals(2, copia.getEmpleadosPorRol(Rol.ARQUITECTO));
+	}
+	
+	@Test
 	public void copiarNoGeneraAliasingDeEmpleadosTest() {
 		Empresa empresa = new Empresa();
 		Empleado empleado1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
@@ -90,5 +136,22 @@ public class EquipoTest {
 		copia.removerEmpleado(empleado1);
 
 		assertTrue(equipo.contieneEmpleado(empleado1));
+	}
+	
+	@Test
+	public void copiarNoGeneraAliasingDeEmpleadosPorRolTest() {
+		Empresa empresa = new Empresa();
+		Empleado empleado1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
+		Empleado empleado2 = new Empleado("Roberto", Rol.ARQUITECTO, 4);
+		Equipo equipo = new Equipo(empresa);
+		empresa.agregarEmpleado(empleado1);
+		empresa.agregarEmpleado(empleado2);
+		equipo.agregarEmpleado(empleado1);
+		equipo.agregarEmpleado(empleado2);
+				
+		Equipo copia = equipo.copiar();
+		copia.removerEmpleado(empleado1);
+
+		assertEquals(2, equipo.getEmpleadosPorRol(Rol.ARQUITECTO));
 	}
 }
