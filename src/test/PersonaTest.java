@@ -3,52 +3,52 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import negocio.Persona;
-import negocio.Persona.*;
+import negocio.Empleado;
+import negocio.Empleado.*;
 
 
 public class PersonaTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void calificacionMenorAUnoTest() {
-		new Persona("Raúl", Rol.LIDERDEPROYECTO, 0);
+		new Empleado("Raúl", Rol.LIDERDEPROYECTO, 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void calificacionMayorACincoTest() {
-		new Persona("Raúl", Rol.ARQUITECTO, 6);
+		new Empleado("Raúl", Rol.ARQUITECTO, 6);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreNullTest() {
-		new Persona(null, Rol.PROGRAMADOR, 1);
+		new Empleado(null, Rol.PROGRAMADOR, 1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreVacioTest() {
-		new Persona("", Rol.TESTER, 1);
+		new Empleado("", Rol.TESTER, 1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void nombreMuyLargoTest() {
-		new Persona("a".repeat(31), Rol.ARQUITECTO, 1);
+		new Empleado("a".repeat(31), Rol.ARQUITECTO, 1);
 	}
 	
 	@Test
 	public void crearPersonaTest() {
-		Persona p = new Persona("Raúl", Rol.ARQUITECTO, 5);
+		Empleado p = new Empleado("Raúl", Rol.ARQUITECTO, 5);
 		
 		assertEquals("Raúl", p.getNombre());
 	}
 	
 	@Test
 	public void chequearCalificacionTest() {
-		Persona p = new Persona("Raúl", Rol.ARQUITECTO, 5);
+		Empleado p = new Empleado("Raúl", Rol.ARQUITECTO, 5);
 		assertEquals(5, p.getCalificacion());
 	}
 	
 	@Test
 	public void chequearRolTest() {
-		Persona p = new Persona("Raúl", Rol.TESTER, 5);
+		Empleado p = new Empleado("Raúl", Rol.TESTER, 5);
 		assertEquals(Rol.TESTER, p.getRol());
 	}
 }
