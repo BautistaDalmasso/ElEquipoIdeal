@@ -41,6 +41,7 @@ public class Solver {
 		}
 		if (requerimientosParaRolLlenados(rol)) {
 			agregarEmpleadosPorRolDesde(obtenerSiguienteRol(rol), 0);
+			return;
 		}
 		if (empleadosParaEvaluarAgotados(rol, desde)) {
 			return;

@@ -1,0 +1,94 @@
+n = 6: 0.005 seg. 
+Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 2
+n = 7: 0.001 seg. 
+Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 1
+n = 8: 0.0 seg. 
+Casos bases considerados: 0. Casos descartados: 1. Incompatibilidades totales: 1
+n = 9: 0.001 seg. 
+Casos bases considerados: 3. Casos descartados: 1. Incompatibilidades totales: 2
+n = 10: 0.001 seg. 
+Casos bases considerados: 4. Casos descartados: 0. Incompatibilidades totales: 0
+n = 11: 0.0 seg. 
+Casos bases considerados: 2. Casos descartados: 0. Incompatibilidades totales: 4
+n = 12: 0.004 seg. 
+Casos bases considerados: 28. Casos descartados: 1. Incompatibilidades totales: 1
+n = 13: 0.003 seg. 
+Casos bases considerados: 24. Casos descartados: 0. Incompatibilidades totales: 3
+n = 14: 0.003 seg. 
+Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 2
+n = 15: 0.006 seg. 
+Casos bases considerados: 4. Casos descartados: 0. Incompatibilidades totales: 4
+n = 16: 0.02 seg. 
+Casos bases considerados: 200. Casos descartados: 0. Incompatibilidades totales: 6
+n = 17: 0.003 seg. 
+Casos bases considerados: 6. Casos descartados: 98. Incompatibilidades totales: 4
+n = 18: 0.001 seg. 
+Casos bases considerados: 21. Casos descartados: 0. Incompatibilidades totales: 4
+n = 19: 0.002 seg. 
+Casos bases considerados: 56. Casos descartados: 0. Incompatibilidades totales: 7
+n = 20: 0.0 seg. 
+Casos bases considerados: 10. Casos descartados: 0. Incompatibilidades totales: 8
+n = 21: 0.095 seg. 
+Casos bases considerados: 168. Casos descartados: 0. Incompatibilidades totales: 7
+n = 22: 0.0 seg. 
+Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 3
+n = 23: 0.087 seg. 
+Casos bases considerados: 450. Casos descartados: 0. Incompatibilidades totales: 7
+n = 24: 0.001 seg. 
+Casos bases considerados: 10. Casos descartados: 0. Incompatibilidades totales: 7
+n = 25: 0.002 seg. 
+Casos bases considerados: 756. Casos descartados: 0. Incompatibilidades totales: 6
+n = 26: 0.008 seg. 
+Casos bases considerados: 1918. Casos descartados: 182. Incompatibilidades totales: 5
+n = 27: 0.021 seg. 
+Casos bases considerados: 135. Casos descartados: 0. Incompatibilidades totales: 8
+n = 28: 0.01 seg. 
+Casos bases considerados: 210. Casos descartados: 0. Incompatibilidades totales: 3
+n = 29: 0.011 seg. 
+Casos bases considerados: 3150. Casos descartados: 210. Incompatibilidades totales: 8
+n = 30: 0.007 seg. 
+Casos bases considerados: 223. Casos descartados: 339. Incompatibilidades totales: 8
+n = 31: 0.652 seg. 
+Casos bases considerados: 4500. Casos descartados: 1420. Incompatibilidades totales: 5
+n = 32: 0.006 seg. 
+Casos bases considerados: 882. Casos descartados: 0. Incompatibilidades totales: 9
+n = 33: 0.04 seg. 
+Casos bases considerados: 5775. Casos descartados: 0. Incompatibilidades totales: 7
+n = 34: 0.004 seg. 
+Casos bases considerados: 1120. Casos descartados: 0. Incompatibilidades totales: 8
+n = 35: 0.0 seg. 
+Casos bases considerados: 102. Casos descartados: 2. Incompatibilidades totales: 10
+n = 36: 0.198 seg. 
+Casos bases considerados: 840. Casos descartados: 0. Incompatibilidades totales: 8
+n = 37: 0.0 seg. 
+Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 8
+n = 38: 4.259 seg. 
+Casos bases considerados: 1470240. Casos descartados: 31680. Incompatibilidades totales: 5
+n = 39: 0.008 seg. 
+Casos bases considerados: 0. Casos descartados: 161. Incompatibilidades totales: 9
+n = 40: 0.002 seg. 
+Casos bases considerados: 46. Casos descartados: 255. Incompatibilidades totales: 11
+n = 41: 0.061 seg. 
+Casos bases considerados: 702. Casos descartados: 20. Incompatibilidades totales: 11
+n = 42: 1.512 seg. 
+Casos bases considerados: 493416. Casos descartados: 3398. Incompatibilidades totales: 8
+n = 43: 0.659 seg. 
+Casos bases considerados: 43680. Casos descartados: 39360. Incompatibilidades totales: 7
+n = 44: 0.007 seg. 
+Casos bases considerados: 0. Casos descartados: 131. Incompatibilidades totales: 9
+n = 45: 0.029 seg. 
+Casos bases considerados: 91. Casos descartados: 0. Incompatibilidades totales: 8
+n = 46: 0.007 seg. 
+Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 10
+n = 47: 0.812 seg. 
+Casos bases considerados: 28560. Casos descartados: 0. Incompatibilidades totales: 7
+n = 48: 0.635 seg. 
+Casos bases considerados: 254800. Casos descartados: 5026. Incompatibilidades totales: 7
+n = 49: 0.001 seg. 
+Casos bases considerados: 161. Casos descartados: 36. Incompatibilidades totales: 11
+n = 50: 0.117 seg. 
+Casos bases considerados: 34293. Casos descartados: 2652. Incompatibilidades totales: 12
+n = 51: 0.001 seg. 
+Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 17
+n = 52: 93.036 seg. 
+Casos bases considerados: 10725. Casos descartados: 2358. Incompatibilidades totales: 12
