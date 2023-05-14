@@ -1,8 +1,8 @@
 package negocio;
 
-import java.util.List;
+import negocio.Empresa.Rol;
 
-public class SolverAlternativo {
+public class SolverPorListaCompleta implements ISolver {
 	private Empresa empresa;
 	private Requerimientos requerimientos;
 	private Equipo mejorEquipo;
@@ -11,7 +11,7 @@ public class SolverAlternativo {
 	private int casosBaseConsiderados;
 	private int casosIncompatiblesDescartados;
 
-	public SolverAlternativo(Empresa empresa, Requerimientos requerimientos) {
+	public SolverPorListaCompleta(Empresa empresa, Requerimientos requerimientos) {
 		this.empresa = empresa;
 		this.requerimientos = requerimientos;
 	}
@@ -33,11 +33,27 @@ public class SolverAlternativo {
 	}
 
 	private void agregarEmpleadosDesde(int desde) {
-		List<Empleado> empleados = empresa.getEmpleados();
 		if (requerimientos.equipoCumpleConLosRequerimientos(actual)) {
 			manejarEvaluacionCasoBase();
 			return;
 		}
+		if (empleadosAgotados(desde)) {
+			return;
+		}
+		
+		Empleado empleadoSiendoEvaluado = empresa.getEmpleados().get(desde);
+		
+		if (rolLleno(empleadoSiendoEvaluado) ||
+				actual.tieneIncompatibilidadesConElEquipo(empleadoSiendoEvaluado)) {
+			backtrack(desde);
+			return;
+		}
+		
+		actual.agregarEmpleado(empleadoSiendoEvaluado);
+		agregarEmpleadosDesde(desde + 1);
+
+		actual.removerEmpleado(empleadoSiendoEvaluado);
+		agregarEmpleadosDesde(desde + 1);
 	}
 
 	private void manejarEvaluacionCasoBase() {
@@ -47,6 +63,15 @@ public class SolverAlternativo {
 		this.casosBaseConsiderados++;
 	}
 
+	private boolean rolLleno(Empleado empleadoSiendoEvaluado) {
+		Rol rol = empleadoSiendoEvaluado.getRol();
+		return requerimientos.getRequerimientosParaRol(rol) < actual.getEmpleadosPorRol(rol);
+	}
+	
+	private boolean empleadosAgotados(int evaluados) {
+		return evaluados >= empresa.getEmpleados().size();
+	}
+	
 	private void backtrack(int desde) {
 		this.casosIncompatiblesDescartados++;
 		agregarEmpleadosDesde(desde + 1);

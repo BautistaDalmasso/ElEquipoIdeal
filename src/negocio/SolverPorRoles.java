@@ -2,7 +2,7 @@ package negocio;
 
 import negocio.Empresa.Rol;
 
-public class Solver {
+public class SolverPorRoles implements ISolver {
 	private static final Rol TODOS_LOS_ROLES_LLENADOS = null;
 
 	private Empresa empresa;
@@ -13,7 +13,7 @@ public class Solver {
 	private int casosBaseConsiderados;
 	private int casosIncompatiblesDescartados;
 
-	public Solver(Empresa empresa, Requerimientos requerimientos) {
+	public SolverPorRoles(Empresa empresa, Requerimientos requerimientos) {
 		this.empresa = empresa;
 		this.requerimientos = requerimientos;
 	}
