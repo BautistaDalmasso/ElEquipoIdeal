@@ -92,3 +92,5 @@ n = 51: 0.001 seg.
 Casos bases considerados: 1. Casos descartados: 0. Incompatibilidades totales: 17
 n = 52: 93.036 seg. 
 Casos bases considerados: 10725. Casos descartados: 2358. Incompatibilidades totales: 12
+
+version: 05c49f34735b3345b74336b8e8551f022925967a
