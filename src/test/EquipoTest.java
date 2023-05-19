@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import negocio.Empleado;
 import negocio.Empresa;
-import negocio.Empresa.Rol;
+import negocio.Rol;
 import negocio.Equipo;
 
 public class EquipoTest {

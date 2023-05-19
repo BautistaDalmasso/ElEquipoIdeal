@@ -1,7 +1,5 @@
 package negocio;
 
-import negocio.Empresa.Rol;
-
 public class SolverPorListaCompleta implements ISolver {
 	private Empresa empresa;
 	private Requerimientos requerimientos;
