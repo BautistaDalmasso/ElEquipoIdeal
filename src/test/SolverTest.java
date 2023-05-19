@@ -10,7 +10,7 @@ import org.junit.Test;
 import negocio.Empleado;
 import negocio.Empresa;
 import negocio.Requerimientos;
-import negocio.Solver;
+import negocio.SolverPorRoles;
 import negocio.Empresa.Rol;
 import negocio.Equipo;
 import negocio.EquipoImposibleException;
@@ -25,7 +25,7 @@ public class SolverTest {
 		setEmpresaConIncompatibilidades();
 		setRequerimientosImposibles();
 		
-		Solver solver = new Solver(empresaActual, requerimientosActuales);
+		SolverPorRoles solver = new SolverPorRoles(empresaActual, requerimientosActuales);
 		
 		solver.resolver();
 	}
@@ -34,7 +34,7 @@ public class SolverTest {
 	public void mejorEquipoSinIncompatibilidadesTest() {
 		setEmpresaSimple();
 		setRequerimientosSimples();
-		Solver solver = new Solver(empresaActual, requerimientosActuales);
+		SolverPorRoles solver = new SolverPorRoles(empresaActual, requerimientosActuales);
 		
 		try {
 			assertEquals(empleadosEsperados, solver.resolver().getEmpleados());
@@ -47,7 +47,7 @@ public class SolverTest {
 	public void mejorEquipoConAlgunasIncompatibilidadesTest() {
 		setEmpresaConIncompatibilidades();
 		setRequerimientosSimples();
-		Solver solver = new Solver(empresaActual, requerimientosActuales);
+		SolverPorRoles solver = new SolverPorRoles(empresaActual, requerimientosActuales);
 		
 		try {
 			assertEquals(empleadosEsperados, solver.resolver().getEmpleados());
@@ -59,7 +59,7 @@ public class SolverTest {
 	@Test
 	public void mejorEquipoEmpresaComplejaTest() {
 		setEmpresaCompleja();
-		Solver solver = new Solver(empresaActual, requerimientosActuales);
+		SolverPorRoles solver = new SolverPorRoles(empresaActual, requerimientosActuales);
 		
 		try {
 			Equipo resultado = solver.resolver();
@@ -73,7 +73,7 @@ public class SolverTest {
 	public void mejorEquipoConRequerimientoEn0Test() {
 		setEmpresaCompleja();
 		requerimientosActuales.setRequerimientosParaRol(Rol.ARQUITECTO, 0);
-		Solver solver = new Solver(empresaActual, requerimientosActuales);
+		SolverPorRoles solver = new SolverPorRoles(empresaActual, requerimientosActuales);
 		
 		try {
 			Equipo resultado = solver.resolver();
