@@ -1,7 +1,5 @@
 package negocio;
 
-import negocio.Empresa.Rol;
-
 public class SolverPorRoles implements ISolver {
 	private static final Rol TODOS_LOS_ROLES_LLENADOS = null;
 

@@ -12,7 +12,7 @@ import org.junit.Test;
 import negocio.ArchivoEmpresa;
 import negocio.Empleado;
 import negocio.Empresa;
-import negocio.Empresa.Rol;
+import negocio.Rol;
 
 public class GuardadoDeArchivosTest {
 	private static final String NOMBRE_ARCHIVO = "ArchivoDePrueba";

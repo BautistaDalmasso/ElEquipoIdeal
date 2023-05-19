@@ -12,7 +12,7 @@ import negocio.Empleado;
 import negocio.Empresa;
 import negocio.Requerimientos;
 import negocio.SolverPorRoles;
-import negocio.Empresa.Rol;
+import negocio.Rol;
 import negocio.Equipo;
 import negocio.EquipoImposibleException;
 
@@ -97,9 +97,10 @@ public class SolverTest {
 		empleadosEsperados = new HashSet<Empleado>();
 		
 		Empleado nuevoEmpleado;
+		int i = 0;
 		for (Rol rol : Rol.values()) {
-			nuevoEmpleado = new Empleado("Raul", rol, 5);
-			empresaActual.agregarEmpleado(new Empleado("Raul", rol, 5));
+			nuevoEmpleado = new Empleado("Empleado " + i++, rol, 5);
+			empresaActual.agregarEmpleado(nuevoEmpleado);
 			empleadosEsperados.add(nuevoEmpleado);
 		}
 	}
