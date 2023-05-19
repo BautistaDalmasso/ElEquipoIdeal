@@ -3,6 +3,7 @@ package negocio;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class Relaciones {
@@ -44,5 +45,32 @@ public class Relaciones {
 		inicializar(empleado1); inicializar(empleado2);
 
 		return empleadosConIncompatibilidades.get(empleado1).contains(empleado2);
+	}
+	
+	public Set<ParIncompatible> toSetParesIncompatibles() {
+		HashSet<ParIncompatible> ret = new HashSet<ParIncompatible>();
+		
+		for (Empleado x : empleadosConIncompatibilidades.keySet()) {
+			for (Empleado y : empleadosConIncompatibilidades.get(x)) {
+				ret.add(new ParIncompatible(x.getNombre(), y.getNombre()));
+			}
+		}
+		
+		return ret;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(empleadosConIncompatibilidades);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Relaciones))
+			return false;
+		Relaciones other = (Relaciones) obj;
+		return Objects.equals(empleadosConIncompatibilidades, other.empleadosConIncompatibilidades);
 	}
 }

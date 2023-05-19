@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Emp1",
+    "rol": "ARQUITECTO",
+    "calificacionHistorica": 5
+  },
+  {
+    "nombre": "Emp2",
+    "rol": "ARQUITECTO",
+    "calificacionHistorica": 5
+  },
+  {
+    "nombre": "Emp3",
+    "rol": "ARQUITECTO",
+    "calificacionHistorica": 5
+  },
+  {
+    "nombre": "Emp4",
+    "rol": "ARQUITECTO",
+    "calificacionHistorica": 5
+  }
+]

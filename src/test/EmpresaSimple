@@ -1,0 +1,30 @@
+{
+  "empleados": [
+    {
+      "nombre": "Raul",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "Marcos",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "Miguel",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "Manuel",
+      "rol": "TESTER",
+      "calificacionHistorica": 5
+    }
+  ],
+  "paresIncompatibles": [
+    {
+      "x": "Raul",
+      "y": "Marcos"
+    }
+  ]
+}
