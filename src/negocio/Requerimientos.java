@@ -1,7 +1,5 @@
 package negocio;
 
-import negocio.Empresa.Rol;
-
 public class Requerimientos {
 	private int[][] empleadosPorRol;
 	private Empresa empresa;

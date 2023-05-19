@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import negocio.Empleado;
 import negocio.Empresa;
-import negocio.Empresa.Rol;
+import negocio.Rol;
 import negocio.EquipoImposibleException;
 import negocio.ISolver;
 import negocio.Requerimientos;

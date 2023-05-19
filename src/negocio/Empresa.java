@@ -6,12 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Empresa {
-	public enum Rol {
-		LIDERDEPROYECTO, ARQUITECTO, PROGRAMADOR, TESTER
-	}
 
 	private List<Empleado> empleados;
-	private Map<Empresa.Rol, List<Empleado>> empleadosPorRol;
+	private Map<Rol, List<Empleado>> empleadosPorRol;
 	private Relaciones relaciones;
 	private int incompatibilidades;
 	
@@ -22,9 +19,9 @@ public class Empresa {
 	}
 
 	private void inicializarEmpleadosPorRol() {
-		empleadosPorRol = new HashMap<Empresa.Rol, List<Empleado>>();
+		empleadosPorRol = new HashMap<Rol, List<Empleado>>();
 
-		for (Empresa.Rol rol : Empresa.Rol.values()) {
+		for (Rol rol : Rol.values()) {
 			empleadosPorRol.put(rol, new ArrayList<Empleado>());
 		}
 	}
@@ -71,7 +68,7 @@ public class Empresa {
 		}
 	}
 	
-	public List<Empleado> getEmpleadosDeRol(Empresa.Rol rol) {
+	public List<Empleado> getEmpleadosDeRol(Rol rol) {
 		List<Empleado> empleadosDelRol = empleadosPorRol.get(rol);
 		List<Empleado> ret = new ArrayList<Empleado>();
 		

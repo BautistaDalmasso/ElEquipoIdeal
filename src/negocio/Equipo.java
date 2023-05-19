@@ -3,8 +3,6 @@ package negocio;
 import java.util.HashSet;
 import java.util.Set;
 
-import negocio.Empresa.Rol;
-
 public class Equipo {
 	private Empresa empresa;
 	private Set<Empleado> empleados;
