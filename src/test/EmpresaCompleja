@@ -1,0 +1,82 @@
+{
+  "empleados": [
+    {
+      "nombre": "lid1",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "lid2",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 3
+    },
+    {
+      "nombre": "arq1",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "arq2",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "arq3",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 2
+    },
+    {
+      "nombre": "arq4",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 3
+    },
+    {
+      "nombre": "prog1",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "prog2",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "prog3",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 2
+    },
+    {
+      "nombre": "prog4",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "tester1",
+      "rol": "TESTER",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "tester2",
+      "rol": "TESTER",
+      "calificacionHistorica": 1
+    }
+  ],
+  "paresIncompatibles": [
+    {
+      "x": "prog1",
+      "y": "arq1"
+    },
+    {
+      "x": "prog2",
+      "y": "arq1"
+    },
+    {
+      "x": "arq4",
+      "y": "lid1"
+    },
+    {
+      "x": "lid1",
+      "y": "arq2"
+    }
+  ]
+}

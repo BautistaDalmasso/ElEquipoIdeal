@@ -40,7 +40,7 @@ public class Requerimientos {
 		int empleadosDisponibles = empresa.getEmpleadosDeRol(rol).size();
 
 		if (empleadosDisponibles < empleadosRequeridos) {
-			throw new IllegalArgumentException("Empleados Insuficientes. Se solicitaron: " + empleadosRequeridos
+			throw new IllegalArgumentException("Empleados Insuficientes. Se solicitaron: " + empleadosRequeridos + " " + rol 
 					+ ", pero se dispone de: " + empleadosDisponibles);
 		}
 	}
