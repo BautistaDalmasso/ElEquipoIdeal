@@ -13,9 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class ArchivoEmpresa {
-	@SuppressWarnings("unused")
 	private List<Empleado> empleados;
-	@SuppressWarnings("unused")
 	private Set<ParIncompatible> paresIncompatibles;
 	
 	public ArchivoEmpresa(Empresa empresa) {
