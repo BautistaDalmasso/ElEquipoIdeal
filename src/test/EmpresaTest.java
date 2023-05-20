@@ -68,6 +68,15 @@ public class EmpresaTest {
 		e.agregarIncompatibilidad(p1, p2);
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void buscarEmpleadoInexistenteTest() {
+		Empresa e = new Empresa();
+		Empleado p1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
+		e.agregarEmpleado(p1);
+		
+		e.buscarEmpleadoPorNombre("Marcos");
+	}
+	
 	@Test
 	public void isEmpleadoDaFalseParaEmpleadosNoAgregadosTest() {
 		Empresa e = new Empresa();
@@ -113,5 +122,16 @@ public class EmpresaTest {
 		e.agregarIncompatibilidad(p1, p2);
 		
 		assertTrue(e.sonIncompatibles(p1, p2));
+	}
+	
+	@Test
+	public void buscarEmpleadoExistenteTest() {
+		Empresa e = new Empresa();
+		Empleado p1 = new Empleado("Raul", Rol.ARQUITECTO, 5);
+		Empleado p2 = new Empleado("Marcos", Rol.ARQUITECTO, 5);
+		e.agregarEmpleado(p1);
+		e.agregarEmpleado(p2);
+		
+		assertEquals(p2, e.buscarEmpleadoPorNombre("Marcos"));
 	}
 }

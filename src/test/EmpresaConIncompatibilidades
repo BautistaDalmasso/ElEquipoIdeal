@@ -1,0 +1,35 @@
+{
+  "empleados": [
+    {
+      "nombre": "lider",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "arquitecto i",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "arquitecto c",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 4
+    },
+    {
+      "nombre": "programador",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "tester",
+      "rol": "TESTER",
+      "calificacionHistorica": 5
+    }
+  ],
+  "paresIncompatibles": [
+    {
+      "x": "arquitecto i",
+      "y": "lider"
+    }
+  ]
+}
