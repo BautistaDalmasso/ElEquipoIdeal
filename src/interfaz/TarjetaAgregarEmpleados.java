@@ -14,6 +14,7 @@ import negocio.Rol;
 import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
 public class TarjetaAgregarEmpleados extends JPanel {
@@ -77,6 +78,8 @@ public class TarjetaAgregarEmpleados extends JPanel {
 		cbRol = new JComboBox<String>();
 		cbRol.setBounds(127, 108, 197, 22);
 		add(cbRol);
+		
+		cbRol.setModel(new DefaultComboBoxModel<String>(Rol.nombresRoles));
 	}
 
 	private void crearSeleccionDeCalificacion() {
@@ -125,7 +128,7 @@ public class TarjetaAgregarEmpleados extends JPanel {
 	private Rol obtenerRol() {
 		String rolSeleccionado = (String) this.cbRol.getSelectedItem();
 		
-		return null;
+		return Rol.fromString(rolSeleccionado);
 	}
 
 	private int obtenerCalificacion() {
