@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Empleado {
 	private String nombre;
-	private Empresa.Rol rol;
+	private Rol rol;
 	private int calificacionHistorica;
 
-	public Empleado(String nombre, Empresa.Rol rol, int calificacionHistorica) {
+	public Empleado(String nombre, Rol rol, int calificacionHistorica) {
 		verificarCalificacion(calificacionHistorica);
 		verificarNombre(nombre);
 		this.nombre = nombre;
@@ -35,7 +35,7 @@ public class Empleado {
 		return nombre;
 	}
 
-	public Empresa.Rol getRol() {
+	public Rol getRol() {
 		return rol;
 	}
 
@@ -50,7 +50,7 @@ public class Empleado {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(calificacionHistorica, nombre, rol);
+		return Objects.hash(nombre);
 	}
 
 	@Override
@@ -60,7 +60,6 @@ public class Empleado {
 		if (!(obj instanceof Empleado))
 			return false;
 		Empleado other = (Empleado) obj;
-		return calificacionHistorica == other.calificacionHistorica && Objects.equals(nombre, other.nombre)
-				&& rol == other.rol;
+		return Objects.equals(nombre, other.nombre);
 	}
 }

@@ -3,25 +3,32 @@ package test;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 import negocio.Empleado;
 import negocio.Empresa;
-import negocio.Empresa.Rol;
+import negocio.Rol;
 import negocio.EquipoImposibleException;
+import negocio.ISolver;
 import negocio.Requerimientos;
-import negocio.Solver;
+import negocio.SolverPorRoles;
+import negocio.SolverPorListaCompleta;
 
 public class StressTestSolver {
 	static final Random r = new Random(0);
 	static Empresa empresaGenerada;
 	static Requerimientos requerimientosGenerados;
+	static CreadorSolver creadorSolver;
 	
-	public static void main(String[] args) {		
-		for (int i = 6; i < 100; i++) {			
+	public static void main(String[] args) {
+		inicializarStressTest();
+		
+		ISolver solver;
+		for (int i = 6; i < 100; i++) {
 			long inicio = System.currentTimeMillis();
 			generarProblema(i);
 			
-			Solver solver = new Solver(empresaGenerada, requerimientosGenerados);
+			solver = creadorSolver.crearSolver(empresaGenerada, requerimientosGenerados);
 			try {
 				solver.resolver();
 			} catch (EquipoImposibleException e) {
@@ -31,6 +38,29 @@ public class StressTestSolver {
 			double tiempo = (fin - inicio) / 1000.0;
 			
 			System.out.println("n = " + i + ": " + tiempo + " seg. \n" + solver.estadisticas());
+		}
+	}
+
+	private static void inicializarStressTest() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("1. Solver Principal. 2. Solver Alternativo.");
+		String solverParaUsar = in.nextLine();
+		in.close();
+		if (solverParaUsar.equals("1")) {
+			creadorSolver = new CreadorSolver() {
+				@Override
+				ISolver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+					return new SolverPorRoles(empresa, requerimientos);
+				}
+			};
+		}
+		else {
+			creadorSolver = new CreadorSolver() {
+				@Override
+				ISolver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+					return new SolverPorListaCompleta(empresa, requerimientos);
+				}
+			};
 		}
 	}
 
