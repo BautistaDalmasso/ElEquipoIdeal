@@ -1,9 +1,6 @@
 package negocio;
 
-import java.util.Comparator;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 public class Empleado {
 	private String nombre;
@@ -65,28 +62,5 @@ public class Empleado {
 		Empleado other = (Empleado) obj;
 		return calificacionHistorica == other.calificacionHistorica && Objects.equals(nombre, other.nombre)
 				&& rol == other.rol;
-	}
-	public static Comparator<Empleado> sortPorMayorCalificacion() {
-		return new Comparator<Empleado>() {
-			@Override
-			public int compare(Empleado uno, Empleado otro) {
-				return -uno.getCalificacion() + otro.getCalificacion();
-				}
-			};
-		}
-	
-	public static Comparator<Empleado> sortPorMenorIncompatibilidad(Empresa e) {
-		return new Comparator<Empleado>() {
-			@Override
-			public int compare(Empleado uno, Empleado otro) {	
-				return uno.getCantIncompatibles(e) - otro.getCantIncompatibles(e);	
-				}
-			};
-		}
-	
-	public int getCantIncompatibles(Empresa e) {
-		Map<Empleado, Set<Empleado>> incompatibles = 
-				e.getRelaciones().getEmpleadosConIncompatibilidades();
-		return incompatibles.get(this) == null ? 0 : incompatibles.get(this).size();
 	}
 }

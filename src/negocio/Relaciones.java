@@ -45,4 +45,10 @@ public class Relaciones {
 
 		return empleadosConIncompatibilidades.get(empleado1).contains(empleado2);
 	}
+	
+	public int getCantidadDeIncompatibilidades(Empleado empleado) {
+		Set<Empleado> incompatibles = this.empleadosConIncompatibilidades.get(empleado);
+		
+		return incompatibles == null ? 0 : incompatibles.size();
+	}
 }

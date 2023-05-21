@@ -91,4 +91,8 @@ public class Empresa {
 	public int getIncompatibilidades() {
 		return incompatibilidades;
 	}
+	
+	public int getCantidadIncompatibles(Empleado empleado) {
+		return this.relaciones.getCantidadDeIncompatibilidades(empleado);
+	}
 }
