@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class SolverHeuristicoGoloso {
+public class SolverHeuristicoGoloso implements ISolver {
 	
 	private Empresa empresa;
 	private Requerimientos requerimientos;
@@ -17,6 +17,8 @@ public class SolverHeuristicoGoloso {
 	// mejor calificados con menor cantidad de incompatibilidades primero
 	private HashMap<Rol, List<Empleado>> empleadosOrdenados;
 
+	private int empleadosConsiderados;
+	
 	public SolverHeuristicoGoloso(Empresa e, Requerimientos r) {
 		this.empresa = e;
 		this.requerimientos = r;
@@ -24,9 +26,16 @@ public class SolverHeuristicoGoloso {
 		this.empleadosOrdenados = new HashMap<Rol, List<Empleado>>();
 	}
 	
-	public void resolver() throws EquipoImposibleException {	
+	public Equipo resolver() throws EquipoImposibleException {
+		inicializarEstadisticas();
 		sortEmpleadosTodosLosRoles();
 		armarEquipo();
+		
+		return this.mejorEquipo;
+	}
+
+	private void inicializarEstadisticas() {
+		this.empleadosConsiderados = 0;
 	}
 
 	private void armarEquipo() throws EquipoImposibleException {		
@@ -46,6 +55,7 @@ public class SolverHeuristicoGoloso {
 				if (!mejorEquipo.tieneIncompatibilidadesConElEquipo(nuevo)) {
 					mejorEquipo.agregarEmpleado(nuevo);
 				}
+				this.empleadosConsiderados++;
 			}
 		} catch (IndexOutOfBoundsException e) {
 			throw new EquipoImposibleException();
@@ -84,5 +94,10 @@ public class SolverHeuristicoGoloso {
 
 	public Equipo getMejorEquipo() {
 		return mejorEquipo;
+	}
+
+	@Override
+	public String estadisticas() {
+		return "Empleados considerados: " + this.empleadosConsiderados;
 	}
 }
