@@ -8,8 +8,9 @@ import java.util.Scanner;
 import negocio.Empleado;
 import negocio.Empresa;
 import negocio.Rol;
+import negocio.SolverHeuristicoGoloso;
 import negocio.EquipoImposibleException;
-import negocio.ISolver;
+import negocio.Solver;
 import negocio.Requerimientos;
 import negocio.SolverPorRoles;
 import negocio.SolverPorListaCompleta;
@@ -19,12 +20,13 @@ public class StressTestSolver {
 	static Empresa empresaGenerada;
 	static Requerimientos requerimientosGenerados;
 	static CreadorSolver creadorSolver;
+	static int iteraciones;
 	
 	public static void main(String[] args) {
 		inicializarStressTest();
 		
-		ISolver solver;
-		for (int i = 6; i < 100; i++) {
+		Solver solver;
+		for (int i = 6; i < iteraciones; i++) {
 			long inicio = System.currentTimeMillis();
 			generarProblema(i);
 			
@@ -32,6 +34,7 @@ public class StressTestSolver {
 			try {
 				solver.resolver();
 			} catch (EquipoImposibleException e) {
+				System.out.println("EQUIPO IMPOSIBLE:");
 			}
 			
 			long fin = System.currentTimeMillis();
@@ -43,24 +46,36 @@ public class StressTestSolver {
 
 	private static void inicializarStressTest() {
 		Scanner in = new Scanner(System.in);
-		System.out.println("1. Solver Principal. 2. Solver Alternativo.");
-		String solverParaUsar = in.nextLine();
+		System.out.println("Cuantas iteraciones generar: ");
+		iteraciones = in.nextInt();
+		System.out.println("1. Solver Principal. 2. Solver Alternativo. 3. Solver Heuristico Goloso.");
+		int solverParaUsar = in.nextInt();
+		System.out.println(solverParaUsar);
 		in.close();
-		if (solverParaUsar.equals("1")) {
+		switch (solverParaUsar) {
+		case 1:
 			creadorSolver = new CreadorSolver() {
 				@Override
-				ISolver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+				public Solver crearSolver(Empresa empresa, Requerimientos requerimientos) {
 					return new SolverPorRoles(empresa, requerimientos);
 				}
 			};
-		}
-		else {
+			break;
+		case 2:
 			creadorSolver = new CreadorSolver() {
 				@Override
-				ISolver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+				public Solver crearSolver(Empresa empresa, Requerimientos requerimientos) {
 					return new SolverPorListaCompleta(empresa, requerimientos);
 				}
 			};
+			break;
+		default:
+			creadorSolver = new CreadorSolver() {
+				@Override
+				public Solver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+					return new SolverHeuristicoGoloso(empresa, requerimientos);
+				}
+ 			};
 		}
 	}
 
@@ -128,4 +143,8 @@ public class StressTestSolver {
 			catch (IllegalArgumentException e) {}
 		}
 	}
+}
+
+interface CreadorSolver {
+	Solver crearSolver(Empresa empresa, Requerimientos requerimientos);
 }
