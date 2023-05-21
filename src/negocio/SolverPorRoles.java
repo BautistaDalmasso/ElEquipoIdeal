@@ -1,6 +1,6 @@
 package negocio;
 
-public class SolverPorRoles implements ISolver {
+public class SolverPorRoles extends Solver {
 	private static final Rol TODOS_LOS_ROLES_LLENADOS = null;
 
 	private Empresa empresa;
@@ -26,6 +26,7 @@ public class SolverPorRoles implements ISolver {
 		agregarEmpleadosPorRolDesde(Rol.values()[0], 0);
 
 		if (!requerimientos.equipoCumpleConLosRequerimientos(mejorEquipo)) {
+			this.equipoEsImposible = true;
 			throw new EquipoImposibleException();
 		}
 
@@ -97,6 +98,6 @@ public class SolverPorRoles implements ISolver {
 	public String estadisticas() {
 		return "Casos bases considerados: " + casosBaseConsiderados + ". Casos descartados: "
 				+ casosIncompatiblesDescartados + ". Incompatibilidades totales: "
-				+ this.empresa.getIncompatibilidades();
+				+ this.empresa.getIncompatibilidades() + super.estadisticas();
 	}
 }

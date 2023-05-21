@@ -1,6 +1,6 @@
 package negocio;
 
-public class SolverPorListaCompleta implements ISolver {
+public class SolverPorListaCompleta extends Solver {
 	private Empresa empresa;
 	private Requerimientos requerimientos;
 	private Equipo mejorEquipo;
@@ -24,6 +24,7 @@ public class SolverPorListaCompleta implements ISolver {
 		agregarEmpleadosDesde(0);
 
 		if (!requerimientos.equipoCumpleConLosRequerimientos(mejorEquipo)) {
+			this.equipoEsImposible = true;
 			throw new EquipoImposibleException();
 		}
 
@@ -78,6 +79,6 @@ public class SolverPorListaCompleta implements ISolver {
 	public String estadisticas() {
 		return "Casos bases considerados: " + casosBaseConsiderados + ". Casos descartados: "
 				+ casosIncompatiblesDescartados + ". Incompatibilidades totales: "
-				+ this.empresa.getIncompatibilidades();
+				+ this.empresa.getIncompatibilidades() + super.estadisticas();
 	}
 }

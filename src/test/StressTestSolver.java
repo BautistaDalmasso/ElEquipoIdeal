@@ -10,7 +10,7 @@ import negocio.Empresa;
 import negocio.Rol;
 import negocio.SolverHeuristicoGoloso;
 import negocio.EquipoImposibleException;
-import negocio.ISolver;
+import negocio.Solver;
 import negocio.Requerimientos;
 import negocio.SolverPorRoles;
 import negocio.SolverPorListaCompleta;
@@ -25,7 +25,7 @@ public class StressTestSolver {
 	public static void main(String[] args) {
 		inicializarStressTest();
 		
-		ISolver solver;
+		Solver solver;
 		for (int i = 6; i < iteraciones; i++) {
 			long inicio = System.currentTimeMillis();
 			generarProblema(i);
@@ -34,6 +34,7 @@ public class StressTestSolver {
 			try {
 				solver.resolver();
 			} catch (EquipoImposibleException e) {
+				System.out.println("EQUIPO IMPOSIBLE:");
 			}
 			
 			long fin = System.currentTimeMillis();
@@ -55,7 +56,7 @@ public class StressTestSolver {
 		case 1:
 			creadorSolver = new CreadorSolver() {
 				@Override
-				public ISolver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+				public Solver crearSolver(Empresa empresa, Requerimientos requerimientos) {
 					return new SolverPorRoles(empresa, requerimientos);
 				}
 			};
@@ -63,7 +64,7 @@ public class StressTestSolver {
 		case 2:
 			creadorSolver = new CreadorSolver() {
 				@Override
-				public ISolver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+				public Solver crearSolver(Empresa empresa, Requerimientos requerimientos) {
 					return new SolverPorListaCompleta(empresa, requerimientos);
 				}
 			};
@@ -71,7 +72,7 @@ public class StressTestSolver {
 		default:
 			creadorSolver = new CreadorSolver() {
 				@Override
-				public ISolver crearSolver(Empresa empresa, Requerimientos requerimientos) {
+				public Solver crearSolver(Empresa empresa, Requerimientos requerimientos) {
 					return new SolverHeuristicoGoloso(empresa, requerimientos);
 				}
  			};
@@ -145,5 +146,5 @@ public class StressTestSolver {
 }
 
 interface CreadorSolver {
-	ISolver crearSolver(Empresa empresa, Requerimientos requerimientos);
+	Solver crearSolver(Empresa empresa, Requerimientos requerimientos);
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class SolverHeuristicoGoloso implements ISolver {
+public class SolverHeuristicoGoloso extends Solver {
 	
 	private Empresa empresa;
 	private Requerimientos requerimientos;
@@ -50,14 +50,19 @@ public class SolverHeuristicoGoloso implements ISolver {
 	private void buscarEmpleadoNuevo(int cant, List<Empleado> empleadoRol) throws EquipoImposibleException {
 		Empleado nuevo;
 		try {
-			for (int i = 0; i < cant; i++) {
+			int agregados = 0;
+			int i = 0;
+			while (agregados < cant) {
 				nuevo = empleadoRol.get(i);
 				if (!mejorEquipo.tieneIncompatibilidadesConElEquipo(nuevo)) {
 					mejorEquipo.agregarEmpleado(nuevo);
+					agregados++;
 				}
+				i++;
 				this.empleadosConsiderados++;
 			}
 		} catch (IndexOutOfBoundsException e) {
+			this.equipoEsImposible = true;
 			throw new EquipoImposibleException();
 		}
 	}	
@@ -98,6 +103,6 @@ public class SolverHeuristicoGoloso implements ISolver {
 
 	@Override
 	public String estadisticas() {
-		return "Empleados considerados: " + this.empleadosConsiderados;
+		return "Empleados considerados: " + this.empleadosConsiderados + super.estadisticas();
 	}
 }
