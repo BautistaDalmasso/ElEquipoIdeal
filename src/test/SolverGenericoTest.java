@@ -46,23 +46,6 @@ public abstract class SolverGenericoTest {
 		crearRequerimientosActuales(new int[] {1, 2, 1, 1});
 	}
 	
-	void crearEmpleadosEsperados(String[] empleados) {
-		empleadosEsperados = new HashSet<Empleado>();
-		
-		for (String nombreEmpleado : empleados) {
-			empleadosEsperados.add(empresaActual.buscarEmpleadoPorNombre(nombreEmpleado));
-		}
-	}
-	
-	void crearRequerimientosActuales(int[] requerimientos) {
-		requerimientosActuales = new Requerimientos(empresaActual);
-		
-		int i = 0;
-		for (Rol rol : Rol.values()) {
-			requerimientosActuales.setRequerimientosParaRol(rol, requerimientos[i++]);
-		}
-	}
-	
 	void setEmpresaSimple() {
 		empresaActual = new Empresa();
 		empleadosEsperados = new HashSet<Empleado>();
@@ -87,6 +70,29 @@ public abstract class SolverGenericoTest {
 		crearEmpleadosEsperados(new String[] {"lid2", "arq2", "arq3", "arq4", "prog1", "prog2", "tester1"});
 		
 		crearRequerimientosActuales(new int[] {1, 3, 2, 1});
+	}
+	
+	void agregarEmpleados(Empleado[] empleados) {
+		for (Empleado empleado : empleados) {
+			empresaActual.agregarEmpleado(empleado);
+		}
+	}
+	
+	void crearEmpleadosEsperados(String[] empleados) {
+		empleadosEsperados = new HashSet<Empleado>();
+		
+		for (String nombreEmpleado : empleados) {
+			empleadosEsperados.add(empresaActual.buscarEmpleadoPorNombre(nombreEmpleado));
+		}
+	}
+	
+	void crearRequerimientosActuales(int[] requerimientos) {
+		requerimientosActuales = new Requerimientos(empresaActual);
+		
+		int i = 0;
+		for (Rol rol : Rol.values()) {
+			requerimientosActuales.setRequerimientosParaRol(rol, requerimientos[i++]);
+		}
 	}
 	
 	abstract Solver obtenerSolver();
