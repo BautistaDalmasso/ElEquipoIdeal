@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
-import negocio.Empleado;
 import negocio.Rol;
 
 import javax.swing.JSlider;
@@ -115,20 +114,16 @@ public class TarjetaAgregarEmpleados extends JPanel {
 		});
 	}
 	
-	private void agregarEmpleadoIngresado() {
-		Empleado nuevoEmpleado = new Empleado(obtenerNombre(), obtenerRol(), obtenerCalificacion());
-		
-		this.padre.empresa.agregarEmpleado(nuevoEmpleado);
+	private void agregarEmpleadoIngresado() {		
+		this.padre.getPresenter().agregarEmpleado(obtenerNombre(), obtenerRol(), obtenerCalificacion());
 	}
 
 	private String obtenerNombre() {
 		return this.fieldNombre.getText();
 	}
 
-	private Rol obtenerRol() {
-		String rolSeleccionado = (String) this.cbRol.getSelectedItem();
-		
-		return Rol.fromString(rolSeleccionado);
+	private String obtenerRol() {
+		return (String) this.cbRol.getSelectedItem();
 	}
 
 	private int obtenerCalificacion() {

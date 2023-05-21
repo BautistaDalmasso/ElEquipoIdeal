@@ -7,18 +7,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import negocio.Empresa;
-
 public class ElEquipoIdeal extends JFrame {
 
 	private static final long serialVersionUID = 8211971627980187103L;
 	private JPanel contentPane;
 	private CardLayout cardLayout;
-	
-	Empresa empresa;
-	
-	
+		
+	private Presenter presenter;
+
 	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
+	
 	private static final String NOMBRE_AGREGAR_EMPLEADOS = "Agregar Empleados";
 
 	private static final String PRIMERA_TARJETA = NOMBRE_AGREGAR_EMPLEADOS;
@@ -45,9 +43,9 @@ public class ElEquipoIdeal extends JFrame {
 	public ElEquipoIdeal() {
 		inicializarDimensiones();
 		
-		inicializarTarjetas();
+		inicializarPresenter();
 		
-		empresa = new Empresa();
+		inicializarTarjetas();
 	}
 
 	private void inicializarDimensiones() {
@@ -61,6 +59,10 @@ public class ElEquipoIdeal extends JFrame {
 		setContentPane(contentPane);
 	}
 
+	private void inicializarPresenter() {
+		this.presenter = new Presenter(this);
+	}
+	
 	private void inicializarTarjetas() {
 		inicializarTarjetaAgregarEmpleados();
 		
@@ -75,5 +77,9 @@ public class ElEquipoIdeal extends JFrame {
 	
 	private void setTarjetaInicial() {
 		this.cardLayout.show(contentPane, PRIMERA_TARJETA);
+	}
+
+	public Presenter getPresenter() {
+		return presenter;
 	}
 }
