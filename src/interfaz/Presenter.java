@@ -2,10 +2,12 @@ package interfaz;
 
 import negocio.Empleado;
 import negocio.Empresa;
+import negocio.Requerimientos;
 import negocio.Rol;
 
 public class Presenter {
 	private Empresa empresa;
+	private Requerimientos requerimientos;
 	private ElEquipoIdeal view;
 	
 	public Presenter(ElEquipoIdeal view) {
@@ -32,5 +34,14 @@ public class Presenter {
 
 	public void incompatibilizar(String empleado1, String empleado2) {
 		empresa.agregarIncompatibilidad(empresa.buscarEmpleadoPorNombre(empleado1), empresa.buscarEmpleadoPorNombre(empleado2));
+	}
+
+	public void crearRequerimientos(int[] valoresDeRequerimientos) {
+		this.requerimientos = new Requerimientos(empresa);
+		
+		int i = 0;
+		for (Rol rol : Rol.values()) {
+			this.requerimientos.setRequerimientosParaRol(rol, valoresDeRequerimientos[i++]);
+		}
 	}
 }

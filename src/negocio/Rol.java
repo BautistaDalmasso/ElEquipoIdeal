@@ -7,6 +7,7 @@ public enum Rol {
 	TESTER;
 	
 	public static final String[] nombresRoles = {"Lider de Proyecto", "Arquitecto", "Programador", "Tester"};
+	public static final String[] nombresPluralesRoles = {"Lideres de Proyecto", "Arquitectos", "Programadores", "Testers"};
 	
 	public static Rol fromString(String nombreRol) {
 		switch (nombreRol) {

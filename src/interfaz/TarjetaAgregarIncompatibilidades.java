@@ -94,7 +94,7 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 		});
 	}
 
-	protected void incompatibilizar() {
+	private void incompatibilizar() {
 		String[] empleadosSeleccionados = obtenerEmpleadosSeleccionados();
 		
 		this.padre.getPresenter().incompatibilizar(empleadosSeleccionados[0], empleadosSeleccionados[1]);
