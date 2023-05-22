@@ -112,6 +112,15 @@ public class Empresa {
 		throw new IllegalArgumentException("El empleado: " + nombreEmpleado + " no existe.");
 	}
 	
+	public String[] crearArregloConNombres() {
+		String[] ret = new String[empleados.size()];
+		int i = 0;
+		for (Empleado e : empleados) {
+			ret[i++] = e.getNombre();
+		}
+		return ret;
+	}
+	
 	public List<Empleado> getEmpleadosDeRol(Rol rol) {
 		List<Empleado> empleadosDelRol = empleadosPorRol.get(rol);
 		List<Empleado> ret = new ArrayList<Empleado>();
