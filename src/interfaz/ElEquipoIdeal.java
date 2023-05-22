@@ -10,16 +10,20 @@ import javax.swing.border.EmptyBorder;
 public class ElEquipoIdeal extends JFrame {
 
 	private static final long serialVersionUID = 8211971627980187103L;
+	
+	private static final String NOMBRE_AGREGAR_EMPLEADOS = "Agregar Empleados";
+	private static final String NOMBRE_AGREGAR_INCOMPATIBILIDADES = "Agregar Incompatibilidades";
+
+	private static final String PRIMERA_TARJETA = NOMBRE_AGREGAR_EMPLEADOS;
+
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 		
 	private Presenter presenter;
 
 	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
+	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
 	
-	private static final String NOMBRE_AGREGAR_EMPLEADOS = "Agregar Empleados";
-
-	private static final String PRIMERA_TARJETA = NOMBRE_AGREGAR_EMPLEADOS;
 
 	/**
 	 * Launch the application.
@@ -65,6 +69,7 @@ public class ElEquipoIdeal extends JFrame {
 	
 	private void inicializarTarjetas() {
 		inicializarTarjetaAgregarEmpleados();
+		inicializarTarjetaAgregarIncompatibilidades();
 		
 		setTarjetaInicial();
 	}
@@ -75,11 +80,21 @@ public class ElEquipoIdeal extends JFrame {
 		contentPane.add(tarjetaAgregarEmpleados, NOMBRE_AGREGAR_EMPLEADOS);
 	}
 	
+	private void inicializarTarjetaAgregarIncompatibilidades() {
+		this.tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
+		
+		contentPane.add(tarjetaAgregarIncompatibilidades, NOMBRE_AGREGAR_INCOMPATIBILIDADES);
+	}
+	
 	private void setTarjetaInicial() {
 		this.cardLayout.show(contentPane, PRIMERA_TARJETA);
 	}
 
 	public Presenter getPresenter() {
 		return presenter;
+	}
+	
+	public TarjetaAgregarIncompatibilidades getTarjetaAgregarIncompatibilidades() {
+		return tarjetaAgregarIncompatibilidades;
 	}
 }

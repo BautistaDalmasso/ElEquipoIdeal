@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -17,13 +20,17 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 	private static final int SEPARACION = 50;
 	
 	private JComboBox<String>[] comboBoxesEmpleados;
+
+	private ElEquipoIdeal padre;
 	
 	
 	/**
 	 * Create the panel.
 	 */
-	public TarjetaAgregarIncompatibilidades() {
+	public TarjetaAgregarIncompatibilidades(ElEquipoIdeal padre) {
 		setLayout(null);
+		
+		this.padre = padre;
 		
 		crearLabelExplicativa();
 		
@@ -48,7 +55,7 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 			crearComboBoxEmpleado(i);
 		}
 		
-		incializarComboBoxes();
+		agregarComboBoxModels();
 	}
 
 	private void crearComboBoxEmpleado(int i) {
@@ -66,18 +73,38 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 		add(lblEmpleado);
 	}
 
-	private void incializarComboBoxes() {
+	public void agregarComboBoxModels() {
 		for (JComboBox<String> comboBoxEmpleado : comboBoxesEmpleados) {
-			// TODO: pasarle strings al modelo.
-			comboBoxEmpleado.setModel(new DefaultComboBoxModel<String>());
+			comboBoxEmpleado.setModel(new DefaultComboBoxModel<String>(this.padre.getPresenter().crearArregloConNombres()));
 		}
 	}
 	
 	private void crearBotonIncompatibilizar() {
-		// TODO: agregar el action listener.
 		JButton btnIncompatibilizar = new JButton("Incompatibilizar");
 		btnIncompatibilizar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnIncompatibilizar.setBounds(151, 223, 150, 40);
 		add(btnIncompatibilizar);
+		btnIncompatibilizar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				incompatibilizar();
+			}
+		});
+	}
+
+	protected void incompatibilizar() {
+		String[] empleadosSeleccionados = obtenerEmpleadosSeleccionados();
+		
+		this.padre.getPresenter().incompatibilizar(empleadosSeleccionados[0], empleadosSeleccionados[1]);
+	}
+
+	private String[] obtenerEmpleadosSeleccionados() {
+		String[] ret = new String[2];
+		int i = 0;
+		for (JComboBox<String> comboBox : this.comboBoxesEmpleados) {
+			ret[i++] = (String) comboBox.getSelectedItem();
+		}
+		return ret;
 	}
 }
