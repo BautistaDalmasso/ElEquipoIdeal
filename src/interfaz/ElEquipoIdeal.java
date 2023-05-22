@@ -19,7 +19,7 @@ public class ElEquipoIdeal extends JFrame {
 	
 	private static final String NOMBRE_AGREGAR_EMPLEADOS = "Agregar Empleados";
 	private static final String NOMBRE_AGREGAR_INCOMPATIBILIDADES = "Agregar Incompatibilidades";
-	private static final String[] NOMBRES_ACCIONES = {NOMBRE_AGREGAR_EMPLEADOS, NOMBRE_AGREGAR_INCOMPATIBILIDADES};
+	private static final String NOMBRE_CREAR_REQUERIMIENTOS = "Crear Requerimientos";
 	
 	private static final String PRIMERA_TARJETA = NOMBRE_AGREGAR_EMPLEADOS;
 
@@ -33,6 +33,8 @@ public class ElEquipoIdeal extends JFrame {
 
 	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
 	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
+	private TarjetaCrearRequerimientos tarjetaCrearRequerimientos;
+
 
 
 
@@ -84,6 +86,7 @@ public class ElEquipoIdeal extends JFrame {
 	private void inicializarTarjetas() {
 		inicializarTarjetaAgregarEmpleados();
 		inicializarTarjetaAgregarIncompatibilidades();
+		inicializarTarjetaAgregarRequerimientos();
 		
 		setTarjetaInicial();
 	}
@@ -100,6 +103,12 @@ public class ElEquipoIdeal extends JFrame {
 		contentPane.add(tarjetaAgregarIncompatibilidades, NOMBRE_AGREGAR_INCOMPATIBILIDADES);
 	}
 	
+	private void inicializarTarjetaAgregarRequerimientos() {
+		this.tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
+		
+		contentPane.add(tarjetaCrearRequerimientos, NOMBRE_CREAR_REQUERIMIENTOS);
+	}
+	
 	private void setTarjetaInicial() {
 		this.cardLayout.show(contentPane, PRIMERA_TARJETA);
 	}
@@ -107,13 +116,11 @@ public class ElEquipoIdeal extends JFrame {
 	private void crearMenuDesplegable() {
 		barraMenus = new JMenuBar();
 		menuAcciones = new JMenu("Acciones");
-		
-		JPanel[] tarjetas = {tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades};
-		
-		for (int i = 0; i < tarjetas.length; i++) {
-			crearOpcionMenu(tarjetas[i], NOMBRES_ACCIONES[i]);
-		}
-		
+
+		crearOpcionMenu(tarjetaAgregarEmpleados, NOMBRE_AGREGAR_EMPLEADOS);
+		crearOpcionMenu(tarjetaAgregarIncompatibilidades, NOMBRE_AGREGAR_INCOMPATIBILIDADES);
+		crearOpcionMenu(tarjetaCrearRequerimientos, NOMBRE_CREAR_REQUERIMIENTOS);
+
 		barraMenus.add(menuAcciones);
 		this.setJMenuBar(barraMenus);
 	}

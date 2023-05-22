@@ -28,14 +28,11 @@ public class TarjetaCrearRequerimientos extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TarjetaCrearRequerimientos() {
+	public TarjetaCrearRequerimientos(ElEquipoIdeal padre) {
 		setLayout(null);
+		this.padre = padre;
 		
-		JLabel lblCrearRequerimientos = new JLabel("Crear Requerimientos");
-		lblCrearRequerimientos.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCrearRequerimientos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCrearRequerimientos.setBounds(120, 27, 205, 27);
-		add(lblCrearRequerimientos);
+		crearLabelExplicativa();
 		
 		crearSpinners();
 		
@@ -43,12 +40,20 @@ public class TarjetaCrearRequerimientos extends JPanel {
 
 	}
 
+	private void crearLabelExplicativa() {
+		JLabel lblCrearRequerimientos = new JLabel("Crear Requerimientos");
+		lblCrearRequerimientos.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCrearRequerimientos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCrearRequerimientos.setBounds(120, 27, 205, 27);
+		add(lblCrearRequerimientos);
+	}
+
 	private void crearSpinners() {
 		spinnersRoles = new JSpinner[Rol.values().length];
 		
-		crearSpinnerParaRol(Rol.LIDERDEPROYECTO, 10, 103);
+		crearSpinnerParaRol(Rol.LIDERDEPROYECTO, 0, 103);
 		crearSpinnerParaRol(Rol.ARQUITECTO, 208, 103);
-		crearSpinnerParaRol(Rol.PROGRAMADOR, 10, 156);
+		crearSpinnerParaRol(Rol.PROGRAMADOR, 0, 156);
 		crearSpinnerParaRol(Rol.TESTER, 208, 156);
 	}
 
