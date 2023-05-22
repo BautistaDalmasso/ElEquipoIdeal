@@ -2,8 +2,13 @@ package interfaz;
 
 import java.awt.CardLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -13,7 +18,8 @@ public class ElEquipoIdeal extends JFrame {
 	
 	private static final String NOMBRE_AGREGAR_EMPLEADOS = "Agregar Empleados";
 	private static final String NOMBRE_AGREGAR_INCOMPATIBILIDADES = "Agregar Incompatibilidades";
-
+	private static final String[] NOMBRES_ACCIONES = {NOMBRE_AGREGAR_EMPLEADOS, NOMBRE_AGREGAR_INCOMPATIBILIDADES};
+	
 	private static final String PRIMERA_TARJETA = NOMBRE_AGREGAR_EMPLEADOS;
 
 	private JPanel contentPane;
@@ -21,9 +27,13 @@ public class ElEquipoIdeal extends JFrame {
 		
 	private Presenter presenter;
 
+	private JMenuBar barraMenus;
+	private JMenu menuAcciones;
+
 	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
 	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
-	
+
+
 
 	/**
 	 * Launch the application.
@@ -50,11 +60,13 @@ public class ElEquipoIdeal extends JFrame {
 		inicializarPresenter();
 		
 		inicializarTarjetas();
+		
+		crearMenuDesplegable();
 	}
 
 	private void inicializarDimensiones() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 325);
+		setBounds(100, 100, 450, 335);
 		cardLayout = new CardLayout();
 		contentPane = new JPanel(cardLayout);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -88,6 +100,33 @@ public class ElEquipoIdeal extends JFrame {
 	
 	private void setTarjetaInicial() {
 		this.cardLayout.show(contentPane, PRIMERA_TARJETA);
+	}
+
+	private void crearMenuDesplegable() {
+		barraMenus = new JMenuBar();
+		menuAcciones = new JMenu("Acciones");
+		
+		JPanel[] tarjetas = {tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades};
+		
+		for (int i = 0; i < tarjetas.length; i++) {
+			crearOpcionMenu(tarjetas[i], NOMBRES_ACCIONES[i]);
+		}
+		
+		barraMenus.add(menuAcciones);
+		this.setJMenuBar(barraMenus);
+	}
+	
+	private void crearOpcionMenu(JPanel tarjeta, String nombreTarjeta) {
+		JMenuItem itemTarjeta = new JMenuItem(nombreTarjeta);
+		
+		itemTarjeta.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				cardLayout.show(contentPane, nombreTarjeta);
+			}
+		});
+		
+		menuAcciones.add(itemTarjeta);
 	}
 
 	public Presenter getPresenter() {

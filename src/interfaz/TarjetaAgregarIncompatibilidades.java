@@ -59,7 +59,8 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 	}
 
 	private void crearComboBoxEmpleado(int i) {
-		JLabel lblEmpleado = new JLabel("Empleado " + i+1 + ":");
+		Integer numero = i+1;
+		JLabel lblEmpleado = new JLabel("Empleado " + numero.toString() + ":");
 		lblEmpleado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblEmpleado.setBounds(22, POS_Y_INICIAL + SEPARACION*i, 91, 22);
