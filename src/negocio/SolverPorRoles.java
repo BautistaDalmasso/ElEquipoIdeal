@@ -66,7 +66,9 @@ public class SolverPorRoles extends Solver {
 
 	private void manejarEvaluacionCasoBase() {
 		if (actual.getCalificacionTotal() > mejorEquipo.getCalificacionTotal()) {
-			mejorEquipo = actual.copiar();
+			Equipo nuevoMejor = actual.copiar();
+			mejorEquipo = nuevoMejor;
+			notificarObservers(nuevoMejor);
 		}
 		this.casosBaseConsiderados++;
 	}
