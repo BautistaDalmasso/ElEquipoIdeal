@@ -8,6 +8,7 @@ public class SolverMultiple extends Solver implements ObserverResultadosParciale
 	private Solver[] solvers;
 	
 	public SolverMultiple(Empresa empresa, Requerimientos requerimientos) {
+		super();
 		this.empresa = empresa;
 		this.requerimientos = requerimientos;
 		
@@ -27,6 +28,7 @@ public class SolverMultiple extends Solver implements ObserverResultadosParciale
 	public void notificar(Equipo equipoParcial) {
 		if (equipoParcial.getCalificacionTotal() > mejorEquipo.getCalificacionTotal()) {
 			mejorEquipo = equipoParcial;
+			System.out.println("Notificados");
 			notificarObservers(equipoParcial);
 		}
 	}
@@ -38,6 +40,8 @@ public class SolverMultiple extends Solver implements ObserverResultadosParciale
 			solver.registrarObserver(this);
 			
 			this.notificar(solver.resolver());
+			
+			System.out.println("Resuelto: " + solver.getClass().toString());
 		}
 		
 		return mejorEquipo;

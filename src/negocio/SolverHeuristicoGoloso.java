@@ -20,6 +20,7 @@ public class SolverHeuristicoGoloso extends Solver {
 	private int empleadosConsiderados;
 	
 	public SolverHeuristicoGoloso(Empresa e, Requerimientos r) {
+		super();
 		this.empresa = e;
 		this.requerimientos = r;
 		this.mejorEquipo = new Equipo(empresa);

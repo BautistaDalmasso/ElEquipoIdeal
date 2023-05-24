@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import negocio.Equipo;
+
 public class ElEquipoIdeal extends JFrame {
 
 	private static final long serialVersionUID = 8211971627980187103L;
@@ -20,6 +22,7 @@ public class ElEquipoIdeal extends JFrame {
 	private static final String NOMBRE_AGREGAR_EMPLEADOS = "Agregar Empleados";
 	private static final String NOMBRE_AGREGAR_INCOMPATIBILIDADES = "Agregar Incompatibilidades";
 	private static final String NOMBRE_CREAR_REQUERIMIENTOS = "Crear Requerimientos";
+	private static final String NOMBRE_BUSCAR_EQUIPO = "Buscar Equipo";
 	
 	private static final String PRIMERA_TARJETA = NOMBRE_AGREGAR_EMPLEADOS;
 
@@ -34,9 +37,7 @@ public class ElEquipoIdeal extends JFrame {
 	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
 	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
 	private TarjetaCrearRequerimientos tarjetaCrearRequerimientos;
-
-
-
+	private TarjetaBuscarEquipo tarjetaBuscarEquipo;
 
 	/**
 	 * Launch the application.
@@ -62,10 +63,10 @@ public class ElEquipoIdeal extends JFrame {
 		inicializarDimensiones();
 		
 		inicializarPresenter();
+
+		crearMenuDesplegable();
 		
 		inicializarTarjetas();
-		
-		crearMenuDesplegable();
 	}
 
 	private void inicializarDimensiones() {
@@ -83,10 +84,19 @@ public class ElEquipoIdeal extends JFrame {
 		this.presenter = new Presenter(this);
 	}
 	
+	private void crearMenuDesplegable() {
+		barraMenus = new JMenuBar();
+		menuAcciones = new JMenu("Acciones");
+
+		barraMenus.add(menuAcciones);
+		this.setJMenuBar(barraMenus);
+	}
+	
 	private void inicializarTarjetas() {
 		inicializarTarjetaAgregarEmpleados();
 		inicializarTarjetaAgregarIncompatibilidades();
 		inicializarTarjetaAgregarRequerimientos();
+		inicializarTarjetaBuscarEquipo();
 		
 		setTarjetaInicial();
 	}
@@ -94,35 +104,31 @@ public class ElEquipoIdeal extends JFrame {
 	private void inicializarTarjetaAgregarEmpleados() {
 		this.tarjetaAgregarEmpleados = new TarjetaAgregarEmpleados(this);
 		
-		contentPane.add(tarjetaAgregarEmpleados, NOMBRE_AGREGAR_EMPLEADOS);
+		incializarTarjeta(tarjetaAgregarEmpleados, NOMBRE_AGREGAR_EMPLEADOS);
 	}
 	
 	private void inicializarTarjetaAgregarIncompatibilidades() {
 		this.tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
 		
-		contentPane.add(tarjetaAgregarIncompatibilidades, NOMBRE_AGREGAR_INCOMPATIBILIDADES);
+		incializarTarjeta(tarjetaAgregarIncompatibilidades, NOMBRE_AGREGAR_INCOMPATIBILIDADES);
 	}
 	
 	private void inicializarTarjetaAgregarRequerimientos() {
 		this.tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
 		
-		contentPane.add(tarjetaCrearRequerimientos, NOMBRE_CREAR_REQUERIMIENTOS);
+		incializarTarjeta(tarjetaCrearRequerimientos, NOMBRE_CREAR_REQUERIMIENTOS);
 	}
 	
-	private void setTarjetaInicial() {
-		this.cardLayout.show(contentPane, PRIMERA_TARJETA);
+	private void inicializarTarjetaBuscarEquipo() {
+		this.tarjetaBuscarEquipo = new TarjetaBuscarEquipo(this);
+		
+		incializarTarjeta(tarjetaBuscarEquipo, NOMBRE_BUSCAR_EQUIPO);
 	}
-
-	private void crearMenuDesplegable() {
-		barraMenus = new JMenuBar();
-		menuAcciones = new JMenu("Acciones");
-
-		crearOpcionMenu(tarjetaAgregarEmpleados, NOMBRE_AGREGAR_EMPLEADOS);
-		crearOpcionMenu(tarjetaAgregarIncompatibilidades, NOMBRE_AGREGAR_INCOMPATIBILIDADES);
-		crearOpcionMenu(tarjetaCrearRequerimientos, NOMBRE_CREAR_REQUERIMIENTOS);
-
-		barraMenus.add(menuAcciones);
-		this.setJMenuBar(barraMenus);
+	
+	private void incializarTarjeta(JPanel tarjeta, String nombre) {
+		crearOpcionMenu(tarjeta, nombre);
+		
+		contentPane.add(tarjeta, nombre);
 	}
 	
 	private void crearOpcionMenu(JPanel tarjeta, String nombreTarjeta) {
@@ -137,6 +143,10 @@ public class ElEquipoIdeal extends JFrame {
 		
 		menuAcciones.add(itemTarjeta);
 	}
+	
+	private void setTarjetaInicial() {
+		this.cardLayout.show(contentPane, PRIMERA_TARJETA);
+	}
 
 	public Presenter getPresenter() {
 		return presenter;
@@ -144,5 +154,9 @@ public class ElEquipoIdeal extends JFrame {
 	
 	public TarjetaAgregarIncompatibilidades getTarjetaAgregarIncompatibilidades() {
 		return tarjetaAgregarIncompatibilidades;
+	}
+
+	public void equipoEncontrado(Equipo equipo) {
+		this.tarjetaBuscarEquipo.nuevoEncontrado(equipo.getCalificacionTotal());
 	}
 }

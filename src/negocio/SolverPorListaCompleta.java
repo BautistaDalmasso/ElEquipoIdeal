@@ -10,6 +10,7 @@ public class SolverPorListaCompleta extends Solver {
 	private int casosIncompatiblesDescartados;
 
 	public SolverPorListaCompleta(Empresa empresa, Requerimientos requerimientos) {
+		super();
 		this.empresa = empresa;
 		this.requerimientos = requerimientos;
 	}

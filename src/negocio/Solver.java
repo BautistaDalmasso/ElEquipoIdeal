@@ -9,10 +9,11 @@ public abstract class Solver {
 	
 	public abstract Equipo resolver() throws EquipoImposibleException;
 	
+	public Solver() {
+		observers = new ArrayList<ObserverResultadosParciales>();
+	}
+	
 	public void registrarObserver(ObserverResultadosParciales observer) {
-		if (observers == null) {
-			observers = new ArrayList<ObserverResultadosParciales>();
-		}
 		observers.add(observer);
 	}
 	

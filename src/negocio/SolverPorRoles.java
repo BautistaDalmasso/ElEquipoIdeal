@@ -12,6 +12,7 @@ public class SolverPorRoles extends Solver {
 	private int casosIncompatiblesDescartados;
 
 	public SolverPorRoles(Empresa empresa, Requerimientos requerimientos) {
+		super();
 		this.empresa = empresa;
 		this.requerimientos = requerimientos;
 	}
