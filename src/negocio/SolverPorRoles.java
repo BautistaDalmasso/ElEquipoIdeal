@@ -12,6 +12,7 @@ public class SolverPorRoles extends Solver {
 	private int casosIncompatiblesDescartados;
 
 	public SolverPorRoles(Empresa empresa, Requerimientos requerimientos) {
+		super();
 		this.empresa = empresa;
 		this.requerimientos = requerimientos;
 	}
@@ -66,7 +67,9 @@ public class SolverPorRoles extends Solver {
 
 	private void manejarEvaluacionCasoBase() {
 		if (actual.getCalificacionTotal() > mejorEquipo.getCalificacionTotal()) {
-			mejorEquipo = actual.copiar();
+			Equipo nuevoMejor = actual.copiar();
+			mejorEquipo = nuevoMejor;
+			notificarObservers(nuevoMejor);
 		}
 		this.casosBaseConsiderados++;
 	}

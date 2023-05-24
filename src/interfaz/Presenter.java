@@ -44,4 +44,10 @@ public class Presenter {
 			this.requerimientos.setRequerimientosParaRol(rol, valoresDeRequerimientos[i++]);
 		}
 	}
+	
+	public void resolverInstancia() {
+		ObserverInterfaz observer = new ObserverInterfaz(view, empresa, requerimientos);
+		
+		observer.execute();
+	}
 }
