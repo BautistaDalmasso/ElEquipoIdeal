@@ -31,6 +31,7 @@ public class ElEquipoIdeal extends JFrame {
 	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
 	private TarjetaCrearRequerimientos tarjetaCrearRequerimientos;
 	private TarjetaBuscarEquipo tarjetaBuscarEquipo;
+	private TarjetaArchivo tarjetaArchivo;
 
 	/**
 	 * Launch the application.
@@ -90,9 +91,10 @@ public class ElEquipoIdeal extends JFrame {
 		tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
 		tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
 		tarjetaBuscarEquipo = new TarjetaBuscarEquipo(this);
+		tarjetaArchivo = new TarjetaArchivo(this);
 		
 		agregarTarjetas(new Tarjeta[] 
-				{tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades, tarjetaCrearRequerimientos, tarjetaBuscarEquipo});
+				{tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades, tarjetaCrearRequerimientos, tarjetaBuscarEquipo, tarjetaArchivo});
 	}
 
 	private void agregarTarjetas(Tarjeta[] tarjetas) {
