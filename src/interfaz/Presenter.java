@@ -2,6 +2,7 @@ package interfaz;
 
 import negocio.Empleado;
 import negocio.Empresa;
+import negocio.EmpresasGuardadas;
 import negocio.Requerimientos;
 import negocio.Rol;
 
@@ -49,5 +50,9 @@ public class Presenter {
 		ObserverInterfaz observer = new ObserverInterfaz(view, empresa, requerimientos);
 		
 		observer.execute();
+	}
+
+	public String[] getNombresEmpresasGuardadas() {
+		return EmpresasGuardadas.cargarNombresEmpresas();
 	}
 }

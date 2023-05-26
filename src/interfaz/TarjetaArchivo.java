@@ -3,6 +3,7 @@ package interfaz;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
@@ -10,6 +11,7 @@ public class TarjetaArchivo extends Tarjeta {
 
 	private static final long serialVersionUID = -1031556552960918132L;
 	private static final String NOMBRE = "Manejar Archivos";
+	private JComboBox<String> cbEmpresasGuardadas;
 
 	public TarjetaArchivo(ElEquipoIdeal padre) {
 		super(padre);
@@ -44,9 +46,17 @@ public class TarjetaArchivo extends Tarjeta {
 	}
 
 	private void crearComboBoxGuardadas() {
-		JComboBox<String> cbEmpresasGuardadas = new JComboBox<String>();
+		cbEmpresasGuardadas = new JComboBox<String>();
 		cbEmpresasGuardadas.setBounds(134, 110, 162, 22);
 		add(cbEmpresasGuardadas);
+		
+		cargarNombresEmpresasGuardadas();
+	}
+
+	private void cargarNombresEmpresasGuardadas() {
+		cbEmpresasGuardadas.setModel(
+				new DefaultComboBoxModel<String>(getPadre().getPresenter().getNombresEmpresasGuardadas())
+		);
 	}
 
 	private void crearBotonRefrescar() {
