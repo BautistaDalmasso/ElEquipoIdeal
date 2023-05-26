@@ -1,6 +1,5 @@
 package interfaz;
 
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import negocio.Rol;
@@ -14,23 +13,23 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import javax.swing.SpinnerNumberModel;
 
-public class TarjetaCrearRequerimientos extends JPanel {
+public class TarjetaCrearRequerimientos extends Tarjeta {
 
 	private static final long serialVersionUID = -3942548359901309794L;
+	private static final String NOMBRE = "Crear Requerimientos";
 
 	private static final int SEPARACION_X = 155;
 	private static final int SEPARACION_Y = 3;
 	
 	private JSpinner[] spinnersRoles;
-
-	private ElEquipoIdeal padre;
 	
 	/**
 	 * Create the panel.
 	 */
 	public TarjetaCrearRequerimientos(ElEquipoIdeal padre) {
+		super(padre);
+
 		setLayout(null);
-		this.padre = padre;
 		
 		crearLabelExplicativa();
 		
@@ -95,6 +94,11 @@ public class TarjetaCrearRequerimientos extends JPanel {
 			requerimientos[i++] = (int) spinner.getValue();
 		}
 		
-		padre.getPresenter().crearRequerimientos(requerimientos);
+		getPadre().getPresenter().crearRequerimientos(requerimientos);
+	}
+	
+	@Override
+	public String getNombre() {
+		return NOMBRE;
 	}
 }
