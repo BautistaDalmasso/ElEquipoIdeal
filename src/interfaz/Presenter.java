@@ -1,5 +1,7 @@
 package interfaz;
 
+import java.io.IOException;
+
 import negocio.Empleado;
 import negocio.Empresa;
 import negocio.EmpresasGuardadas;
@@ -54,5 +56,15 @@ public class Presenter {
 
 	public String[] getNombresEmpresasGuardadas() {
 		return EmpresasGuardadas.cargarNombresEmpresas();
+	}
+
+	public void cargarEmpresa(String nombreEmpresa) {
+		try {
+			this.empresa = EmpresasGuardadas.cargarEmpresa(nombreEmpresa);
+			this.requerimientos = null;
+			realizarActualizacionesEmpleadoAgregado();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

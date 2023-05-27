@@ -2,6 +2,9 @@ package interfaz;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -53,16 +56,22 @@ public class TarjetaArchivo extends Tarjeta {
 		cargarNombresEmpresasGuardadas();
 	}
 
-	private void cargarNombresEmpresasGuardadas() {
-		cbEmpresasGuardadas.setModel(
-				new DefaultComboBoxModel<String>(getPadre().getPresenter().getNombresEmpresasGuardadas())
-		);
-	}
-
 	private void crearBotonRefrescar() {
 		JButton btnRefrescar = new JButton("Refrescar");
 		btnRefrescar.setBounds(310, 110, 89, 23);
 		add(btnRefrescar);
+		
+		btnRefrescar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cargarNombresEmpresasGuardadas();
+			}});
+	}
+	
+	private void cargarNombresEmpresasGuardadas() {
+		cbEmpresasGuardadas.setModel(
+				new DefaultComboBoxModel<String>(getPadre().getPresenter().getNombresEmpresasGuardadas())
+		);
 	}
 	
 	private void crearBotonCargar() {
@@ -70,8 +79,20 @@ public class TarjetaArchivo extends Tarjeta {
 		btnCargarEmpresaSeleccionada.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnCargarEmpresaSeleccionada.setBounds(124, 155, 185, 29);
 		add(btnCargarEmpresaSeleccionada);
+		
+		btnCargarEmpresaSeleccionada.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cargarEmpresaSeleccionada();
+			}});
 	}
 
+	private void cargarEmpresaSeleccionada() {
+		String seleccionada = (String) cbEmpresasGuardadas.getSelectedItem();
+		
+		getPadre().getPresenter().cargarEmpresa(seleccionada);
+	}
+	
 	private void crearZonaGuardarActual() {
 		JButton btnGuardarEmpresaActual = new JButton("Guardar Empresa Actual");
 		btnGuardarEmpresaActual.setFont(new Font("Tahoma", Font.PLAIN, 13));
