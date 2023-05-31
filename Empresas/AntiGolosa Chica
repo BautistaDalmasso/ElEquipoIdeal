@@ -1,0 +1,542 @@
+{
+  "empleados": [
+    {
+      "nombre": "C5_LIDERDEPROYECTO_0",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_LIDERDEPROYECTO_1",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_LIDERDEPROYECTO_2",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_LIDERDEPROYECTO_3",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_ARQUITECTO_0",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_ARQUITECTO_1",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_ARQUITECTO_2",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_ARQUITECTO_3",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_PROGRAMADOR_0",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_PROGRAMADOR_1",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_PROGRAMADOR_2",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_PROGRAMADOR_3",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_TESTER_0",
+      "rol": "TESTER",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_TESTER_1",
+      "rol": "TESTER",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_TESTER_2",
+      "rol": "TESTER",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C5_TESTER_3",
+      "rol": "TESTER",
+      "calificacionHistorica": 5
+    },
+    {
+      "nombre": "C1_LIDERDEPROYECTO_0",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_LIDERDEPROYECTO_1",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_LIDERDEPROYECTO_2",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_LIDERDEPROYECTO_3",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_LIDERDEPROYECTO_4",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_LIDERDEPROYECTO_5",
+      "rol": "LIDERDEPROYECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_ARQUITECTO_0",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_ARQUITECTO_1",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_ARQUITECTO_2",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_ARQUITECTO_3",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_ARQUITECTO_4",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_ARQUITECTO_5",
+      "rol": "ARQUITECTO",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_PROGRAMADOR_0",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_PROGRAMADOR_1",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_PROGRAMADOR_2",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_PROGRAMADOR_3",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_PROGRAMADOR_4",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_PROGRAMADOR_5",
+      "rol": "PROGRAMADOR",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_TESTER_0",
+      "rol": "TESTER",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_TESTER_1",
+      "rol": "TESTER",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_TESTER_2",
+      "rol": "TESTER",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_TESTER_3",
+      "rol": "TESTER",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_TESTER_4",
+      "rol": "TESTER",
+      "calificacionHistorica": 1
+    },
+    {
+      "nombre": "C1_TESTER_5",
+      "rol": "TESTER",
+      "calificacionHistorica": 1
+    }
+  ],
+  "paresIncompatibles": [
+    {
+      "x": "C5_ARQUITECTO_1",
+      "y": "C1_ARQUITECTO_5"
+    },
+    {
+      "x": "C5_ARQUITECTO_0",
+      "y": "C5_ARQUITECTO_1"
+    },
+    {
+      "x": "C1_ARQUITECTO_4",
+      "y": "C5_ARQUITECTO_1"
+    },
+    {
+      "x": "C5_TESTER_1",
+      "y": "C5_TESTER_0"
+    },
+    {
+      "x": "C5_PROGRAMADOR_0",
+      "y": "C5_PROGRAMADOR_2"
+    },
+    {
+      "x": "C1_ARQUITECTO_3",
+      "y": "C5_ARQUITECTO_1"
+    },
+    {
+      "x": "C5_TESTER_2",
+      "y": "C5_TESTER_0"
+    },
+    {
+      "x": "C5_LIDERDEPROYECTO_2",
+      "y": "C5_LIDERDEPROYECTO_0"
+    },
+    {
+      "x": "C1_ARQUITECTO_2",
+      "y": "C5_ARQUITECTO_1"
+    },
+    {
+      "x": "C5_PROGRAMADOR_0",
+      "y": "C5_PROGRAMADOR_1"
+    },
+    {
+      "x": "C5_TESTER_3",
+      "y": "C5_TESTER_0"
+    },
+    {
+      "x": "C5_LIDERDEPROYECTO_1",
+      "y": "C5_LIDERDEPROYECTO_0"
+    },
+    {
+      "x": "C1_ARQUITECTO_1",
+      "y": "C5_ARQUITECTO_1"
+    },
+    {
+      "x": "C1_ARQUITECTO_0",
+      "y": "C5_ARQUITECTO_1"
+    },
+    {
+      "x": "C1_ARQUITECTO_0",
+      "y": "C5_ARQUITECTO_2"
+    },
+    {
+      "x": "C1_ARQUITECTO_1",
+      "y": "C5_ARQUITECTO_3"
+    },
+    {
+      "x": "C1_ARQUITECTO_0",
+      "y": "C5_ARQUITECTO_3"
+    },
+    {
+      "x": "C1_ARQUITECTO_1",
+      "y": "C5_ARQUITECTO_2"
+    },
+    {
+      "x": "C1_ARQUITECTO_2",
+      "y": "C5_ARQUITECTO_2"
+    },
+    {
+      "x": "C1_ARQUITECTO_3",
+      "y": "C5_ARQUITECTO_3"
+    },
+    {
+      "x": "C1_ARQUITECTO_2",
+      "y": "C5_ARQUITECTO_3"
+    },
+    {
+      "x": "C1_ARQUITECTO_3",
+      "y": "C5_ARQUITECTO_2"
+    },
+    {
+      "x": "C5_ARQUITECTO_0",
+      "y": "C5_ARQUITECTO_2"
+    },
+    {
+      "x": "C1_ARQUITECTO_4",
+      "y": "C5_ARQUITECTO_2"
+    },
+    {
+      "x": "C1_ARQUITECTO_5",
+      "y": "C5_ARQUITECTO_3"
+    },
+    {
+      "x": "C5_ARQUITECTO_0",
+      "y": "C5_ARQUITECTO_3"
+    },
+    {
+      "x": "C1_ARQUITECTO_4",
+      "y": "C5_ARQUITECTO_3"
+    },
+    {
+      "x": "C1_ARQUITECTO_5",
+      "y": "C5_ARQUITECTO_2"
+    },
+    {
+      "x": "C5_PROGRAMADOR_3",
+      "y": "C5_PROGRAMADOR_0"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_1",
+      "y": "C5_LIDERDEPROYECTO_3"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_2",
+      "y": "C5_LIDERDEPROYECTO_3"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_0",
+      "y": "C5_LIDERDEPROYECTO_3"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_5",
+      "y": "C5_LIDERDEPROYECTO_3"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_3",
+      "y": "C5_LIDERDEPROYECTO_3"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_4",
+      "y": "C5_LIDERDEPROYECTO_3"
+    },
+    {
+      "x": "C5_PROGRAMADOR_3",
+      "y": "C1_PROGRAMADOR_1"
+    },
+    {
+      "x": "C5_PROGRAMADOR_3",
+      "y": "C1_PROGRAMADOR_2"
+    },
+    {
+      "x": "C5_PROGRAMADOR_3",
+      "y": "C1_PROGRAMADOR_0"
+    },
+    {
+      "x": "C5_PROGRAMADOR_3",
+      "y": "C1_PROGRAMADOR_5"
+    },
+    {
+      "x": "C5_PROGRAMADOR_3",
+      "y": "C1_PROGRAMADOR_3"
+    },
+    {
+      "x": "C5_PROGRAMADOR_3",
+      "y": "C1_PROGRAMADOR_4"
+    },
+    {
+      "x": "C5_PROGRAMADOR_1",
+      "y": "C1_PROGRAMADOR_3"
+    },
+    {
+      "x": "C5_PROGRAMADOR_2",
+      "y": "C1_PROGRAMADOR_4"
+    },
+    {
+      "x": "C5_PROGRAMADOR_1",
+      "y": "C1_PROGRAMADOR_4"
+    },
+    {
+      "x": "C5_PROGRAMADOR_2",
+      "y": "C1_PROGRAMADOR_3"
+    },
+    {
+      "x": "C5_PROGRAMADOR_1",
+      "y": "C1_PROGRAMADOR_5"
+    },
+    {
+      "x": "C5_PROGRAMADOR_2",
+      "y": "C1_PROGRAMADOR_5"
+    },
+    {
+      "x": "C5_PROGRAMADOR_2",
+      "y": "C1_PROGRAMADOR_0"
+    },
+    {
+      "x": "C5_PROGRAMADOR_1",
+      "y": "C1_PROGRAMADOR_0"
+    },
+    {
+      "x": "C5_PROGRAMADOR_1",
+      "y": "C1_PROGRAMADOR_1"
+    },
+    {
+      "x": "C5_PROGRAMADOR_2",
+      "y": "C1_PROGRAMADOR_2"
+    },
+    {
+      "x": "C5_PROGRAMADOR_1",
+      "y": "C1_PROGRAMADOR_2"
+    },
+    {
+      "x": "C5_PROGRAMADOR_2",
+      "y": "C1_PROGRAMADOR_1"
+    },
+    {
+      "x": "C1_TESTER_1",
+      "y": "C5_TESTER_3"
+    },
+    {
+      "x": "C1_TESTER_0",
+      "y": "C5_TESTER_2"
+    },
+    {
+      "x": "C1_TESTER_3",
+      "y": "C5_TESTER_1"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_3",
+      "y": "C5_LIDERDEPROYECTO_1"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_4",
+      "y": "C5_LIDERDEPROYECTO_2"
+    },
+    {
+      "x": "C1_TESTER_1",
+      "y": "C5_TESTER_2"
+    },
+    {
+      "x": "C1_TESTER_0",
+      "y": "C5_TESTER_3"
+    },
+    {
+      "x": "C1_TESTER_2",
+      "y": "C5_TESTER_1"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_3",
+      "y": "C5_LIDERDEPROYECTO_2"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_4",
+      "y": "C5_LIDERDEPROYECTO_1"
+    },
+    {
+      "x": "C1_TESTER_1",
+      "y": "C5_TESTER_1"
+    },
+    {
+      "x": "C1_TESTER_3",
+      "y": "C5_TESTER_3"
+    },
+    {
+      "x": "C1_TESTER_2",
+      "y": "C5_TESTER_2"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_5",
+      "y": "C5_LIDERDEPROYECTO_1"
+    },
+    {
+      "x": "C1_TESTER_0",
+      "y": "C5_TESTER_1"
+    },
+    {
+      "x": "C1_TESTER_3",
+      "y": "C5_TESTER_2"
+    },
+    {
+      "x": "C1_TESTER_2",
+      "y": "C5_TESTER_3"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_5",
+      "y": "C5_LIDERDEPROYECTO_2"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_0",
+      "y": "C5_LIDERDEPROYECTO_2"
+    },
+    {
+      "x": "C1_TESTER_5",
+      "y": "C5_TESTER_3"
+    },
+    {
+      "x": "C1_TESTER_4",
+      "y": "C5_TESTER_2"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_0",
+      "y": "C5_LIDERDEPROYECTO_1"
+    },
+    {
+      "x": "C1_TESTER_5",
+      "y": "C5_TESTER_2"
+    },
+    {
+      "x": "C1_TESTER_4",
+      "y": "C5_TESTER_3"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_1",
+      "y": "C5_LIDERDEPROYECTO_1"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_2",
+      "y": "C5_LIDERDEPROYECTO_2"
+    },
+    {
+      "x": "C1_TESTER_5",
+      "y": "C5_TESTER_1"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_1",
+      "y": "C5_LIDERDEPROYECTO_2"
+    },
+    {
+      "x": "C1_LIDERDEPROYECTO_2",
+      "y": "C5_LIDERDEPROYECTO_1"
+    },
+    {
+      "x": "C1_TESTER_4",
+      "y": "C5_TESTER_1"
+    },
+    {
+      "x": "C5_LIDERDEPROYECTO_0",
+      "y": "C5_LIDERDEPROYECTO_3"
+    }
+  ]
+}

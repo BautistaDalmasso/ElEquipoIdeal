@@ -1,6 +1,5 @@
 package interfaz;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -11,26 +10,26 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
-public class TarjetaAgregarIncompatibilidades extends JPanel {
+public class TarjetaAgregarIncompatibilidades extends Tarjeta {
 
 	private static final long serialVersionUID = -4392978621224841628L;
+	private static final String NOMBRE = "Agregar Incompatibilidades";
 	
 	private static final int CANTIDAD_DE_INCOMPATIBLES = 2;
 	private static final int POS_Y_INICIAL = 86;
 	private static final int SEPARACION = 50;
 	
 	private JComboBox<String>[] comboBoxesEmpleados;
-
-	private ElEquipoIdeal padre;
 	
 	
 	/**
 	 * Create the panel.
 	 */
 	public TarjetaAgregarIncompatibilidades(ElEquipoIdeal padre) {
+		super(padre);
+
 		setLayout(null);
 		
-		this.padre = padre;
 		
 		crearLabelExplicativa();
 		
@@ -76,7 +75,7 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 
 	public void agregarComboBoxModels() {
 		for (JComboBox<String> comboBoxEmpleado : comboBoxesEmpleados) {
-			comboBoxEmpleado.setModel(new DefaultComboBoxModel<String>(this.padre.getPresenter().crearArregloConNombres()));
+			comboBoxEmpleado.setModel(new DefaultComboBoxModel<String>(this.getPadre().getPresenter().crearArregloConNombres()));
 		}
 	}
 	
@@ -97,7 +96,7 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 	private void incompatibilizar() {
 		String[] empleadosSeleccionados = obtenerEmpleadosSeleccionados();
 		
-		this.padre.getPresenter().incompatibilizar(empleadosSeleccionados[0], empleadosSeleccionados[1]);
+		this.getPadre().getPresenter().incompatibilizar(empleadosSeleccionados[0], empleadosSeleccionados[1]);
 	}
 
 	private String[] obtenerEmpleadosSeleccionados() {
@@ -107,5 +106,10 @@ public class TarjetaAgregarIncompatibilidades extends JPanel {
 			ret[i++] = (String) comboBox.getSelectedItem();
 		}
 		return ret;
+	}
+	
+	@Override
+	public String getNombre() {
+		return NOMBRE;
 	}
 }

@@ -18,13 +18,6 @@ import negocio.Equipo;
 public class ElEquipoIdeal extends JFrame {
 
 	private static final long serialVersionUID = 8211971627980187103L;
-	
-	private static final String NOMBRE_AGREGAR_EMPLEADOS = "Agregar Empleados";
-	private static final String NOMBRE_AGREGAR_INCOMPATIBILIDADES = "Agregar Incompatibilidades";
-	private static final String NOMBRE_CREAR_REQUERIMIENTOS = "Crear Requerimientos";
-	private static final String NOMBRE_BUSCAR_EQUIPO = "Buscar Equipo";
-	
-	private static final String PRIMERA_TARJETA = NOMBRE_AGREGAR_EMPLEADOS;
 
 	private JPanel contentPane;
 	private CardLayout cardLayout;
@@ -38,6 +31,7 @@ public class ElEquipoIdeal extends JFrame {
 	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
 	private TarjetaCrearRequerimientos tarjetaCrearRequerimientos;
 	private TarjetaBuscarEquipo tarjetaBuscarEquipo;
+	private TarjetaArchivo tarjetaArchivo;
 
 	/**
 	 * Launch the application.
@@ -93,39 +87,23 @@ public class ElEquipoIdeal extends JFrame {
 	}
 	
 	private void inicializarTarjetas() {
-		inicializarTarjetaAgregarEmpleados();
-		inicializarTarjetaAgregarIncompatibilidades();
-		inicializarTarjetaAgregarRequerimientos();
-		inicializarTarjetaBuscarEquipo();
+		tarjetaAgregarEmpleados = new TarjetaAgregarEmpleados(this);
+		tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
+		tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
+		tarjetaBuscarEquipo = new TarjetaBuscarEquipo(this);
+		tarjetaArchivo = new TarjetaArchivo(this);
 		
-		setTarjetaInicial();
+		agregarTarjetas(new Tarjeta[] 
+				{tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades, tarjetaCrearRequerimientos, tarjetaBuscarEquipo, tarjetaArchivo});
 	}
 
-	private void inicializarTarjetaAgregarEmpleados() {
-		this.tarjetaAgregarEmpleados = new TarjetaAgregarEmpleados(this);
-		
-		incializarTarjeta(tarjetaAgregarEmpleados, NOMBRE_AGREGAR_EMPLEADOS);
+	private void agregarTarjetas(Tarjeta[] tarjetas) {
+		for (Tarjeta tarjeta : tarjetas) {
+			agregarTarjetas(tarjeta, tarjeta.getNombre());
+		}
 	}
 	
-	private void inicializarTarjetaAgregarIncompatibilidades() {
-		this.tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
-		
-		incializarTarjeta(tarjetaAgregarIncompatibilidades, NOMBRE_AGREGAR_INCOMPATIBILIDADES);
-	}
-	
-	private void inicializarTarjetaAgregarRequerimientos() {
-		this.tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
-		
-		incializarTarjeta(tarjetaCrearRequerimientos, NOMBRE_CREAR_REQUERIMIENTOS);
-	}
-	
-	private void inicializarTarjetaBuscarEquipo() {
-		this.tarjetaBuscarEquipo = new TarjetaBuscarEquipo(this);
-		
-		incializarTarjeta(tarjetaBuscarEquipo, NOMBRE_BUSCAR_EQUIPO);
-	}
-	
-	private void incializarTarjeta(JPanel tarjeta, String nombre) {
+	private void agregarTarjetas(JPanel tarjeta, String nombre) {
 		crearOpcionMenu(tarjeta, nombre);
 		
 		contentPane.add(tarjeta, nombre);
@@ -142,10 +120,6 @@ public class ElEquipoIdeal extends JFrame {
 		});
 		
 		menuAcciones.add(itemTarjeta);
-	}
-	
-	private void setTarjetaInicial() {
-		this.cardLayout.show(contentPane, PRIMERA_TARJETA);
 	}
 
 	public Presenter getPresenter() {

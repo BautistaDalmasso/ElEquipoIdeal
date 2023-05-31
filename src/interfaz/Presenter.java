@@ -1,7 +1,10 @@
 package interfaz;
 
+import java.io.IOException;
+
 import negocio.Empleado;
 import negocio.Empresa;
+import negocio.EmpresasGuardadas;
 import negocio.Requerimientos;
 import negocio.Rol;
 
@@ -49,5 +52,23 @@ public class Presenter {
 		ObserverInterfaz observer = new ObserverInterfaz(view, empresa, requerimientos);
 		
 		observer.execute();
+	}
+
+	public String[] getNombresEmpresasGuardadas() {
+		return EmpresasGuardadas.cargarNombresEmpresas();
+	}
+
+	public void cargarEmpresa(String nombreEmpresa) {
+		try {
+			this.empresa = EmpresasGuardadas.cargarEmpresa(nombreEmpresa);
+			this.requerimientos = null;
+			realizarActualizacionesEmpleadoAgregado();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void guardarEmpresa(String nombreEmpresa) {
+		EmpresasGuardadas.guardarEmpresa(empresa, nombreEmpresa);
 	}
 }

@@ -65,7 +65,6 @@ public abstract class SolverGenericoTest {
 	
 	void setEmpresaCompleja() throws IOException {
 		empresaActual = Empresa.cargarEmpresaDesdeArchivo(ARCHIVO_EMPRESA_COMPLEJA);
-		empresaActual.getEmpleados();
 		
 		crearEmpleadosEsperados(new String[] {"lid2", "arq2", "arq3", "arq4", "prog1", "prog2", "tester1"});
 		

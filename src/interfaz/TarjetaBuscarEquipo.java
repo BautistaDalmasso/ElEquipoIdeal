@@ -1,7 +1,5 @@
 package interfaz;
 
-import javax.swing.JPanel;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class TarjetaBuscarEquipo extends JPanel {
+public class TarjetaBuscarEquipo extends Tarjeta {
 	/*
 	 * TODO: esto esta feisimo
 	 * -> poner la ventana más bonita
@@ -20,9 +18,7 @@ public class TarjetaBuscarEquipo extends JPanel {
 	
 	
 	private static final long serialVersionUID = 5084902088676552823L;
-	
-	@SuppressWarnings("unused")
-	private ElEquipoIdeal padre;
+	private static final String NOMBRE = "Buscar Equipo";
 	
 	private JTextField tfResultado;
 
@@ -30,9 +26,10 @@ public class TarjetaBuscarEquipo extends JPanel {
 	 * Create the panel.
 	 */
 	public TarjetaBuscarEquipo(ElEquipoIdeal padre) {
+		super(padre);
+		
 		setLayout(null);
 		
-		this.padre = padre;
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(181, 226, 89, 23);
@@ -58,5 +55,10 @@ public class TarjetaBuscarEquipo extends JPanel {
 	
 	public void nuevoEncontrado(int valor) {
 		tfResultado.setText(Integer.valueOf(valor).toString());
+	}
+	
+	@Override
+	public String getNombre() {
+		return NOMBRE;
 	}
 }

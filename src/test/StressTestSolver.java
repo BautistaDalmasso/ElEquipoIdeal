@@ -122,12 +122,10 @@ public class StressTestSolver {
 		Empleado a;
 		Empleado b;
 		for (int i = 0; i < empleados.size(); i++) {
-			for (int j = i+1; i < empleados.size(); i++) {
+			for (int j = i+1; j < empleados.size(); j++) {
 				if (r.nextDouble() < 0.25) {
-					a = empleados.get(i); b = empleados.get(j);
-					if (a != b) {						
-						empresaGenerada.agregarIncompatibilidad(a, b);
-					}
+					a = empleados.get(i); b = empleados.get(j);					
+					empresaGenerada.agregarIncompatibilidad(a, b);
 				}
 			}
 		}

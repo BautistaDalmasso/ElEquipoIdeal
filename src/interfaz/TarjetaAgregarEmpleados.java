@@ -1,6 +1,5 @@
 package interfaz;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,12 +15,11 @@ import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
-public class TarjetaAgregarEmpleados extends JPanel {
+public class TarjetaAgregarEmpleados extends Tarjeta {
 
 	private static final long serialVersionUID = 2497385370618487907L;
-
-	private ElEquipoIdeal padre;
-
+	private static final String NOMBRE = "Agregar Empleados";
+	
 	private JTextField fieldNombre;
 	private JSlider sliderCalificacion;
 	private JComboBox<String> cbRol;
@@ -30,9 +28,10 @@ public class TarjetaAgregarEmpleados extends JPanel {
 	 * Create the panel.
 	 */
 	public TarjetaAgregarEmpleados(ElEquipoIdeal padre) {
+		super(padre);
+
 		setLayout(null);
 		
-		this.padre = padre;
 		
 		crearLabelExplicativa();
 		
@@ -115,7 +114,7 @@ public class TarjetaAgregarEmpleados extends JPanel {
 	}
 	
 	private void agregarEmpleadoIngresado() {		
-		this.padre.getPresenter().agregarEmpleado(obtenerNombre(), obtenerRol(), obtenerCalificacion());
+		this.getPadre().getPresenter().agregarEmpleado(obtenerNombre(), obtenerRol(), obtenerCalificacion());
 	}
 
 	private String obtenerNombre() {
@@ -128,5 +127,10 @@ public class TarjetaAgregarEmpleados extends JPanel {
 
 	private int obtenerCalificacion() {
 		return this.sliderCalificacion.getValue();
+	}
+
+	@Override
+	public String getNombre() {
+		return NOMBRE;
 	}
 }
