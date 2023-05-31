@@ -67,4 +67,8 @@ public class Presenter {
 			e.printStackTrace();
 		}
 	}
+
+	public void guardarEmpresa(String nombreEmpresa) {
+		EmpresasGuardadas.guardarEmpresa(empresa, nombreEmpresa);
+	}
 }
