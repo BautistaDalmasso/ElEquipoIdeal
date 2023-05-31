@@ -35,13 +35,22 @@ public class SolverMultiple extends Solver implements ObserverResultadosParciale
 
 	@Override
 	public Equipo resolver() throws EquipoImposibleException {
-
+		int soluciones = 0;
 		for (Solver solver : solvers) {
 			solver.registrarObserver(this);
 			
-			this.notificar(solver.resolver());
-			
+			try {				
+				this.notificar(solver.resolver());
+			}
+			catch (EquipoImposibleException e) {
+				continue;
+			}
+			soluciones++;
 			System.out.println("Resuelto: " + solver.getClass().toString());
+		}
+		
+		if (soluciones == 0) {
+			throw new EquipoImposibleException();
 		}
 		
 		return mejorEquipo;
