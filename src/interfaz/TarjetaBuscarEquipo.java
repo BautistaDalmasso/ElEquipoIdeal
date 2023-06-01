@@ -6,11 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class TarjetaBuscarEquipo extends Tarjeta {
 	/*
 	 * TODO: esto esta feisimo
-	 * -> poner la ventana más bonita
 	 * -> mostrar el equipo encontrado de mejor manera
 	 * -> evitar que el usuario cambie de ventana mientras se busca
 	 * -> permitir que el usuario corte la busqueda antes de tiempo
@@ -21,36 +22,102 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	private static final String NOMBRE = "Buscar Equipo";
 	
 	private JTextField tfResultado;
+	private JTextField tfCasosConsiderados;
+	private JTextField tfCasosDescartados;
 
 	/**
 	 * Create the panel.
 	 */
 	public TarjetaBuscarEquipo(ElEquipoIdeal padre) {
 		super(padre);
-		
 		setLayout(null);
 		
+		crearLabelExplicativa();
+		crearZonaEstadisticas();
+		crearBotones();
+	}
+
+	private void crearLabelExplicativa() {
+		JLabel lblBuscarEquipo = new JLabel("Buscar Equipo");
+		lblBuscarEquipo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblBuscarEquipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBuscarEquipo.setBounds(166, 5, 123, 23);
+		add(lblBuscarEquipo);
+	}
+
+	private void crearZonaEstadisticas() {
+		crearZonaMejorCalificacionTotal();
 		
+		crearZonaCasosConsiderados();
+		
+		crearZonaCasosDescartados();
+	}
+
+	private void crearZonaMejorCalificacionTotal() {
+		crearLabelEstadisticas("Mejor Calificacion Total Encontrada:", 65);
+		
+		tfResultado = new JTextField();
+		inicializarTextFieldEstadisticas(tfResultado, 69);
+	}
+
+	private void crearZonaCasosConsiderados() {
+		crearLabelEstadisticas("Casos Considerados:", 105);
+		
+		tfCasosConsiderados = new JTextField();
+		inicializarTextFieldEstadisticas(tfCasosConsiderados, 109);
+	}
+
+	private void crearZonaCasosDescartados() {
+		crearLabelEstadisticas("Casos Descartados:", 140);
+		
+		tfCasosDescartados = new JTextField();
+		inicializarTextFieldEstadisticas(tfCasosDescartados, 144);
+	}
+
+	private void crearLabelEstadisticas(String texto, int posicionY) {
+		JLabel lblEstadistica = new JLabel(texto);
+		lblEstadistica.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEstadistica.setBounds(36, posicionY, 179, 29);
+		add(lblEstadistica);
+	}
+	
+	private void inicializarTextFieldEstadisticas(JTextField textField, int posicionY) {
+		textField.setEditable(false);
+		textField.setColumns(10);
+		textField.setBounds(225, posicionY, 41, 20);
+		add(textField);
+	}
+	
+	private void crearBotones() {
+		crearBotonBuscar();
+		
+		crearBotonDetenerBusqueda();
+		
+		crearBotonVisualizarEncontrado();
+	}
+
+	private void crearBotonBuscar() {
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(181, 226, 89, 23);
+		btnBuscar.setBounds(94, 190, 123, 23);
 		btnBuscar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				padre.getPresenter().resolverInstancia();
+				getPadre().getPresenter().resolverInstancia();
 			}
 		});
 		add(btnBuscar);
-		
-		JLabel lblEncontrado = new JLabel("Encontrado:");
-		lblEncontrado.setBounds(77, 109, 62, 14);
-		add(lblEncontrado);
-		
-		tfResultado = new JTextField();
-		tfResultado.setEditable(false);
-		tfResultado.setBounds(148, 106, 41, 20);
-		add(tfResultado);
-		tfResultado.setColumns(10);
+	}
 
+	private void crearBotonDetenerBusqueda() {
+		JButton btnDetenerBusqueda = new JButton("Detener Busqueda");
+		btnDetenerBusqueda.setBounds(234, 190, 123, 23);
+		add(btnDetenerBusqueda);
+	}
+
+	private void crearBotonVisualizarEncontrado() {
+		JButton btnVisualizarEncontrado = new JButton("Visualizar Equipo");
+		btnVisualizarEncontrado.setBounds(170, 224, 123, 23);
+		add(btnVisualizarEncontrado);
 	}
 	
 	public void nuevoEncontrado(int valor) {
