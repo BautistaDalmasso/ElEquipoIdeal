@@ -138,4 +138,8 @@ public class ElEquipoIdeal extends JFrame {
 	public void actualizarEstadisticas(EstadisticasDeBusqueda estadisticas) {
 		this.tarjetaBuscarEquipo.actualizarEstadisticas(estadisticas);
 	}
+
+	public void actualizarEstado(String estado) {
+		this.tarjetaBuscarEquipo.actualizarEstado(estado);
+	}
 }

@@ -27,6 +27,7 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	private JTextField tfResultado;
 	private JTextField tfCasosConsiderados;
 	private JTextField tfCasosDescartados;
+	private JTextField tfEstadoBusqueda;
 
 	/**
 	 * Create the panel.
@@ -50,44 +51,50 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 
 	private void crearZonaEstadisticas() {
 		crearZonaMejorCalificacionTotal();
-		
 		crearZonaCasosConsiderados();
-		
 		crearZonaCasosDescartados();
+		crearZonaEstadoDeBusqueda();
 	}
 
 	private void crearZonaMejorCalificacionTotal() {
-		crearLabelEstadisticas("Mejor Calificacion Total Encontrada:", 65);
+		crearLabelEstadisticas("Mejor Calificacion Total Encontrada:", 45);
 		
 		tfResultado = new JTextField();
-		inicializarTextFieldEstadisticas(tfResultado, 69);
+		inicializarTextFieldEstadisticas(tfResultado, 49);
 	}
 
 	private void crearZonaCasosConsiderados() {
-		crearLabelEstadisticas("Casos Considerados:", 105);
+		crearLabelEstadisticas("Casos Considerados:", 80);
 		
 		tfCasosConsiderados = new JTextField();
-		inicializarTextFieldEstadisticas(tfCasosConsiderados, 109);
+		inicializarTextFieldEstadisticas(tfCasosConsiderados, 84);
 	}
 
 	private void crearZonaCasosDescartados() {
-		crearLabelEstadisticas("Casos Descartados:", 140);
+		crearLabelEstadisticas("Casos Descartados:", 115);
 		
 		tfCasosDescartados = new JTextField();
-		inicializarTextFieldEstadisticas(tfCasosDescartados, 144);
+		inicializarTextFieldEstadisticas(tfCasosDescartados, 119);
+	}
+	
+	private void crearZonaEstadoDeBusqueda() {
+		crearLabelEstadisticas("Estado de la Busqueda:", 150);
+		
+		tfEstadoBusqueda = new JTextField();
+		inicializarTextFieldEstadisticas(tfEstadoBusqueda, 154);
 	}
 
 	private void crearLabelEstadisticas(String texto, int posicionY) {
 		JLabel lblEstadistica = new JLabel(texto);
 		lblEstadistica.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEstadistica.setBounds(36, posicionY, 179, 29);
+		lblEstadistica.setBounds(1, posicionY, 179, 29);
 		add(lblEstadistica);
 	}
 	
 	private void inicializarTextFieldEstadisticas(JTextField textField, int posicionY) {
 		textField.setEditable(false);
 		textField.setColumns(10);
-		textField.setBounds(225, posicionY, 150, 20);
+		textField.setBounds(185, posicionY, 225, 20);
 		add(textField);
 	}
 	
@@ -130,6 +137,10 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	public void actualizarEstadisticas(EstadisticasDeBusqueda estadisticas) {
 		this.tfCasosConsiderados.setText(Integer.valueOf(estadisticas.getCasosConsiderados()).toString());
 		this.tfCasosDescartados.setText(Integer.valueOf(estadisticas.getCasosDescartados()).toString());
+	}
+	
+	public void actualizarEstado(String estado) {
+		this.tfEstadoBusqueda.setText(estado);
 	}
 	
 	@Override
