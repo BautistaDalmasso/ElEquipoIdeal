@@ -40,7 +40,7 @@ public class StressTestSolver {
 			long fin = System.currentTimeMillis();
 			double tiempo = (fin - inicio) / 1000.0;
 			
-			System.out.println("n = " + i + ": " + tiempo + " seg. \n" + solver.estadisticas());
+			System.out.println("n = " + i + ": " + tiempo + " seg. \n" + solver.stringEstadisticas());
 		}
 	}
 
