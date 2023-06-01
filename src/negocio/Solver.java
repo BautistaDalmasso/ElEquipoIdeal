@@ -19,9 +19,9 @@ public abstract class Solver {
 	}
 	
 	protected void notificarObservers(Equipo equipo) {
-		notificarObservers(new ResultadoParcialEquipo(equipo, estadisticas));
+		notificarObservers(new ResultadoParcialEquipo(equipo, getEstadisticas()));
 	}
-	
+
 	protected void notificarObservers(ResultadoParcialEquipo resultadoParcial) {
 		for (ObserverResultadosParciales observer : observers) {
 			observer.notificar(resultadoParcial);
@@ -38,5 +38,9 @@ public abstract class Solver {
 	
 	public String stringEstadisticas() {
 		return "Casos Considerados: " + estadisticas.getCasosConsiderados() + ". Casos Descartados: " + estadisticas.getCasosDescartados();
+	}
+
+	public EstadisticasDeBusqueda getEstadisticas() {
+		return estadisticas;
 	}
 }

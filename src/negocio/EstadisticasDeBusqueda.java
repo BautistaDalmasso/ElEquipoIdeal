@@ -18,6 +18,10 @@ public class EstadisticasDeBusqueda {
 		return new EstadisticasDeBusqueda(casosConsiderados, casosDescartados);
 	}
 	
+	public EstadisticasDeBusqueda obtenerSuma(EstadisticasDeBusqueda that) {
+		return new EstadisticasDeBusqueda(casosConsiderados+that.casosConsiderados, casosDescartados+that.casosDescartados);
+	}
+	
 	public int getCasosConsiderados() {
 		return casosConsiderados;
 	}
