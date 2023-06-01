@@ -14,9 +14,8 @@ import java.awt.Font;
 
 public class TarjetaBuscarEquipo extends Tarjeta {
 	/*
-	 * TODO: esto esta feisimo
+	 * TODO:
 	 * -> mostrar el equipo encontrado de mejor manera
-	 * -> permitir que el usuario corte la busqueda antes de tiempo
 	 */
 	
 	
@@ -124,6 +123,12 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 		btnDetenerBusqueda = new JButton("Detener Busqueda");
 		btnDetenerBusqueda.setBounds(234, 190, 123, 23);
 		btnDetenerBusqueda.setEnabled(false);
+		btnDetenerBusqueda.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getPadre().getPresenter().detenerBusqueda();
+			}
+		});
 		add(btnDetenerBusqueda);
 	}
 

@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.io.IOException;
+import java.util.concurrent.CancellationException;
 
 import negocio.Empleado;
 import negocio.Empresa;
@@ -12,6 +13,7 @@ public class Presenter {
 	private Empresa empresa;
 	private Requerimientos requerimientos;
 	private ElEquipoIdeal view;
+	private ObserverInterfaz observer;
 	
 	public Presenter(ElEquipoIdeal view) {
 		this.view = view;
@@ -49,10 +51,17 @@ public class Presenter {
 	}
 	
 	public void resolverInstancia() {
-		ObserverInterfaz observer = new ObserverInterfaz(view, empresa, requerimientos);
+		observer = new ObserverInterfaz(view, empresa, requerimientos);
 		observer.execute();
 	}
 
+	public void detenerBusqueda() {
+		try {
+			observer.cancel(true);
+		} catch (CancellationException e) {
+		}
+	}
+	
 	public String[] getNombresEmpresasGuardadas() {
 		return EmpresasGuardadas.cargarNombresEmpresas();
 	}
