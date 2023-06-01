@@ -39,6 +39,7 @@ public class ObserverInterfaz extends SwingWorker<Equipo, ResultadoParcialEquipo
 		ResultadoParcialEquipo ultimoResultado = resultadosParciales.get(resultadosParciales.size()-1);
 		
 		interfaz.equipoEncontrado(ultimoResultado.getEquipoEncontrado());
+		interfaz.actualizarEstadisticas(ultimoResultado.getEstadisticas());
 	}
 
 	@Override

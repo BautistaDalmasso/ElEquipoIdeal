@@ -9,6 +9,10 @@ public class ResultadoParcialEquipo {
 		this.equipoEncontrado = equipoEncontrado.copiar();
 	}
 	
+	public EstadisticasDeBusqueda getEstadisticas() {
+		return estadisticas;
+	}
+	
 	public int getCasosConsiderados() {
 		return estadisticas.getCasosConsiderados();
 	}

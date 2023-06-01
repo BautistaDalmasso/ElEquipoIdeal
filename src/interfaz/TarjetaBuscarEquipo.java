@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import negocio.EstadisticasDeBusqueda;
+
 import java.awt.Font;
 
 public class TarjetaBuscarEquipo extends Tarjeta {
@@ -84,7 +87,7 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	private void inicializarTextFieldEstadisticas(JTextField textField, int posicionY) {
 		textField.setEditable(false);
 		textField.setColumns(10);
-		textField.setBounds(225, posicionY, 41, 20);
+		textField.setBounds(225, posicionY, 150, 20);
 		add(textField);
 	}
 	
@@ -122,6 +125,11 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	
 	public void nuevoEncontrado(int valor) {
 		tfResultado.setText(Integer.valueOf(valor).toString());
+	}
+	
+	public void actualizarEstadisticas(EstadisticasDeBusqueda estadisticas) {
+		this.tfCasosConsiderados.setText(Integer.valueOf(estadisticas.getCasosConsiderados()).toString());
+		this.tfCasosDescartados.setText(Integer.valueOf(estadisticas.getCasosDescartados()).toString());
 	}
 	
 	@Override
