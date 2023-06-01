@@ -25,11 +25,10 @@ public class SolverMultiple extends Solver implements ObserverResultadosParciale
 	}
 
 	@Override
-	public void notificar(Equipo equipoParcial) {
-		if (equipoParcial.getCalificacionTotal() > mejorEquipo.getCalificacionTotal()) {
-			mejorEquipo = equipoParcial;
-			System.out.println("Notificados");
-			notificarObservers(equipoParcial);
+	public void notificar(ResultadoParcialEquipo resultadoParcial) {
+		if (resultadoParcial.getCalificacionTotal() > mejorEquipo.getCalificacionTotal()) {
+			mejorEquipo = resultadoParcial.getEquipoEncontrado();
+			notificarObservers(resultadoParcial);
 		}
 	}
 
@@ -40,13 +39,13 @@ public class SolverMultiple extends Solver implements ObserverResultadosParciale
 			solver.registrarObserver(this);
 			
 			try {				
-				this.notificar(solver.resolver());
+				notificarObservers(solver.resolver());
 			}
 			catch (EquipoImposibleException e) {
 				continue;
 			}
+			
 			soluciones++;
-			System.out.println("Resuelto: " + solver.getClass().toString());
 		}
 		
 		if (soluciones == 0) {

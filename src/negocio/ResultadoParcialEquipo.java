@@ -4,7 +4,7 @@ public class ResultadoParcialEquipo {
 	private EstadisticasDeBusqueda estadisticas;
 	private Equipo equipoEncontrado;
 	
-	public ResultadoParcialEquipo(EstadisticasDeBusqueda estadisticas, Equipo equipoEncontrado) {
+	public ResultadoParcialEquipo(Equipo equipoEncontrado, EstadisticasDeBusqueda estadisticas) {
 		this.estadisticas = estadisticas.copiar();
 		this.equipoEncontrado = equipoEncontrado.copiar();
 	}

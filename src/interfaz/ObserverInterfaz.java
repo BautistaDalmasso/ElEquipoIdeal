@@ -9,10 +9,11 @@ import negocio.Empresa;
 import negocio.Equipo;
 import negocio.ObserverResultadosParciales;
 import negocio.Requerimientos;
+import negocio.ResultadoParcialEquipo;
 import negocio.Solver;
 import negocio.SolverMultiple;
 
-public class ObserverInterfaz extends SwingWorker<Equipo, Equipo> implements ObserverResultadosParciales {
+public class ObserverInterfaz extends SwingWorker<Equipo, ResultadoParcialEquipo> implements ObserverResultadosParciales {
 	private Solver solver;
 	private ElEquipoIdeal interfaz;
 	
@@ -24,10 +25,8 @@ public class ObserverInterfaz extends SwingWorker<Equipo, Equipo> implements Obs
 	}
 	
 	@Override
-	public void notificar(Equipo equipoParcial) {
-		System.out.println(equipoParcial.getCalificacionTotal());
-		
-		this.publish(equipoParcial);
+	public void notificar(ResultadoParcialEquipo resultadoParcial) {
+		this.publish(resultadoParcial);
 	}
 
 	@Override
@@ -36,8 +35,10 @@ public class ObserverInterfaz extends SwingWorker<Equipo, Equipo> implements Obs
 	}
 	
 	@Override
-	protected void process(List<Equipo> equipos) {
-		interfaz.equipoEncontrado(equipos.get(equipos.size()-1));
+	protected void process(List<ResultadoParcialEquipo> resultadosParciales) {
+		ResultadoParcialEquipo ultimoResultado = resultadosParciales.get(resultadosParciales.size()-1);
+		
+		interfaz.equipoEncontrado(ultimoResultado.getEquipoEncontrado());
 	}
 
 	@Override

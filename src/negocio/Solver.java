@@ -19,8 +19,12 @@ public abstract class Solver {
 	}
 	
 	protected void notificarObservers(Equipo equipo) {
+		notificarObservers(new ResultadoParcialEquipo(equipo, estadisticas));
+	}
+	
+	protected void notificarObservers(ResultadoParcialEquipo resultadoParcial) {
 		for (ObserverResultadosParciales observer : observers) {
-			observer.notificar(equipo);
+			observer.notificar(resultadoParcial);
 		}
 	}
 	
