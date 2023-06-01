@@ -16,7 +16,6 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	/*
 	 * TODO: esto esta feisimo
 	 * -> mostrar el equipo encontrado de mejor manera
-	 * -> evitar que el usuario cambie de ventana mientras se busca
 	 * -> permitir que el usuario corte la busqueda antes de tiempo
 	 */
 	
@@ -28,6 +27,9 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	private JTextField tfCasosConsiderados;
 	private JTextField tfCasosDescartados;
 	private JTextField tfEstadoBusqueda;
+	private JButton btnBuscar;
+	private JButton btnDetenerBusqueda;
+	private JButton btnVisualizarEncontrado;
 
 	/**
 	 * Create the panel.
@@ -107,7 +109,7 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	}
 
 	private void crearBotonBuscar() {
-		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(94, 190, 123, 23);
 		btnBuscar.addActionListener(new ActionListener() {
 			@Override
@@ -119,14 +121,16 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	}
 
 	private void crearBotonDetenerBusqueda() {
-		JButton btnDetenerBusqueda = new JButton("Detener Busqueda");
+		btnDetenerBusqueda = new JButton("Detener Busqueda");
 		btnDetenerBusqueda.setBounds(234, 190, 123, 23);
+		btnDetenerBusqueda.setEnabled(false);
 		add(btnDetenerBusqueda);
 	}
 
 	private void crearBotonVisualizarEncontrado() {
-		JButton btnVisualizarEncontrado = new JButton("Visualizar Equipo");
+		btnVisualizarEncontrado = new JButton("Visualizar Equipo");
 		btnVisualizarEncontrado.setBounds(170, 224, 123, 23);
+		btnVisualizarEncontrado.setEnabled(false);
 		add(btnVisualizarEncontrado);
 	}
 	
@@ -141,6 +145,18 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	
 	public void actualizarEstado(String estado) {
 		this.tfEstadoBusqueda.setText(estado);
+	}
+	
+	public void busquedaIniciada() {
+		this.btnBuscar.setEnabled(false);
+		this.btnDetenerBusqueda.setEnabled(true);
+		this.btnVisualizarEncontrado.setEnabled(false);
+	}
+	
+	public void busquedaTerminada() {
+		this.btnBuscar.setEnabled(true);
+		this.btnDetenerBusqueda.setEnabled(false);
+		this.btnVisualizarEncontrado.setEnabled(true);
 	}
 	
 	@Override

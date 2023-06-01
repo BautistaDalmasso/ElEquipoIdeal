@@ -142,4 +142,22 @@ public class ElEquipoIdeal extends JFrame {
 	public void actualizarEstado(String estado) {
 		this.tarjetaBuscarEquipo.actualizarEstado(estado);
 	}
+
+	public void iniciarBusqueda() {
+		deshabilitarAcciones();
+		this.tarjetaBuscarEquipo.busquedaIniciada();
+	}
+	
+	public void deshabilitarAcciones() {
+		this.menuAcciones.setEnabled(false);
+	}
+	
+	public void busquedaTerminada() {
+		habilitarAcciones();
+		this.tarjetaBuscarEquipo.busquedaTerminada();
+	}
+	
+	public void habilitarAcciones() {
+		this.menuAcciones.setEnabled(true);
+	}
 }

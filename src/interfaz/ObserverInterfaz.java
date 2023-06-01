@@ -40,11 +40,18 @@ public class ObserverInterfaz extends SwingWorker<Equipo, ResultadoParcialEquipo
 		this.solver = new SolverMultiple(empresa, requerimientos);
 		this.interfaz = interfaz;
 		
+		solver.registrarObserver(this);
+
 		estado = EstadoDeBusqueda.NINGUNO_ENCONTRADO;
 		interfaz.actualizarEstado(ESTADOS_POSIBLES[estado.ordinal()]);
-		solver.registrarObserver(this);
+		
+		iniciarBusqueda();
 	}
 	
+	private void iniciarBusqueda() {
+		interfaz.iniciarBusqueda();
+	}
+
 	@Override
 	public void notificar(ResultadoParcialEquipo resultadoParcial) {
 		estado = EstadoDeBusqueda.RESULTADO_PARCIAL_OBTENIDO;
@@ -73,15 +80,20 @@ public class ObserverInterfaz extends SwingWorker<Equipo, ResultadoParcialEquipo
 
 	@Override
 	protected void done() {
+		terminarBusqueda();
+		
 		try {
 			estado = EstadoDeBusqueda.BUSQUEDA_FINALIZADA;
 			interfaz.equipoEncontrado(get());
 		} catch (InterruptedException e) {
 			estado = EstadoDeBusqueda.BUSQUEDA_DETENIDA;
-			e.printStackTrace();
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
 		interfaz.actualizarEstado(ESTADOS_POSIBLES[estado.ordinal()]);
+	}
+
+	private void terminarBusqueda() {
+		this.interfaz.busquedaTerminada();
 	}
 }

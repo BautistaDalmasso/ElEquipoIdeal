@@ -50,7 +50,6 @@ public class Presenter {
 	
 	public void resolverInstancia() {
 		ObserverInterfaz observer = new ObserverInterfaz(view, empresa, requerimientos);
-		
 		observer.execute();
 	}
 
