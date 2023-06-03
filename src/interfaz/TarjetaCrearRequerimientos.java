@@ -28,8 +28,6 @@ public class TarjetaCrearRequerimientos extends Tarjeta {
 	 */
 	public TarjetaCrearRequerimientos(ElEquipoIdeal padre) {
 		super(padre);
-
-		setLayout(null);
 		
 		crearLabelExplicativa();
 		

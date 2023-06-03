@@ -23,4 +23,8 @@ public enum Rol {
 			throw new IllegalArgumentException("Rol no reconocido: " + nombreRol);
 		}
 	}
+	
+	public String toString() {
+		return nombresRoles[this.ordinal()];
+	}
 }

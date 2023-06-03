@@ -35,7 +35,6 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	 */
 	public TarjetaBuscarEquipo(ElEquipoIdeal padre) {
 		super(padre);
-		setLayout(null);
 		
 		crearLabelExplicativa();
 		crearZonaEstadisticas();

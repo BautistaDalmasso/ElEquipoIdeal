@@ -21,8 +21,6 @@ public class TarjetaArchivo extends Tarjeta {
 	public TarjetaArchivo(ElEquipoIdeal padre) {
 		super(padre);
 		
-		setLayout(null);
-		
 		crearLabelExplicativa();
 		
 		crearZonaCargarGuardada();

@@ -3,6 +3,7 @@ package interfaz;
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
 
+import negocio.ArchivosGuardados;
 import negocio.Empleado;
 import negocio.Empresa;
 import negocio.EmpresasGuardadas;
@@ -10,6 +11,8 @@ import negocio.Requerimientos;
 import negocio.Rol;
 
 public class Presenter {
+	private static final String DIRECTORIO_FOTOS = "./FotosEmpleados";
+	
 	private Empresa empresa;
 	private Requerimientos requerimientos;
 	private ElEquipoIdeal view;
@@ -21,16 +24,12 @@ public class Presenter {
 		this.empresa = new Empresa();
 	}
 	
-	public void agregarEmpleado(String nombre, String rol, int calificacion) {
-		Empleado nuevoEmpleado = new Empleado(nombre, Rol.fromString(rol), calificacion);
+	public void agregarEmpleado(String nombre, String rol, int calificacion, String nombreFoto) {
+		Empleado nuevoEmpleado = new Empleado(nombre, Rol.fromString(rol), calificacion, nombreFoto);
 
 		this.empresa.agregarEmpleado(nuevoEmpleado);
 
 		realizarActualizacionesEmpleadoAgregado();
-	}
-	
-	private void realizarActualizacionesEmpleadoAgregado() {
-		this.view.getTarjetaAgregarIncompatibilidades().agregarComboBoxModels();
 	}
 	
 	public String[] crearArregloConNombres() {
@@ -78,5 +77,14 @@ public class Presenter {
 
 	public void guardarEmpresa(String nombreEmpresa) {
 		EmpresasGuardadas.guardarEmpresa(empresa, nombreEmpresa);
+	}
+	
+	private void realizarActualizacionesEmpleadoAgregado() {
+		this.view.getTarjetaAgregarIncompatibilidades().agregarComboBoxModels();
+		this.view.getTarjetaVisualizarEmpresa().refrescarCarrouselEmpleados(empresa.getArregloEmpleados());
+	}
+
+	public String[] cargarFotosPosibles() {
+		return ArchivosGuardados.cargarNombres(DIRECTORIO_FOTOS);
 	}
 }

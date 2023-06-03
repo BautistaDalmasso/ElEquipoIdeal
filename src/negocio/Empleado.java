@@ -3,9 +3,12 @@ package negocio;
 import java.util.Objects;
 
 public class Empleado {
+	private static final String NOMBRE_FOTO_DEFAULT = "default.png";
+	
 	private String nombre;
 	private Rol rol;
 	private int calificacionHistorica;
+	private String nombreFoto;
 
 	public Empleado(String nombre, Rol rol, int calificacionHistorica) {
 		verificarCalificacion(calificacionHistorica);
@@ -13,6 +16,16 @@ public class Empleado {
 		this.nombre = nombre;
 		this.rol = rol;
 		this.calificacionHistorica = calificacionHistorica;
+		this.nombreFoto = NOMBRE_FOTO_DEFAULT;
+	}
+	
+	public Empleado(String nombre, Rol rol, int calificacionHistorica, String nombreFoto) {
+		verificarCalificacion(calificacionHistorica);
+		verificarNombre(nombre);
+		this.nombre = nombre;
+		this.rol = rol;
+		this.calificacionHistorica = calificacionHistorica;
+		this.nombreFoto = nombreFoto;
 	}
 
 	private static void verificarCalificacion(int calificacionHistorica) {
@@ -41,6 +54,10 @@ public class Empleado {
 
 	public int getCalificacion() {
 		return calificacionHistorica;
+	}
+	
+	public String getNombreFoto() {
+		return nombreFoto;
 	}
 	
 	@Override

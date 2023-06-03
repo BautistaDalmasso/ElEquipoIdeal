@@ -27,9 +27,6 @@ public class TarjetaAgregarIncompatibilidades extends Tarjeta {
 	 */
 	public TarjetaAgregarIncompatibilidades(ElEquipoIdeal padre) {
 		super(padre);
-
-		setLayout(null);
-		
 		
 		crearLabelExplicativa();
 		
