@@ -162,4 +162,8 @@ public class ElEquipoIdeal extends JFrame {
 	public void habilitarAcciones() {
 		this.menuAcciones.setEnabled(true);
 	}
+
+	public TarjetaVisualizarEmpresa getTarjetaVisualizarEmpresa() {
+		return tarjetaVisualizarEmpresa;
+	}
 }

@@ -29,10 +29,6 @@ public class Presenter {
 		realizarActualizacionesEmpleadoAgregado();
 	}
 	
-	private void realizarActualizacionesEmpleadoAgregado() {
-		this.view.getTarjetaAgregarIncompatibilidades().agregarComboBoxModels();
-	}
-	
 	public String[] crearArregloConNombres() {
 		return this.empresa.crearArregloConNombres();
 	}
@@ -78,5 +74,10 @@ public class Presenter {
 
 	public void guardarEmpresa(String nombreEmpresa) {
 		EmpresasGuardadas.guardarEmpresa(empresa, nombreEmpresa);
+	}
+	
+	private void realizarActualizacionesEmpleadoAgregado() {
+		this.view.getTarjetaAgregarIncompatibilidades().agregarComboBoxModels();
+		this.view.getTarjetaVisualizarEmpresa().refrescarCarrouselEmpleados(empresa.getArregloEmpleados());
 	}
 }

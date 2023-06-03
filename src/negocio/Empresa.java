@@ -146,6 +146,10 @@ public class Empresa {
 		return this.relaciones.getCantidadDeIncompatibilidades(empleado);
 	}
 
+	public Empleado[] getArregloEmpleados() {
+		return this.empleados.toArray(new Empleado[this.empleados.size()]);
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(empleados, relaciones);

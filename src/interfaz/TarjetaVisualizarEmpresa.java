@@ -5,10 +5,13 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 
 import negocio.Empleado;
-import negocio.Rol;
+import javax.swing.JButton;
 
 public class TarjetaVisualizarEmpresa extends Tarjeta {
 
@@ -21,6 +24,7 @@ public class TarjetaVisualizarEmpresa extends Tarjeta {
 		
 		crearLabelExplicativa();
 		inicializarCarrouselEmpleados();
+		crearBotones();
 	}
 
 	private void crearLabelExplicativa() {
@@ -33,12 +37,43 @@ public class TarjetaVisualizarEmpresa extends Tarjeta {
 
 	private void inicializarCarrouselEmpleados() {
 		// TODO: pasar un array de empleados más apropiado.
-		carrouselEmpleados = new CarrouselEmpleados(new Empleado[] {new Empleado("Juan", Rol.LIDERDEPROYECTO, 5)});
+		carrouselEmpleados = new CarrouselEmpleados(new Empleado[] {});
 		carrouselEmpleados.setBounds(65, 65, 320, 145);
 		add(carrouselEmpleados);
 		carrouselEmpleados.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
+	
+	private void crearBotones() {
+		crearBotonAnterior();
+		crearBotonSiguiente();		
+	}
 
+	private void crearBotonAnterior() {
+		JButton btnAnterior = new JButton("<");
+		btnAnterior.setBounds(139, 221, 41, 23);
+		btnAnterior.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				carrouselEmpleados.anterior();
+			}});
+		add(btnAnterior);
+	}
+
+	private void crearBotonSiguiente() {
+		JButton btnSiguiente = new JButton(">");
+		btnSiguiente.setBounds(273, 221, 41, 23);
+		btnSiguiente.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				carrouselEmpleados.siguiente();
+			}});
+		add(btnSiguiente);
+	}
+
+	public void refrescarCarrouselEmpleados(Empleado[] empleados) {
+		this.carrouselEmpleados.refrescar(empleados);
+	}
+	
 	@Override
 	public String getNombre() {
 		return NOMBRE;

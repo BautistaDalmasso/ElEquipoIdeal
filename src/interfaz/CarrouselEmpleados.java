@@ -53,4 +53,11 @@ public class CarrouselEmpleados extends JPanel {
 	private void retrocederTarjeta() {
 		tarjetaActual = --tarjetaActual < 0 ? empleados.length-1 : tarjetaActual;
 	}
+	
+	public void refrescar(Empleado[] empleados) {
+		this.removeAll();
+		this.empleados = empleados;
+		inicializarVisualizadores();
+		inicializarTarjetaActual();
+	}
 }
