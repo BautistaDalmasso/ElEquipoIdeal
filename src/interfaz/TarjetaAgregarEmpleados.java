@@ -29,9 +29,6 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 	 */
 	public TarjetaAgregarEmpleados(ElEquipoIdeal padre) {
 		super(padre);
-
-		setLayout(null);
-		
 		
 		crearLabelExplicativa();
 		

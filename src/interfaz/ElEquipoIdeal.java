@@ -31,6 +31,7 @@ public class ElEquipoIdeal extends JFrame {
 	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
 	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
 	private TarjetaCrearRequerimientos tarjetaCrearRequerimientos;
+	private TarjetaVisualizarEmpresa tarjetaVisualizarEmpresa;
 	private TarjetaBuscarEquipo tarjetaBuscarEquipo;
 	private TarjetaArchivo tarjetaArchivo;
 
@@ -91,32 +92,33 @@ public class ElEquipoIdeal extends JFrame {
 		tarjetaAgregarEmpleados = new TarjetaAgregarEmpleados(this);
 		tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
 		tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
+		tarjetaVisualizarEmpresa = new TarjetaVisualizarEmpresa(this);
 		tarjetaBuscarEquipo = new TarjetaBuscarEquipo(this);
 		tarjetaArchivo = new TarjetaArchivo(this);
 		
 		agregarTarjetas(new Tarjeta[] 
-				{tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades, tarjetaCrearRequerimientos, tarjetaBuscarEquipo, tarjetaArchivo});
+				{tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades, tarjetaCrearRequerimientos, tarjetaVisualizarEmpresa, tarjetaBuscarEquipo, tarjetaArchivo});
 	}
 
 	private void agregarTarjetas(Tarjeta[] tarjetas) {
 		for (Tarjeta tarjeta : tarjetas) {
-			agregarTarjetas(tarjeta, tarjeta.getNombre());
+			agregarTarjeta(tarjeta);
 		}
 	}
 	
-	private void agregarTarjetas(JPanel tarjeta, String nombre) {
-		crearOpcionMenu(tarjeta, nombre);
+	private void agregarTarjeta(Tarjeta tarjeta) {
+		crearOpcionMenu(tarjeta);
 		
-		contentPane.add(tarjeta, nombre);
+		contentPane.add(tarjeta, tarjeta.getNombre());
 	}
 	
-	private void crearOpcionMenu(JPanel tarjeta, String nombreTarjeta) {
-		JMenuItem itemTarjeta = new JMenuItem(nombreTarjeta);
+	private void crearOpcionMenu(Tarjeta tarjeta) {
+		JMenuItem itemTarjeta = new JMenuItem(tarjeta.getNombre());
 		
 		itemTarjeta.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				cardLayout.show(contentPane, nombreTarjeta);
+				cardLayout.show(contentPane, tarjeta.getNombre());
 			}
 		});
 		

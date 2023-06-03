@@ -13,6 +13,7 @@ public abstract class Tarjeta extends JPanel {
 	 */
 	public Tarjeta(ElEquipoIdeal padre) {
 		this.padre = padre;
+		setLayout(null);
 	}
 
 	public ElEquipoIdeal getPadre() {
