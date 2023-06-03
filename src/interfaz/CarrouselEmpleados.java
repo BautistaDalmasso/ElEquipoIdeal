@@ -24,6 +24,10 @@ public class CarrouselEmpleados extends JPanel {
 		inicializarTarjetaActual();
 	}
 
+	public CarrouselEmpleados() {
+		this(new Empleado[] {});
+	}
+
 	private void inicializarVisualizadores() {
 		int i = 0;
 		for (Empleado empleado : empleados) {

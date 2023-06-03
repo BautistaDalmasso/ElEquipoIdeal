@@ -36,8 +36,7 @@ public class TarjetaVisualizarEmpresa extends Tarjeta {
 	}
 
 	private void inicializarCarrouselEmpleados() {
-		// TODO: pasar un array de empleados más apropiado.
-		carrouselEmpleados = new CarrouselEmpleados(new Empleado[] {});
+		carrouselEmpleados = new CarrouselEmpleados();
 		carrouselEmpleados.setBounds(65, 65, 320, 145);
 		add(carrouselEmpleados);
 		carrouselEmpleados.setBorder(BorderFactory.createLineBorder(Color.black));
