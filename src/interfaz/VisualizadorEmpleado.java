@@ -35,8 +35,7 @@ public class VisualizadorEmpleado extends JPanel {
 	}
 
 	private void crearZonaFoto() {
-		// TODO: permitir otras fotos.
-		canvasFoto = new CanvasFoto("./FotosEmpleados/default.png");
+		canvasFoto = new CanvasFoto("./FotosEmpleados/" + empleado.getNombreFoto());
 		canvasFoto.setBounds(10, 15, 100, 100);
 		add(canvasFoto);
 	}

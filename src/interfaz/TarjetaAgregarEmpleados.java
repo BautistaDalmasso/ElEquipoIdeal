@@ -23,6 +23,7 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 	private JTextField fieldNombre;
 	private JSlider sliderCalificacion;
 	private JComboBox<String> cbRol;
+	private JComboBox<String> cbFotos;
 	
 	/**
 	 * Create the panel.
@@ -31,13 +32,11 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 		super(padre);
 		
 		crearLabelExplicativa();
-		
+
 		crearIngresoDeNombre();
-		
 		crearSeleccionDeRol();
-		
 		crearSeleccionDeCalificacion();
-		
+		crearComboBoxFotos();
 		crearBotonAgregar();
 	}
 
@@ -54,11 +53,11 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNombre.setLabelFor(fieldNombre);
-		lblNombre.setBounds(57, 77, 60, 17);
+		lblNombre.setBounds(57, 67, 60, 17);
 		add(lblNombre);
 		
 		fieldNombre = new JTextField();
-		fieldNombre.setBounds(127, 77, 197, 20);
+		fieldNombre.setBounds(127, 67, 197, 20);
 		add(fieldNombre);
 		fieldNombre.setColumns(10);
 	}
@@ -67,11 +66,11 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 		JLabel lblRol = new JLabel("Rol:");
 		lblRol.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblRol.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblRol.setBounds(58, 108, 59, 18);
+		lblRol.setBounds(58, 98, 59, 18);
 		add(lblRol);
 		
 		cbRol = new JComboBox<String>();
-		cbRol.setBounds(127, 108, 197, 22);
+		cbRol.setBounds(127, 98, 197, 22);
 		add(cbRol);
 		
 		cbRol.setModel(new DefaultComboBoxModel<String>(Rol.nombresRoles));
@@ -81,7 +80,7 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 		JLabel lblCalificacion = new JLabel("Calificacion:");
 		lblCalificacion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCalificacion.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCalificacion.setBounds(42, 148, 75, 14);
+		lblCalificacion.setBounds(42, 138, 75, 14);
 		add(lblCalificacion);
 		
 		sliderCalificacion = new JSlider();
@@ -92,10 +91,24 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 		sliderCalificacion.setMajorTickSpacing(1);
 		sliderCalificacion.setMaximum(5);
 		sliderCalificacion.setMinimum(1);
-		sliderCalificacion.setBounds(124, 141, 200, 45);
+		sliderCalificacion.setBounds(124, 131, 200, 45);
 		add(sliderCalificacion);
 	}
 
+	private void crearComboBoxFotos() {
+		JLabel lblFoto = new JLabel("Foto:");
+		lblFoto.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFoto.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblFoto.setBounds(42, 178, 75, 14);
+		add(lblFoto);
+		
+		cbFotos = new JComboBox<String>();
+		cbFotos.setBounds(124, 178, 197, 22);
+		add(cbFotos);
+		
+		cbFotos.setModel(new DefaultComboBoxModel<String>(getPadre().getPresenter().cargarFotosPosibles()));
+	}
+	
 	private void crearBotonAgregar() {
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -111,7 +124,7 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 	}
 	
 	private void agregarEmpleadoIngresado() {		
-		this.getPadre().getPresenter().agregarEmpleado(obtenerNombre(), obtenerRol(), obtenerCalificacion());
+		this.getPadre().getPresenter().agregarEmpleado(obtenerNombre(), obtenerRol(), obtenerCalificacion(), obtenerFoto());
 	}
 
 	private String obtenerNombre() {
@@ -126,6 +139,10 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 		return this.sliderCalificacion.getValue();
 	}
 
+	private String obtenerFoto() {
+		return (String) this.cbFotos.getSelectedItem();
+	}
+	
 	@Override
 	public String getNombre() {
 		return NOMBRE;
