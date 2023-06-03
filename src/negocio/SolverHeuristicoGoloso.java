@@ -17,7 +17,6 @@ public class SolverHeuristicoGoloso extends Solver {
 	// mejor calificados con menor cantidad de incompatibilidades primero
 	private HashMap<Rol, List<Empleado>> empleadosOrdenados;
 
-	private int empleadosConsiderados;
 	
 	public SolverHeuristicoGoloso(Empresa e, Requerimientos r) {
 		super();
@@ -28,15 +27,10 @@ public class SolverHeuristicoGoloso extends Solver {
 	}
 	
 	public Equipo resolver() throws EquipoImposibleException {
-		inicializarEstadisticas();
 		sortEmpleadosTodosLosRoles();
 		armarEquipo();
 		
 		return this.mejorEquipo;
-	}
-
-	private void inicializarEstadisticas() {
-		this.empleadosConsiderados = 0;
 	}
 
 	private void armarEquipo() throws EquipoImposibleException {		
@@ -60,10 +54,9 @@ public class SolverHeuristicoGoloso extends Solver {
 					agregados++;
 				}
 				i++;
-				this.empleadosConsiderados++;
+				this.casoConsiderado();
 			}
 		} catch (IndexOutOfBoundsException e) {
-			this.equipoEsImposible = true;
 			throw new EquipoImposibleException();
 		}
 	}	
@@ -100,10 +93,5 @@ public class SolverHeuristicoGoloso extends Solver {
 
 	public Equipo getMejorEquipo() {
 		return mejorEquipo;
-	}
-
-	@Override
-	public String estadisticas() {
-		return "Empleados considerados: " + this.empleadosConsiderados + super.estadisticas();
 	}
 }

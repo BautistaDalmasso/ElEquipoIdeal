@@ -6,9 +6,6 @@ public class SolverPorListaCompleta extends Solver {
 	private Equipo mejorEquipo;
 	private Equipo actual;
 
-	private int casosBaseConsiderados;
-	private int casosIncompatiblesDescartados;
-
 	public SolverPorListaCompleta(Empresa empresa, Requerimientos requerimientos) {
 		super();
 		this.empresa = empresa;
@@ -19,13 +16,9 @@ public class SolverPorListaCompleta extends Solver {
 		this.actual = new Equipo(empresa);
 		this.mejorEquipo = this.actual.copiar();
 
-		this.casosBaseConsiderados = 0;
-		this.casosIncompatiblesDescartados = 0;
-
 		agregarEmpleadosDesde(0);
 
 		if (!requerimientos.equipoCumpleConLosRequerimientos(mejorEquipo)) {
-			this.equipoEsImposible = true;
 			throw new EquipoImposibleException();
 		}
 
@@ -60,7 +53,7 @@ public class SolverPorListaCompleta extends Solver {
 		if (actual.getCalificacionTotal() > mejorEquipo.getCalificacionTotal()) {
 			mejorEquipo = actual.copiar();
 		}
-		this.casosBaseConsiderados++;
+		this.casoConsiderado();
 	}
 
 	private boolean rolLleno(Empleado empleadoSiendoEvaluado) {
@@ -73,13 +66,7 @@ public class SolverPorListaCompleta extends Solver {
 	}
 	
 	private void backtrack(int desde) {
-		this.casosIncompatiblesDescartados++;
+		this.casoDescartado();
 		agregarEmpleadosDesde(desde + 1);
-	}
-
-	public String estadisticas() {
-		return "Casos bases considerados: " + casosBaseConsiderados + ". Casos descartados: "
-				+ casosIncompatiblesDescartados + ". Incompatibilidades totales: "
-				+ this.empresa.getIncompatibilidades() + super.estadisticas();
 	}
 }

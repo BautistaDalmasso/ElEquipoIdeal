@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import negocio.Equipo;
+import negocio.EstadisticasDeBusqueda;
 
 public class ElEquipoIdeal extends JFrame {
 
@@ -132,5 +133,31 @@ public class ElEquipoIdeal extends JFrame {
 
 	public void equipoEncontrado(Equipo equipo) {
 		this.tarjetaBuscarEquipo.nuevoEncontrado(equipo.getCalificacionTotal());
+	}
+
+	public void actualizarEstadisticas(EstadisticasDeBusqueda estadisticas) {
+		this.tarjetaBuscarEquipo.actualizarEstadisticas(estadisticas);
+	}
+
+	public void actualizarEstado(String estado) {
+		this.tarjetaBuscarEquipo.actualizarEstado(estado);
+	}
+
+	public void iniciarBusqueda() {
+		deshabilitarAcciones();
+		this.tarjetaBuscarEquipo.busquedaIniciada();
+	}
+	
+	public void deshabilitarAcciones() {
+		this.menuAcciones.setEnabled(false);
+	}
+	
+	public void busquedaTerminada() {
+		habilitarAcciones();
+		this.tarjetaBuscarEquipo.busquedaTerminada();
+	}
+	
+	public void habilitarAcciones() {
+		this.menuAcciones.setEnabled(true);
 	}
 }

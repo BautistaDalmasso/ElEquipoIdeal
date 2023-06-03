@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Solver {
-	protected boolean equipoEsImposible;
+	private EstadisticasDeBusqueda estadisticas;
 	private List<ObserverResultadosParciales> observers;
 	
 	public abstract Equipo resolver() throws EquipoImposibleException;
 	
 	public Solver() {
 		observers = new ArrayList<ObserverResultadosParciales>();
+		estadisticas = new EstadisticasDeBusqueda();
 	}
 	
 	public void registrarObserver(ObserverResultadosParciales observer) {
@@ -18,12 +19,28 @@ public abstract class Solver {
 	}
 	
 	protected void notificarObservers(Equipo equipo) {
+		notificarObservers(new ResultadoParcialEquipo(equipo, getEstadisticas()));
+	}
+
+	protected void notificarObservers(ResultadoParcialEquipo resultadoParcial) {
 		for (ObserverResultadosParciales observer : observers) {
-			observer.notificar(equipo);
+			observer.notificar(resultadoParcial);
 		}
 	}
 	
-	public String estadisticas() {
-		return equipoEsImposible ? " EQUIPO IMPOSIBLE." : "";
+	public void casoConsiderado() {
+		estadisticas.casoConsiderado();
+	}
+
+	public void casoDescartado() {
+		estadisticas.casoDescartado();
+	}
+	
+	public String stringEstadisticas() {
+		return "Casos Considerados: " + estadisticas.getCasosConsiderados() + ". Casos Descartados: " + estadisticas.getCasosDescartados();
+	}
+
+	public EstadisticasDeBusqueda getEstadisticas() {
+		return estadisticas;
 	}
 }
