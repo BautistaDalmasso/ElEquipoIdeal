@@ -12,7 +12,7 @@ import negocio.EstadisticasDeBusqueda;
 
 import java.awt.Font;
 
-public class TarjetaBuscarEquipo extends Tarjeta {
+public class CartaBuscarEquipo extends Carta {
 	private static final long serialVersionUID = 5084902088676552823L;
 	private static final String NOMBRE = "Buscar Equipo";
 	
@@ -29,7 +29,7 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 	/**
 	 * Create the panel.
 	 */
-	public TarjetaBuscarEquipo(ElEquipoIdeal padre) {
+	public CartaBuscarEquipo(ElEquipoIdeal padre) {
 		super(padre);
 		
 		crearLabelExplicativa();

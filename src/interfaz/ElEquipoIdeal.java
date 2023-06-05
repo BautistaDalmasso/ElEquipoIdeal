@@ -28,14 +28,14 @@ public class ElEquipoIdeal extends JFrame {
 	private JMenuBar barraMenus;
 	private JMenu menuAcciones;
 
-	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
-	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
-	private TarjetaCrearRequerimientos tarjetaCrearRequerimientos;
-	private TarjetaVisualizarEmpresa tarjetaVisualizarEmpresa;
-	private TarjetaBuscarEquipo tarjetaBuscarEquipo;
-	private TarjetaArchivo tarjetaArchivo;
+	private CartaAgregarEmpleados cartaAgregarEmpleados;
+	private CartaAgregarIncompatibilidades cartaAgregarIncompatibilidades;
+	private CartaCrearRequerimientos cartaCrearRequerimientos;
+	private CartaVisualizarEmpresa cartaVisualizarEmpresa;
+	private CartaBuscarEquipo cartaBuscarEquipo;
+	private CartaArchivo cartaArchivo;
 
-	private TarjetaVisualizarEquipo tarjetaVisualizarEquipo;
+	private CartaVisualizarEquipo cartaVisualizarEquipo;
 
 	/**
 	 * Launch the application.
@@ -62,8 +62,8 @@ public class ElEquipoIdeal extends JFrame {
 		inicializarPresenter();
 
 		crearMenuDesplegable();
-		inicializarTarjetas();
-		inicializarTarjetasOcultas();
+		inicializarCartas();
+		inicializarCartasOcultas();
 	}
 
 	private void inicializarDimensiones() {
@@ -89,68 +89,68 @@ public class ElEquipoIdeal extends JFrame {
 		this.setJMenuBar(barraMenus);
 	}
 	
-	private void inicializarTarjetas() {
-		tarjetaAgregarEmpleados = new TarjetaAgregarEmpleados(this);
-		tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
-		tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
-		tarjetaVisualizarEmpresa = new TarjetaVisualizarEmpresa(this);
-		tarjetaBuscarEquipo = new TarjetaBuscarEquipo(this);
-		tarjetaArchivo = new TarjetaArchivo(this);
+	private void inicializarCartas() {
+		cartaAgregarEmpleados = new CartaAgregarEmpleados(this);
+		cartaAgregarIncompatibilidades = new CartaAgregarIncompatibilidades(this);
+		cartaCrearRequerimientos = new CartaCrearRequerimientos(this);
+		cartaVisualizarEmpresa = new CartaVisualizarEmpresa(this);
+		cartaBuscarEquipo = new CartaBuscarEquipo(this);
+		cartaArchivo = new CartaArchivo(this);
 		
-		agregarTarjetas(new Tarjeta[] 
-				{tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades, tarjetaCrearRequerimientos, tarjetaVisualizarEmpresa, tarjetaBuscarEquipo, tarjetaArchivo});
+		agregarCartas(new Carta[] 
+				{cartaAgregarEmpleados, cartaAgregarIncompatibilidades, cartaCrearRequerimientos, cartaVisualizarEmpresa, cartaBuscarEquipo, cartaArchivo});
 	}
 
-	private void agregarTarjetas(Tarjeta[] tarjetas) {
-		for (Tarjeta tarjeta : tarjetas) {
-			agregarTarjeta(tarjeta);
+	private void agregarCartas(Carta[] cartas) {
+		for (Carta carta : cartas) {
+			agregarCarta(carta);
 		}
 	}
 	
-	private void agregarTarjeta(Tarjeta tarjeta) {
-		crearOpcionMenu(tarjeta);
+	private void agregarCarta(Carta carta) {
+		crearOpcionMenu(carta);
 		
-		contentPane.add(tarjeta, tarjeta.getNombre());
+		contentPane.add(carta, carta.getNombre());
 	}
 	
-	private void crearOpcionMenu(Tarjeta tarjeta) {
-		JMenuItem itemTarjeta = new JMenuItem(tarjeta.getNombre());
+	private void crearOpcionMenu(Carta carta) {
+		JMenuItem itemCarta = new JMenuItem(carta.getNombre());
 		
-		itemTarjeta.addActionListener(new ActionListener() {
+		itemCarta.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				cardLayout.show(contentPane, tarjeta.getNombre());
+				cardLayout.show(contentPane, carta.getNombre());
 			}
 		});
 		
-		menuAcciones.add(itemTarjeta);
+		menuAcciones.add(itemCarta);
 	}
 
-	private void inicializarTarjetasOcultas() {
-		inicializarTarjetaVisualizarEquipo();
+	private void inicializarCartasOcultas() {
+		inicializarCartaVisualizarEquipo();
 	}
 	
-	private void inicializarTarjetaVisualizarEquipo() {
-		this.tarjetaVisualizarEquipo = new TarjetaVisualizarEquipo(this);
-		contentPane.add(tarjetaVisualizarEquipo, tarjetaVisualizarEquipo.getNombre());
+	private void inicializarCartaVisualizarEquipo() {
+		this.cartaVisualizarEquipo = new CartaVisualizarEquipo(this);
+		contentPane.add(cartaVisualizarEquipo, cartaVisualizarEquipo.getNombre());
 	}
 
 	public void equipoEncontrado(Equipo equipo) {
-		this.tarjetaBuscarEquipo.nuevoEncontrado(equipo.getCalificacionTotal());
-		this.tarjetaVisualizarEquipo.cargarEquipo(equipo);
+		this.cartaBuscarEquipo.nuevoEncontrado(equipo.getCalificacionTotal());
+		this.cartaVisualizarEquipo.cargarEquipo(equipo);
 	}
 
 	public void actualizarEstadisticas(EstadisticasDeBusqueda estadisticas) {
-		this.tarjetaBuscarEquipo.actualizarEstadisticas(estadisticas);
+		this.cartaBuscarEquipo.actualizarEstadisticas(estadisticas);
 	}
 
 	public void actualizarEstado(String estado) {
-		this.tarjetaBuscarEquipo.actualizarEstado(estado);
+		this.cartaBuscarEquipo.actualizarEstado(estado);
 	}
 
 	public void iniciarBusqueda() {
 		deshabilitarAcciones();
-		this.tarjetaBuscarEquipo.busquedaIniciada();
+		this.cartaBuscarEquipo.busquedaIniciada();
 	}
 	
 	public void deshabilitarAcciones() {
@@ -159,7 +159,7 @@ public class ElEquipoIdeal extends JFrame {
 	
 	public void busquedaTerminada() {
 		habilitarAcciones();
-		this.tarjetaBuscarEquipo.busquedaTerminada();
+		this.cartaBuscarEquipo.busquedaTerminada();
 	}
 	
 	public void habilitarAcciones() {
@@ -167,18 +167,18 @@ public class ElEquipoIdeal extends JFrame {
 	}
 	
 	public void visualizarEquipo() {
-		cardLayout.show(contentPane, this.tarjetaVisualizarEquipo.getNombre());
+		cardLayout.show(contentPane, this.cartaVisualizarEquipo.getNombre());
 	}
 	
 	public Presenter getPresenter() {
 		return presenter;
 	}
 	
-	public TarjetaAgregarIncompatibilidades getTarjetaAgregarIncompatibilidades() {
-		return tarjetaAgregarIncompatibilidades;
+	public CartaAgregarIncompatibilidades getCartaAgregarIncompatibilidades() {
+		return cartaAgregarIncompatibilidades;
 	}
 
-	public TarjetaVisualizarEmpresa getTarjetaVisualizarEmpresa() {
-		return tarjetaVisualizarEmpresa;
+	public CartaVisualizarEmpresa getCartaVisualizarEmpresa() {
+		return cartaVisualizarEmpresa;
 	}
 }

@@ -12,7 +12,7 @@ public class CarrouselEmpleados extends JPanel {
 	private CardLayout cardLayout;
 	private Empleado[] empleados;
 	
-	private int tarjetaActual;
+	private int cartaActual;
 	private ElEquipoIdeal interfaz;
 
 	public CarrouselEmpleados(Empleado[] empleados, ElEquipoIdeal interfaz) {
@@ -23,7 +23,7 @@ public class CarrouselEmpleados extends JPanel {
 		this.interfaz = interfaz;
 		
 		inicializarVisualizadores();
-		inicializarTarjetaActual();
+		inicializarCartaActual();
 	}
 
 	public CarrouselEmpleados(ElEquipoIdeal interfaz) {
@@ -36,32 +36,32 @@ public class CarrouselEmpleados extends JPanel {
 		}
 	}
 	
-	private void inicializarTarjetaActual() {
-		tarjetaActual = 0;
+	private void inicializarCartaActual() {
+		cartaActual = 0;
 	}
 	
 	public void siguiente() {
 		cardLayout.next(this);
-		siguienteTarjeta();
+		siguienteCarta();
 	}
 
-	private void siguienteTarjeta() {		
-		tarjetaActual = ++tarjetaActual > empleados.length ? 0 : tarjetaActual;
+	private void siguienteCarta() {		
+		cartaActual = ++cartaActual > empleados.length ? 0 : cartaActual;
 	}
 
 	public void anterior() {
 		cardLayout.previous(this);
-		retrocederTarjeta();
+		retrocederCarta();
 	}
 
-	private void retrocederTarjeta() {
-		tarjetaActual = --tarjetaActual < 0 ? empleados.length-1 : tarjetaActual;
+	private void retrocederCarta() {
+		cartaActual = --cartaActual < 0 ? empleados.length-1 : cartaActual;
 	}
 	
 	public void refrescar(Empleado[] empleados) {
 		this.removeAll();
 		this.empleados = empleados;
 		inicializarVisualizadores();
-		inicializarTarjetaActual();
+		inicializarCartaActual();
 	}
 }

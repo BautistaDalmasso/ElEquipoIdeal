@@ -13,7 +13,7 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import javax.swing.SpinnerNumberModel;
 
-public class TarjetaCrearRequerimientos extends Tarjeta {
+public class CartaCrearRequerimientos extends Carta {
 
 	private static final long serialVersionUID = -3942548359901309794L;
 	private static final String NOMBRE = "Crear Requerimientos";
@@ -26,7 +26,7 @@ public class TarjetaCrearRequerimientos extends Tarjeta {
 	/**
 	 * Create the panel.
 	 */
-	public TarjetaCrearRequerimientos(ElEquipoIdeal padre) {
+	public CartaCrearRequerimientos(ElEquipoIdeal padre) {
 		super(padre);
 		
 		crearLabelExplicativa();

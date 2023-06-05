@@ -11,14 +11,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-public class TarjetaArchivo extends Tarjeta {
+public class CartaArchivo extends Carta {
 
 	private static final long serialVersionUID = -1031556552960918132L;
 	private static final String NOMBRE = "Manejar Archivos";
 	private JComboBox<String> cbEmpresasGuardadas;
 	private JTextField tfEmpresaActual;
 
-	public TarjetaArchivo(ElEquipoIdeal padre) {
+	public CartaArchivo(ElEquipoIdeal padre) {
 		super(padre);
 		
 		crearLabelExplicativa();

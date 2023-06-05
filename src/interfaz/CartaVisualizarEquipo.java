@@ -15,14 +15,14 @@ import negocio.Equipo;
 
 import javax.swing.JTextField;
 
-public class TarjetaVisualizarEquipo extends Tarjeta {
+public class CartaVisualizarEquipo extends Carta {
 
 	private static final long serialVersionUID = 4918117592521695651L;
 	private static final String NOMBRE = "Visualizar Equipo";
 	private CarrouselEmpleados carrouselEmpleados;
 	private JTextField tfCalificacionTotal;
 	
-	public TarjetaVisualizarEquipo(ElEquipoIdeal padre) {
+	public CartaVisualizarEquipo(ElEquipoIdeal padre) {
 		super(padre);
 		
 		crearLabelExplicativa();

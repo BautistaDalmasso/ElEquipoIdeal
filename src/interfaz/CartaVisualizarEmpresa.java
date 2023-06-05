@@ -13,13 +13,13 @@ import javax.swing.SwingConstants;
 import negocio.Empleado;
 import javax.swing.JButton;
 
-public class TarjetaVisualizarEmpresa extends Tarjeta {
+public class CartaVisualizarEmpresa extends Carta {
 
 	private static final long serialVersionUID = 3960547276495318473L;
 	private static final String NOMBRE = "Visualizar Empresa";
 	private CarrouselEmpleados carrouselEmpleados;
 	
-	public TarjetaVisualizarEmpresa(ElEquipoIdeal padre) {
+	public CartaVisualizarEmpresa(ElEquipoIdeal padre) {
 		super(padre);
 		
 		crearLabelExplicativa();

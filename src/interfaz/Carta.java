@@ -2,7 +2,7 @@ package interfaz;
 
 import javax.swing.JPanel;
 
-public abstract class Tarjeta extends JPanel {
+public abstract class Carta extends JPanel {
 	
 	private static final long serialVersionUID = -6130341013156231055L;
 	
@@ -11,7 +11,7 @@ public abstract class Tarjeta extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Tarjeta(ElEquipoIdeal padre) {
+	public Carta(ElEquipoIdeal padre) {
 		this.padre = padre;
 		setLayout(null);
 	}

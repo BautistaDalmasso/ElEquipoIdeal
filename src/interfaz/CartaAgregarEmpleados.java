@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
-public class TarjetaAgregarEmpleados extends Tarjeta {
+public class CartaAgregarEmpleados extends Carta {
 
 	private static final long serialVersionUID = 2497385370618487907L;
 	private static final String NOMBRE = "Agregar Empleados";
@@ -28,7 +28,7 @@ public class TarjetaAgregarEmpleados extends Tarjeta {
 	/**
 	 * Create the panel.
 	 */
-	public TarjetaAgregarEmpleados(ElEquipoIdeal padre) {
+	public CartaAgregarEmpleados(ElEquipoIdeal padre) {
 		super(padre);
 		
 		crearLabelExplicativa();
