@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
-public class TarjetaAgregarIncompatibilidades extends Tarjeta {
+public class CartaAgregarIncompatibilidades extends Carta {
 
 	private static final long serialVersionUID = -4392978621224841628L;
 	private static final String NOMBRE = "Agregar Incompatibilidades";
@@ -25,7 +25,7 @@ public class TarjetaAgregarIncompatibilidades extends Tarjeta {
 	/**
 	 * Create the panel.
 	 */
-	public TarjetaAgregarIncompatibilidades(ElEquipoIdeal padre) {
+	public CartaAgregarIncompatibilidades(ElEquipoIdeal padre) {
 		super(padre);
 		
 		crearLabelExplicativa();

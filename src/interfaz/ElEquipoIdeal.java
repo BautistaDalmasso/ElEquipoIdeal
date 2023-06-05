@@ -28,14 +28,14 @@ public class ElEquipoIdeal extends JFrame {
 	private JMenuBar barraMenus;
 	private JMenu menuAcciones;
 
-	private TarjetaAgregarEmpleados tarjetaAgregarEmpleados;
-	private TarjetaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
-	private TarjetaCrearRequerimientos tarjetaCrearRequerimientos;
-	private TarjetaVisualizarEmpresa tarjetaVisualizarEmpresa;
-	private TarjetaBuscarEquipo tarjetaBuscarEquipo;
-	private TarjetaArchivo tarjetaArchivo;
+	private CartaAgregarEmpleados tarjetaAgregarEmpleados;
+	private CartaAgregarIncompatibilidades tarjetaAgregarIncompatibilidades;
+	private CartaCrearRequerimientos tarjetaCrearRequerimientos;
+	private CartaVisualizarEmpresa tarjetaVisualizarEmpresa;
+	private CartaBuscarEquipo tarjetaBuscarEquipo;
+	private CartaArchivo tarjetaArchivo;
 
-	private TarjetaVisualizarEquipo tarjetaVisualizarEquipo;
+	private CartaVisualizarEquipo tarjetaVisualizarEquipo;
 
 	/**
 	 * Launch the application.
@@ -90,30 +90,30 @@ public class ElEquipoIdeal extends JFrame {
 	}
 	
 	private void inicializarTarjetas() {
-		tarjetaAgregarEmpleados = new TarjetaAgregarEmpleados(this);
-		tarjetaAgregarIncompatibilidades = new TarjetaAgregarIncompatibilidades(this);
-		tarjetaCrearRequerimientos = new TarjetaCrearRequerimientos(this);
-		tarjetaVisualizarEmpresa = new TarjetaVisualizarEmpresa(this);
-		tarjetaBuscarEquipo = new TarjetaBuscarEquipo(this);
-		tarjetaArchivo = new TarjetaArchivo(this);
+		tarjetaAgregarEmpleados = new CartaAgregarEmpleados(this);
+		tarjetaAgregarIncompatibilidades = new CartaAgregarIncompatibilidades(this);
+		tarjetaCrearRequerimientos = new CartaCrearRequerimientos(this);
+		tarjetaVisualizarEmpresa = new CartaVisualizarEmpresa(this);
+		tarjetaBuscarEquipo = new CartaBuscarEquipo(this);
+		tarjetaArchivo = new CartaArchivo(this);
 		
-		agregarTarjetas(new Tarjeta[] 
+		agregarTarjetas(new Carta[] 
 				{tarjetaAgregarEmpleados, tarjetaAgregarIncompatibilidades, tarjetaCrearRequerimientos, tarjetaVisualizarEmpresa, tarjetaBuscarEquipo, tarjetaArchivo});
 	}
 
-	private void agregarTarjetas(Tarjeta[] tarjetas) {
-		for (Tarjeta tarjeta : tarjetas) {
+	private void agregarTarjetas(Carta[] tarjetas) {
+		for (Carta tarjeta : tarjetas) {
 			agregarTarjeta(tarjeta);
 		}
 	}
 	
-	private void agregarTarjeta(Tarjeta tarjeta) {
+	private void agregarTarjeta(Carta tarjeta) {
 		crearOpcionMenu(tarjeta);
 		
 		contentPane.add(tarjeta, tarjeta.getNombre());
 	}
 	
-	private void crearOpcionMenu(Tarjeta tarjeta) {
+	private void crearOpcionMenu(Carta tarjeta) {
 		JMenuItem itemTarjeta = new JMenuItem(tarjeta.getNombre());
 		
 		itemTarjeta.addActionListener(new ActionListener() {
@@ -131,7 +131,7 @@ public class ElEquipoIdeal extends JFrame {
 	}
 	
 	private void inicializarTarjetaVisualizarEquipo() {
-		this.tarjetaVisualizarEquipo = new TarjetaVisualizarEquipo(this);
+		this.tarjetaVisualizarEquipo = new CartaVisualizarEquipo(this);
 		contentPane.add(tarjetaVisualizarEquipo, tarjetaVisualizarEquipo.getNombre());
 	}
 
@@ -174,11 +174,11 @@ public class ElEquipoIdeal extends JFrame {
 		return presenter;
 	}
 	
-	public TarjetaAgregarIncompatibilidades getTarjetaAgregarIncompatibilidades() {
+	public CartaAgregarIncompatibilidades getTarjetaAgregarIncompatibilidades() {
 		return tarjetaAgregarIncompatibilidades;
 	}
 
-	public TarjetaVisualizarEmpresa getTarjetaVisualizarEmpresa() {
+	public CartaVisualizarEmpresa getTarjetaVisualizarEmpresa() {
 		return tarjetaVisualizarEmpresa;
 	}
 }
