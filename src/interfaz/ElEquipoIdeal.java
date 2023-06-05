@@ -35,6 +35,8 @@ public class ElEquipoIdeal extends JFrame {
 	private TarjetaBuscarEquipo tarjetaBuscarEquipo;
 	private TarjetaArchivo tarjetaArchivo;
 
+	private TarjetaVisualizarEquipo tarjetaVisualizarEquipo;
+
 	/**
 	 * Launch the application.
 	 */
@@ -57,12 +59,11 @@ public class ElEquipoIdeal extends JFrame {
 	 */
 	public ElEquipoIdeal() {
 		inicializarDimensiones();
-		
 		inicializarPresenter();
 
 		crearMenuDesplegable();
-		
 		inicializarTarjetas();
+		inicializarTarjetasOcultas();
 	}
 
 	private void inicializarDimensiones() {
@@ -125,16 +126,18 @@ public class ElEquipoIdeal extends JFrame {
 		menuAcciones.add(itemTarjeta);
 	}
 
-	public Presenter getPresenter() {
-		return presenter;
+	private void inicializarTarjetasOcultas() {
+		inicializarTarjetaVisualizarEquipo();
 	}
 	
-	public TarjetaAgregarIncompatibilidades getTarjetaAgregarIncompatibilidades() {
-		return tarjetaAgregarIncompatibilidades;
+	private void inicializarTarjetaVisualizarEquipo() {
+		this.tarjetaVisualizarEquipo = new TarjetaVisualizarEquipo(this);
+		contentPane.add(tarjetaVisualizarEquipo, tarjetaVisualizarEquipo.getNombre());
 	}
 
 	public void equipoEncontrado(Equipo equipo) {
 		this.tarjetaBuscarEquipo.nuevoEncontrado(equipo.getCalificacionTotal());
+		this.tarjetaVisualizarEquipo.cargarEquipo(equipo);
 	}
 
 	public void actualizarEstadisticas(EstadisticasDeBusqueda estadisticas) {
@@ -161,6 +164,18 @@ public class ElEquipoIdeal extends JFrame {
 	
 	public void habilitarAcciones() {
 		this.menuAcciones.setEnabled(true);
+	}
+	
+	public void visualizarEquipo() {
+		cardLayout.show(contentPane, this.tarjetaVisualizarEquipo.getNombre());
+	}
+	
+	public Presenter getPresenter() {
+		return presenter;
+	}
+	
+	public TarjetaAgregarIncompatibilidades getTarjetaAgregarIncompatibilidades() {
+		return tarjetaAgregarIncompatibilidades;
 	}
 
 	public TarjetaVisualizarEmpresa getTarjetaVisualizarEmpresa() {

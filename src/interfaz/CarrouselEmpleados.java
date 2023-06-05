@@ -13,31 +13,31 @@ public class CarrouselEmpleados extends JPanel {
 	private Empleado[] empleados;
 	
 	private int tarjetaActual;
+	private ElEquipoIdeal interfaz;
 
-	public CarrouselEmpleados(Empleado[] empleados) {
+	public CarrouselEmpleados(Empleado[] empleados, ElEquipoIdeal interfaz) {
 		cardLayout = new CardLayout(0, 0);
 		setLayout(cardLayout);
 		
 		this.empleados = empleados;
+		this.interfaz = interfaz;
 		
 		inicializarVisualizadores();
 		inicializarTarjetaActual();
 	}
 
-	public CarrouselEmpleados() {
-		this(new Empleado[] {});
+	public CarrouselEmpleados(ElEquipoIdeal interfaz) {
+		this(new Empleado[] {}, interfaz);
 	}
 
 	private void inicializarVisualizadores() {
-		int i = 0;
 		for (Empleado empleado : empleados) {
-			add(new VisualizadorEmpleado(empleado), "" + i++);
+			add(new VisualizadorEmpleado(empleado, interfaz));
 		}
 	}
 	
 	private void inicializarTarjetaActual() {
 		tarjetaActual = 0;
-		cardLayout.show(this, "" + tarjetaActual);
 	}
 	
 	public void siguiente() {

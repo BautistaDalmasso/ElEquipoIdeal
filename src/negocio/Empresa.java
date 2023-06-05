@@ -142,6 +142,10 @@ public class Empresa {
 		return incompatibilidades;
 	}
 	
+	public Set<Empleado> getIncompatibles(Empleado empleado) {
+		return this.relaciones.getIncompatibles(empleado);
+	}
+	
 	public int getCantidadIncompatibles(Empleado empleado) {
 		return this.relaciones.getCantidadDeIncompatibilidades(empleado);
 	}

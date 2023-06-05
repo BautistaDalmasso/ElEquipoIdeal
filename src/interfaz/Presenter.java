@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.io.IOException;
+import java.util.Set;
 import java.util.concurrent.CancellationException;
 
 import negocio.ArchivosGuardados;
@@ -86,5 +87,11 @@ public class Presenter {
 
 	public String[] cargarFotosPosibles() {
 		return ArchivosGuardados.cargarNombres(DIRECTORIO_FOTOS);
+	}
+	
+	public void mostrarIncompatibilidades(Empleado empleado) {
+		Set<Empleado> empleadosIncompatibles = empresa.getIncompatibles(empleado);
+		
+		VentanaIncompatibilidades.mostrarIncompatibilidades(empleado.getNombre(), empleadosIncompatibles);
 	}
 }

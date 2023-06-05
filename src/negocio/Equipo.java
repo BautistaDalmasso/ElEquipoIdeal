@@ -81,4 +81,8 @@ public class Equipo {
 	public Set<Empleado> getEmpleados() {
 		return empleados;
 	}
+
+	public Empleado[] getArregloEmpleados() {
+		return empleados.toArray(new Empleado[empleados.size()]);
+	}
 }
