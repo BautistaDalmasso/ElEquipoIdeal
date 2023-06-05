@@ -137,6 +137,12 @@ public class TarjetaBuscarEquipo extends Tarjeta {
 		btnVisualizarEncontrado = new JButton("Visualizar Equipo");
 		btnVisualizarEncontrado.setBounds(170, 224, 123, 23);
 		btnVisualizarEncontrado.setEnabled(false);
+		btnVisualizarEncontrado.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getPadre().visualizarEquipo();
+			}
+		});
 		add(btnVisualizarEncontrado);
 	}
 	
