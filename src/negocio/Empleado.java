@@ -57,7 +57,7 @@ public class Empleado {
 	}
 	
 	public String getNombreFoto() {
-		return nombreFoto;
+		return nombreFoto == null ? NOMBRE_FOTO_DEFAULT : nombreFoto;
 	}
 	
 	@Override
