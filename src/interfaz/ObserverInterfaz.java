@@ -94,12 +94,26 @@ public class ObserverInterfaz extends SwingWorker<Equipo, ResultadoParcialEquipo
 	}
 
 	private void manejarBusquedaFinalizada() throws InterruptedException, ExecutionException {
-		if (!isCancelled()) {				
-			estado = EstadoDeBusqueda.BUSQUEDA_FINALIZADA;
-			interfaz.equipoEncontrado(get());
+
+		try {
+			if (!isCancelled()) {
+				estado = EstadoDeBusqueda.BUSQUEDA_FINALIZADA;
+				interfaz.equipoEncontrado(get());
+			}
+			else {
+				estado = EstadoDeBusqueda.BUSQUEDA_DETENIDA;
+			}
+		} catch (ExecutionException e) {
+			manejarExecutionException(e);
 		}
-		else {				
-			estado = EstadoDeBusqueda.BUSQUEDA_DETENIDA;
+	}
+
+	private void manejarExecutionException(ExecutionException exception) throws ExecutionException {
+		if (exception.getCause() instanceof EquipoImposibleException) {
+			estado = EstadoDeBusqueda.EQUIPO_IMPOSIBLE;
+		}
+		else {
+			throw exception;
 		}
 	}
 
