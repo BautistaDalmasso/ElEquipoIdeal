@@ -81,8 +81,8 @@ public class Presenter {
 	}
 	
 	private void realizarActualizacionesEmpleadoAgregado() {
-		this.view.getTarjetaAgregarIncompatibilidades().agregarComboBoxModels();
-		this.view.getTarjetaVisualizarEmpresa().refrescarCarrouselEmpleados(empresa.getArregloEmpleados());
+		this.view.getCartaAgregarIncompatibilidades().agregarComboBoxModels();
+		this.view.getCartaVisualizarEmpresa().refrescarCarrouselEmpleados(empresa.getArregloEmpleados());
 	}
 
 	public String[] cargarFotosPosibles() {
