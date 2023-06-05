@@ -36,7 +36,7 @@ public class TarjetaVisualizarEmpresa extends Tarjeta {
 	}
 
 	private void inicializarCarrouselEmpleados() {
-		carrouselEmpleados = new CarrouselEmpleados();
+		carrouselEmpleados = new CarrouselEmpleados(getPadre());
 		carrouselEmpleados.setBounds(65, 65, 320, 145);
 		add(carrouselEmpleados);
 		carrouselEmpleados.setBorder(BorderFactory.createLineBorder(Color.black));

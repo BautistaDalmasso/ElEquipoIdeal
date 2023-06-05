@@ -9,6 +9,8 @@ import negocio.Empleado;
 import javax.swing.JTextField;
 import java.awt.Canvas;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Button;
 
 public class VisualizadorEmpleado extends JPanel {
@@ -21,16 +23,18 @@ public class VisualizadorEmpleado extends JPanel {
 
 	private Empleado empleado;
 
+	protected ElEquipoIdeal interfaz;
+
 	/**
 	 * Create the panel.
 	 */
-	public VisualizadorEmpleado(Empleado empleado) {
+	public VisualizadorEmpleado(Empleado empleado, ElEquipoIdeal interfaz) {
 		setLayout(null);
 
 		this.empleado = empleado;
+		this.interfaz = interfaz;
 		
 		crearZonaFoto();
-		
 		crearZonaDatos();
 	}
 
@@ -102,10 +106,14 @@ public class VisualizadorEmpleado extends JPanel {
 	}
 
 	private void crearBotonIncompatibilidades() {
-		//TODO: mostrar incompatibilidades
-		
 		Button btnIncompatibilidades = new Button("Incompatibilidades");
 		btnIncompatibilidades.setBounds(188, 120, 111, 22);
+		btnIncompatibilidades.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				interfaz.getPresenter().mostrarIncompatibilidades(empleado);
+			}
+		});
 		add(btnIncompatibilidades);
 	}
 }
