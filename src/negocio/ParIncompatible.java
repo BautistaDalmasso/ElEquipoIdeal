@@ -22,7 +22,7 @@ public class ParIncompatible {
 	@Override
 	public int hashCode() {
 		// Bitwise XOR es una operacion conmutativa que nos asegura que el hash code va
-		// a ser igual sin importar el orden en el que se agreguen las localidades:
+		// a ser igual sin importar el orden en el que se agreguen los empleados:
 		// es decir: parIncompatibleAB.hashCode() == parIncompatibleBA.hashCode()
 		return Objects.hash(x) ^ Objects.hash(y);
 	}
