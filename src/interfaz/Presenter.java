@@ -23,6 +23,7 @@ public class Presenter {
 		this.view = view;
 		
 		this.empresa = new Empresa();
+		this.requerimientos = new Requerimientos(empresa);
 	}
 	
 	public void agregarEmpleado(String nombre, String rol, int calificacion, String nombreFoto) {
@@ -42,7 +43,6 @@ public class Presenter {
 	}
 
 	public void crearRequerimientos(int[] valoresDeRequerimientos) {
-		this.requerimientos = new Requerimientos(empresa);
 		
 		int i = 0;
 		for (Rol rol : Rol.values()) {
@@ -69,7 +69,7 @@ public class Presenter {
 	public void cargarEmpresa(String nombreEmpresa) {
 		try {
 			this.empresa = EmpresasGuardadas.cargarEmpresa(nombreEmpresa);
-			this.requerimientos = null;
+			this.requerimientos = new Requerimientos(empresa);
 			realizarActualizacionesEmpleadoAgregado();
 		} catch (IOException e) {
 			e.printStackTrace();

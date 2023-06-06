@@ -1,7 +1,7 @@
 package negocio;
 
 public class Requerimientos {
-	private int[][] empleadosPorRol;
+	private int[] empleadosPorRol;
 	private Empresa empresa;
 	
 	public Requerimientos(Empresa empresa) {
@@ -15,12 +15,12 @@ public class Requerimientos {
 
 	private void inicializarEmpleadosPorRol() {
 		Rol[] roles = Rol.values();
-		this.empleadosPorRol = new int[roles.length][1];
+		this.empleadosPorRol = new int[roles.length];
 	}
 
 	public void setRequerimientosParaRol(Rol rol, int empleadosRequeridos) {
 		prevenirEmpleadosRequeridosInvalidos(rol, empleadosRequeridos);
-		this.empleadosPorRol[rol.ordinal()][0] = empleadosRequeridos;
+		this.empleadosPorRol[rol.ordinal()] = empleadosRequeridos;
 	}
 
 	private void prevenirEmpleadosRequeridosInvalidos(Rol rol, int empleadosRequeridos) {
@@ -53,6 +53,6 @@ public class Requerimientos {
 	}
 
 	public int getRequerimientosParaRol(Rol rol) {
-		return this.empleadosPorRol[rol.ordinal()][0];
+		return this.empleadosPorRol[rol.ordinal()];
 	}
 }
